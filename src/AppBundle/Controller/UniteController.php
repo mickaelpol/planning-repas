@@ -25,7 +25,7 @@ class UniteController extends Controller
 
         $unites = $em->getRepository('AppBundle:Unite')->findAll();
 
-        return $this->render(', meunite/index.html.twig', array(
+        return $this->render('unite/index.html.twig', array(
             'unites' => $unites,
         ));
     }

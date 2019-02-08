@@ -18,62 +18,24 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-        $repoPlanning = $this->getDoctrine()->getRepository('AppBundle:Planning');
-        $test = $repoPlanning->findBy(
-            ['mois' => 45]
-        );
-        dump($test);
-        die;
         $mois = $em->getActualMonth();
-        $monthId = '';
 
-        // Récupère l'id du mois en cours
-        foreach ($mois as $moi) {
-            $monthId = $moi->getId();
-        }
-        $plannings = $emP->getMonthById($monthId);
+	    $ing = $em->getListeCourses($mois->getId());
+	    dump($ing);
+//	    die;
 
-        $recettes = [];
-        // Récupère les recettes du mois en cours
-        foreach ($plannings as $planning) {
-            array_push(
-                $recettes,
-                $planning->getRecette());
-        }
 
-        // Récupère les compositions des recettes du mois en cours
-        $compositions = [];
-        foreach ($recettes as $recette) {
-            array_push(
-                $compositions,
-                $recette->getCompositions()
-            );
-        }
 
-        // Récupère les ingrédients des recettes du mois en cours
-        $ingredients = ['ingredients' => []];
-        $quantites = ['quantite' => []];
-        foreach ($compositions as $composition) {
-            foreach ($composition as $ingredient) {
-                // Push les ingredients dans son tableau respectif
-                array_push(
-                    $ingredients['ingredients'],
-                    $ingredient->getIngredient()->getNom()
-                );
-                /* $ingredient->getIngredient()->getUnite()->getNom() */
-                // Push les quantité dans son tableau respectif
-                array_push(
-                    $quantites['quantite'],
-                    $ingredient->getQuantite()
-                );
-            }
-        }
 
-        for ($i = 0; $i < count($ingredients['ingredients']); $i++){
-            $t = $ingredients['ingredients'][$i];
-        }
-        dump($t);
-        die;
+
+
+
+
+
+
+
+
+
 
         // Set la langue locale en Français
         setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
