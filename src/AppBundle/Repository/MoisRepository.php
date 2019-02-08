@@ -24,7 +24,7 @@ class MoisRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('year', $actualYear)
 	        ->getQuery();
 
-        return $qb->getOneOrNullResult();
+        return $qb->getResult();
     }
 
     public function getListeCourses($id)
