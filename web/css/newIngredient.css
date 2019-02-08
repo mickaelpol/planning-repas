@@ -1,0 +1,23 @@
+body {
+    background-image: none;
+}
+.cadre {
+    border: 1px solid #757575;
+}
+.banderole-header {
+    margin-top: 120px;
+    background-color: #FF5722;
+    border-top: 1px solid #FF5722;
+    border-right: 1px solid #BDBDBD;
+    border-left: 1px solid #BDBDBD;
+}
+
+.banderole-body {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #BDBDBD;
+    border-right: 1px solid #BDBDBD;
+    border-left: 1px solid #BDBDBD;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-top: -30px;
+}

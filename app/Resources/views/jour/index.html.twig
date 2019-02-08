@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Jours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for jour in jours %}
+            <tr>
+                <td><a href="{{ path('jour_show', { 'id': jour.id }) }}">{{ jour.id }}</a></td>
+                <td>{{ jour.nom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('jour_show', { 'id': jour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('jour_edit', { 'id': jour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('jour_new') }}">Create a new jour</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Compositions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Quantite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for composition in compositions %}
+            <tr>
+                <td><a href="{{ path('composition_show', { 'id': composition.id }) }}">{{ composition.id }}</a></td>
+                <td>{{ composition.quantite }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('composition_show', { 'id': composition.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('composition_edit', { 'id': composition.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('composition_new') }}">Create a new composition</a>
+        </li>
+    </ul>
+{% endblock %}

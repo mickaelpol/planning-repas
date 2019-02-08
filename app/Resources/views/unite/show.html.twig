@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Unite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ unite.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ unite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Symbole</th>
+                <td>{{ unite.symbole }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('unite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('unite_edit', { 'id': unite.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

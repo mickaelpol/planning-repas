@@ -1,0 +1,156 @@
+body {
+    background-color: #FF9800;
+    background-image: none;
+}
+
+.card {
+    background-color: #212121;
+    border: 1px solid #757575;
+    border-radius: 5px;
+}
+
+.card .card-action {
+    background-color: #212121;
+}
+
+.card-calendar {
+    border: 1px solid #212121;
+    border-radius: 20px;
+    background-color: #BDBDBD;
+}
+
+.planning-titre {
+    color: #212121;
+    letter-spacing: 20px;
+    font-family: 'Amatic';
+    font-weight: 700;
+}
+
+.page-planning-recette {
+    font-family: 'Muli';
+    color: #ffffff;
+    letter-spacing: 5px;
+}
+
+.page-planning-titre {
+    font-family: 'Muli';
+    color: #ffffff;
+    letter-spacing: 10px;
+}
+
+.card-image .select-wrapper input.select-dropdown  {
+    font-family: 'Muli';
+    font-weight: 500;
+    font-size: 26px !important;
+    color: #FFFFFF;
+}
+
+.badge {
+    float: none !important;
+    font-size: 20px !important;
+    border-radius: 5px;
+    padding: 2px 10px !important;
+}
+
+.card-action > .btn {
+    width: 100%;
+}
+
+button.btn-4{
+    display: block;
+    width: 100%;
+    position: relative;
+    border: none;
+    color: #fff;
+    font-size: 35px;
+    letter-spacing: 10px;
+    font-family: 'Amatic';
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid white;
+}
+
+button.btn-4:hover {
+    color: orange;
+    transition: all 0.2s linear;
+}
+
+span.span-btn-4{
+    display: block;
+    padding: 15px 80px;
+}
+button.btn-4::before, button.btn-4::after{
+    content:"";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #FF9800;
+}
+
+span.span-btn-4::before, span.span-btn-4::after{
+    content:"";
+    width:2px;
+    height:0;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #FF9800;
+}
+
+button.btn-4:hover::before, button.btn-4:hover::after{
+    width: 100%;
+}
+button.btn-4:hover span.span-btn-4::before, button.btn-4:hover span.span-btn-4::after{
+    height: 100%;
+}
+
+.btn-4::after{
+    right:0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+.btn-4 span.span-btn-4::after{
+    right:0;
+    bottom: 0;
+    transition-duration: 0.4s;
+}
+.btn-4::before{
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+}
+.btn-4 span.span-btn-4::before{
+    left: 0;
+    top: 0;
+    transition-duration: 0.4s;
+    color: orange;
+}
+
+.indication {
+    font-family: 'Muli';
+    font-size: 20px;
+    font-style: italic;
+    color: #FFFFFF;
+}
+
+.select-wrapper .caret {
+    fill: #FFFFFF;
+}
+.card-calendar .select-wrapper .caret {
+    fill: #212121;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #212121;
+    text-align: center;
+    font-family: 'Amatic';
+    font-weight: 800;
+    font-size: 30px;
+}
+.dropdown-content {
+    top: -5em !important;
+}
+
+

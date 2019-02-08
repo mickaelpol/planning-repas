@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('node_modules/materialize-css/dist/css/materialize.css') }}">
+        <link rel="stylesheet" href="{{ asset('node_modules/material-icons/iconfont/material-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/margin.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-size.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font.css') }}">
+        {% block stylesheets %}{% endblock %}
+
+    </head>
+    <body>
+
+        {# Ajout de la navbar #}
+        {% include 'navbar.html.twig' %}
+
+        {# Affichage des message de succès ou d'erreur #}
+        <div class="container">
+            <div class="row">
+
+                {% if app.request.hasPreviousSession %}
+                    {% for type, messages in app.session.flashbag.all() %}
+                        {% for message in messages %}
+                            <div class="col l12" data-message="{{ message }}" id="message"></div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+        {# Ajout du block body contenant le cops de la page #}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+
+
+        {# Ajout des fichier Js (jquery, materialize et fontawesome #}
+        <script src="{{ asset('node_modules/jquery/dist/jquery.js') }}"></script>
+        <script src="{{ asset('node_modules/materialize-css/dist/js/materialize.js') }}"></script>
+        <script src="{{ asset('node_modules/@fortawesome/fontawesome-free/js/all.js') }}"></script>
+        <script src="{{ asset('node_modules/velocity-animate/velocity.js') }}"></script>
+
+        {# Ajout des fichiers Js lié à chacun des pages #}
+        {% block javascripts %}{% endblock %}
+        <script src="{{ asset('js/app.js') }}"></script>
+    </body>
+</html>

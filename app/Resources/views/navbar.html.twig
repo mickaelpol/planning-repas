@@ -1,0 +1,66 @@
+<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
+
+    {% set currentPath = path(app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')) %}
+
+        <div class="{% if currentPath == '/' %}row pd-30{% else %}row pd-30 bandeau z-depth-3{% endif %}">
+            <div class="col l2">
+                <a href="#" data-target="slide-out" class="sidenav-trigger btn black">
+                    <i class="large material-icons" style="color:orange; font-size: 30px;">menu</i>
+                </a>
+            </div>
+            <a href="{{ path('homepage') }}">
+                <div class="col l2 offset-l3 cadre">
+                    <div class="snip1307">
+                        <h1>Planning</h1>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img src="{{ asset('img/prism.png') }}">
+                </div>
+                <a href="{{ path('homepage') }}">
+                    <div class="snip1306">
+                        <div class="diamond"></div>
+                        <div class="diamond"></div>
+                        <div class="diamond"></div>
+                        <h1>Planning</h1>
+                        <h5>Organisation des repas</h5>
+                        <h6>2019</h6>
+                    </div>
+                </a>
+                <a href="#name">
+                    <span class="white-text name"></span>
+                </a>
+                <a href="#email">
+                    <span class="white-text email"></span>
+                </a>
+            </div>
+        </li>
+        <li>
+            <a href="{{ path('mois_new') }}"><i class="small material-icons">date_range</i> Créer un planning</a>
+        </li>
+        <li>
+            <a href="{{ path('recette_new') }}"><i class="small material-icons">room_service</i> Ajouter une recette</a>
+        </li>
+        <li>
+            <a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> Ajouter un ingrédient</a>
+        </li>
+        <li>
+            <div class="divider"></div>
+        </li>
+        <li>
+            <a class="subheader">Ressources</a>
+        </li>
+        <li>
+            <a href="{{ path('recette_index') }}"><i class="small material-icons">book</i> Liste des recettes</a>
+        </li>
+        <li>
+            <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> Liste des plannings</a>
+        </li>
+    </ul>

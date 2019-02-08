@@ -1,0 +1,16 @@
+@font-face {
+    font-family: 'Amatic';
+    src: url("../font/Amatic_SC/AmaticSC-Bold.ttf") format("truetype"),
+        url("../font/Amatic_SC/AmaticSC-Regular.ttf")format("truetype");
+}
+
+@font-face {
+    font-family: 'Muli';
+    src: url("../font/Muli/Muli-Regular.ttf") format("truetype"),
+        url("../font/Muli/Muli-Bold.ttf")format("truetype");
+}
+
+@font-face {
+    font-family: 'Righteous';
+    src: url("../font/Righteous/Righteous-Regular.ttf") format("truetype");
+}

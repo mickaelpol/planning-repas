@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <h1 class="center-align">{{ recette.nom }}</h1>
+    </div>
+
+    <div class="divider"></div>
+    <div class="section mt-60">
+        <div class="row">
+            <div class="col l3">
+                <ul class="collection fz-16 z-depth-3">
+                    {% for compo in recette.compositions %}
+                        {% if compo.ingredient.unite.symbole == 'Pcs' %}
+                            <li class="collection-item center-align">{{ compo.quantite }} {{ compo.ingredient.nom }}</li>
+                        {% else %}
+                            <li class="collection-item center-align">{{ compo.quantite }} {{ compo.ingredient.unite.symbole }} de {{ compo.ingredient.nom }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col l6 offset-l1">
+                <ul>
+                    {% for etape in recette.etapes %}
+                        <div class="divider"></div>
+                        <div class="section fz-16">
+                            <li><b><u>Etape {{ loop.index }}:</u></b> <br>{{ etape.description }}</li><br>
+                        </div>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('recette_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('recette_edit', { 'id': recette.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

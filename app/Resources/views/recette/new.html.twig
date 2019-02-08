@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/recette.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="divider"></div>
+        <div class="section">
+            <h1 class="center-align">Création de votre recette</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        {{ form_start(form) }}
+
+        <div class="divider"></div>
+        <div class="section">
+
+            <div class="row">
+                <div class="col l6">
+                    <div>
+                        <h5>Nom de votre recette : </h5>
+                        {{ form_widget(form.nom) }}
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <h5>etapes</h5>
+                            <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+                                {% for eta in form.etapes %}
+                                    <li>{{ form_row(eta.description) }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-field col l4 offset-l2">
+                    <h5>Ajouter vos ingrédients</h5>
+                    <ul class="tags collection" data-prototype="{{ form_widget(form.compositions.vars.prototype)|e('html_attr') }}">
+                        {% for ing in form.compositions %}
+                            <li class="collection-item">
+                                {{ form_widget(ing.quantite) }}
+                            </li>
+                            <li class="collection-item">
+                                {{ form_row(ing.ingredient) }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col l3">
+                    <input type="submit" value="Create"/>
+                </div>
+            </div>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+
+    <ul>
+        <li>
+            <a href="{{ path('recette_index') }}">Back to the list</a>
+        </li>
+    </ul>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/addIngredient.js') }}"></script>
+{% endblock %}
