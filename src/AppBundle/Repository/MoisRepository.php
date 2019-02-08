@@ -2,6 +2,8 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity;
+
 /**
  * MoisRepository
  *
@@ -20,32 +22,27 @@ class MoisRepository extends \Doctrine\ORM\EntityRepository
             ->andWhere('m.year = :year')
             ->setParameter('month', $actualMonth)
             ->setParameter('year', $actualYear)
-            ->getQuery();
+	        ->getQuery();
 
-        return $qb->getResult();
+        return $qb->getOneOrNullResult();
     }
-    public function getIngredientsMonth($paramMonth)
+
+    public function getListeCourses($id)
     {
-        // je veut Selectionnez tous les ingrédients
-        // des recettes
-        // Ou la recette appartient au même planning
-        // et ou le planning appartient au mois en cours
-        $actualMonth = date('m') - 1;
-        $actualYear = date('Y');
-        $qb = $this->createQueryBuilder('m')
-            ->where('m.monthNumber = :month')
-            ->andWhere('m.plannings = :paramMonth')
-            ->andWhere('m.year = :year')
-            ->setParameter('month', $actualMonth)
-            ->setParameter('paramMonth', $paramMonth)
-            ->setParameter('year', $actualYear)
-            ->getQuery();
+    	$req = $this->getEntityManager()->createQuery(
+    		'SELECT i.nom ingredient, u.nom unite, SUM(comp.quantite)
+    		      FROM AppBundle:Mois m
+				  JOIN m.plannings p
+				  JOIN p.recette r
+				  JOIN r.compositions comp
+				  JOIN comp.ingredient i
+				  JOIN i.unite u
+				  WHERE m.id = :month
+				  GROUP BY ingredient, unite'
+	    )->setParameter('month', $id);
 
-        return $qb->getResult();
+
+    	return $req->getResult();
     }
-
-    // Je doit récuperer les ingredients
-    // Des recettes
-    // qui se trouve
 
 }
