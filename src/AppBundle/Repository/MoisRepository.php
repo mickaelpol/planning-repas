@@ -44,7 +44,7 @@ class MoisRepository extends \Doctrine\ORM\EntityRepository
     public function getListeCourses($id)
     {
     	$req = $this->getEntityManager()->createQuery(
-    		'SELECT i.nom ingredient, u.nom unite, SUM(comp.quantite) quantite
+    		'SELECT i.nom ingredient, u.symbole unite, SUM(comp.quantite) quantite
     		      FROM AppBundle:Mois m
 				  JOIN m.plannings p
 				  JOIN p.recette r

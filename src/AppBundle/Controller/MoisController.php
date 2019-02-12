@@ -87,6 +87,9 @@ class MoisController extends Controller
      * Displays a form to edit an existing mois entity.
      *
      * @Route("/{id}/edit", name="mois_edit", methods={"GET", "POST"})
+     * @param Request $request
+     * @param Mois $mois
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Mois $mois)
     {

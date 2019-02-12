@@ -1,0 +1,31 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('node_modules/materialize-css/dist/css/materialize.css') }}">
+    <link rel="stylesheet" href="{{ asset('node_modules/material-icons/iconfont/material-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/margin.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+        <h1 class="center-align mt-60">
+            Oops !
+            <strong>
+                {{ status_code }}
+            </strong>
+            {{ status_text }}
+        </h1>
+        <h1 class="center-align mt-60">
+            {{ exception.message }}
+        </h1>
+        <div class="center-align">
+            <img class="responsive-img" src="{{ asset('img/404.gif') }}" alt="image 404 not found">
+        </div>
+        <div class="center-align mt-60">
+            <a class="btn pulse " href="{{ path('homepage') }}">
+                <i class="material-icons left">home</i>
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+{% endblock %}

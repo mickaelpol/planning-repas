@@ -216,8 +216,8 @@
                 </a>
                 <ul>
                     <li class="waves-effect waves-light"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> Editer {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a id="BtnModalActualMonth" class="amber"><i class="material-icons">add_shopping_cart</i>Liste de course {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a id="BtnModalNextMonth" class="red"><i class="material-icons">add_shopping_cart</i>Liste de course du mois prochain</a></li>
+                    <li class="waves-effect waves-light"><a href="{{ path('actual_course') }}" id="BtnModalActualMonth" class="amber"><i class="material-icons">add_shopping_cart</i>Liste de course {{ planning.nom }}</a></li>
+                    <li class="waves-effect waves-light"><a href="{{ path('next_course') }}" id="BtnModalNextMonth" class="red"><i class="material-icons">add_shopping_cart</i>Liste de course du mois prochain</a></li>
                 </ul>
             </div>
 
@@ -228,7 +228,7 @@
                         <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title"></h4>
                     </div>
-                    <p class="center-align" id="data"></p>
+                    <p class="left-align" id="data"></p>
                 </div>
                 <div class="modal-footer">
                     <a id="downloadBtn" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>Télécharger</a>
@@ -242,7 +242,7 @@
                         <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title2"></h4>
                     </div>
-                    <p class="center-align" id="data2"></p>
+                    <p class="left-align" id="data2"></p>
                 </div>
                 <div class="modal-footer">
                     <a id="downloadBtnNext" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>Télécharger</a>
@@ -254,6 +254,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+    <script src="{{ asset('node_modules/jspdf/dist/jspdf.min.js') }}"></script>
     <script src="{{ asset('js/accueil.js') }}"></script>
 {% endblock %}

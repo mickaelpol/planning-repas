@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends Controller
@@ -132,70 +131,106 @@ class DefaultController extends Controller
      * @Route("actual_course", name="actual_course")
      * @param Request $request
      * @return JsonResponse
+     * @throws \Exception
      */
     public function getCourseActualMonth(Request $request)
     {
+        // Je m'assure que la requête soit une reuqête Ajax et en methode GET
         if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-            $mois = $em->getActualMonth();
-            $idActualMonth = '';
-            $title = '';
+            if ($request->getMethod() === 'GET') {
+                $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
+                $mois = $em->getActualMonth();
+                $idActualMonth = '';
+                $title = '';
+                $response = new JsonResponse();
 
+                // Si les mois existe
+                if ($mois) {
 
-            if ($mois) {
+                    foreach ($mois as $k => $v) {
+                        $idActualMonth = $v->getId();
+                        $title = $v->getNom();
+                    }
+                    $ing = $em->getListeCourses($idActualMonth);
 
-                foreach ($mois as $k => $v) {
-                    $idActualMonth = $v->getId();
-                    $title = $v->getNom();
+                    // Je renvoi un tableau comprenant le titre du mois en cours et sa liste d'ingrédient et leur somme ainsi que leur unité
+                    $response = new JsonResponse([
+                        'titre' => $title,
+                        'liste' => $ing,
+                    ], Response::HTTP_OK);
+
+                    return $response;
+
+                } elseif (!$mois) {
+                    if ($response->getStatusCode() === 500) {
+                        throw new \Exception('Erreur Inconnu');
+                    } else {
+                        $response = new JsonResponse([
+                            'titre'   => 'Erreur',
+                            'message' => 'Le Mois en cours n\'est pas encore créer',
+                        ], Response::HTTP_NOT_FOUND);
+
+                        return $response;
+                    }
                 }
-                $ing = $em->getListeCourses($idActualMonth);
-                $response = new JsonResponse([
-                    'titre' => $title,
-                    'liste' => $ing
-                ], Response::HTTP_OK);
-
-                $response->headers->set('Content-Type', 'application/json');
-            } else {
-                throw new NotFoundHttpException("Page not found");
+                return $response;
             }
-
+        } else {
+            throw $this->createNotFoundException('Cette page n\'existe pas !');
         }
-        return $response;
     }
 
     /**
      * @Route("next_course", name="next_course")
      * @param Request $request
      * @return JsonResponse
+     * @throws \Exception
      */
     public function getCourseNextMonth(Request $request)
     {
+        // Je m'assure que la requête soit une reuqête Ajax et en methode GET
         if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-            $mois = $em->getNextMonth();
-            $idNextMonth = '';
-            $title = '';
+            if ($request->getMethod() === 'GET') {
+                $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
+                $mois = $em->getNextMonth();
+                $idNextMonth = '';
+                $title = '';
+                $response = new JsonResponse();
 
+                // Si les mois existe
+                if ($mois) {
 
-            if ($mois) {
+                    foreach ($mois as $k => $v) {
+                        $idNextMonth = $v->getId();
+                        $title = $v->getNom();
+                    }
+                    $ing = $em->getListeCourses($idNextMonth);
 
-                foreach ($mois as $k => $v) {
-                    $idNextMonth = $v->getId();
-                    $title = $v->getNom();
+                    // Je renvoi un tableau comprenant le titre du mois en cours et sa liste d'ingrédient et leur somme ainsi que leur unité
+                    $response = new JsonResponse([
+                        'titre' => $title,
+                        'liste' => $ing,
+                    ], Response::HTTP_OK);
+
+                    return $response;
+
+                } elseif (!$mois) {
+                    if ($response->getStatusCode() === 500) {
+                        throw new \Exception('Erreur Inconnu');
+                    } else {
+                        $response = new JsonResponse([
+                            'titre'   => 'Erreur',
+                            'message' => 'Le Mois prochain n\'est pas encore créer',
+                        ], Response::HTTP_NOT_FOUND);
+
+                        return $response;
+                    }
                 }
-                $ing = $em->getListeCourses($idNextMonth);
-                $response = new JsonResponse([
-                    'titre' => $title,
-                    'liste' => $ing
-                ], Response::HTTP_OK);
-
-                $response->headers->set('Content-Type', 'application/json');
-            } else {
-                throw new NotFoundHttpException("Page not found");
+                return $response;
             }
-
+        } else {
+            throw $this->createNotFoundException('Cette page n\'existe pas !');
         }
-        return $response;
     }
 
 }
