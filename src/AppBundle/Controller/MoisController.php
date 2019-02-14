@@ -6,11 +6,13 @@ use AppBundle\Entity\Mois;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Mois controller.
  *
  * @Route("mois")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class MoisController extends Controller
 {

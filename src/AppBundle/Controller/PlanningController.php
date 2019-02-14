@@ -6,11 +6,13 @@ use AppBundle\Entity\Planning;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Planning controller.
  *
  * @Route("planning")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class PlanningController extends Controller
 {
