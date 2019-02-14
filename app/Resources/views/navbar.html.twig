@@ -43,18 +43,18 @@
             </div>
         </li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <li>
+            <li class="{% if currentPath == path('mois_new') %}active{% endif %}">
                 <a href="{{ path('mois_new') }}"><i class="small material-icons">date_range</i> {{ 'planning.create'|trans({}, 'messages') }}</a>
             </li>
         {% endif %}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <li>
+            <li class="{% if currentPath == path('recette_new') %}active{% endif %}">
                 <a href="{{ path('recette_new') }}"><i class="small material-icons">room_service</i> {{ 'add.recette'|trans({}, 'messages') }}</a>
             </li>
         {% endif %}
 
         {% if is_granted("ROLE_ADMIN") %}
-            <li>
+            <li class="{% if currentPath == path('ingredient_new') %}active{% endif %}">
                 <a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> {{ 'add.ingredient'|trans({}, 'messages') }}</a>
             </li>
         {% endif %}
@@ -66,17 +66,17 @@
                 <a class="subheader">Ressources</a>
             </li>
         {% endif %}
-        <li>
+        <li class="{% if currentPath == path('recette_index') %}active{% endif %}">
             <a href="{{ path('recette_index') }}"><i class="small material-icons">book</i> {{ 'recette.list'|trans({}, 'messages') }}</a>
         </li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <li>
+            <li class="{% if currentPath == path('mois_index') %}active{% endif %}">
                 <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> {{ 'planning.list'|trans({}, 'messages') }}</a>
             </li>
             <li>
                 <div class="divider"></div>
             </li>
-            <li>
+            <li class="{% if currentPath == path('fos_user_profile_show') %}active{% endif %}">
                 <a href="{{ path('fos_user_profile_show') }}">
                     <i class="small material-icons">person</i>
                     {{ app.user.username }}
