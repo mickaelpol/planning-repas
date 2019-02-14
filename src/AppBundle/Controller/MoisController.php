@@ -23,8 +23,8 @@ class MoisController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $mois = $em->getRepository('AppBundle:Mois')->findAll();
+        $user = $this->getUser();
+        $mois = $em->getRepository('AppBundle:Mois')->getMonthByUser($user);
 
         return $this->render('mois/index.html.twig', array(
             'mois' => $mois,
@@ -41,6 +41,8 @@ class MoisController extends Controller
     public function newAction(Request $request)
     {
         $mois = new Mois();
+        $user = $this->getUser();
+        $mois->setUser($user);
         $form = $this->createForm('AppBundle\Form\MoisType', $mois);
         $form->handleRequest($request);
 
@@ -50,6 +52,7 @@ class MoisController extends Controller
 
             foreach ($plannings as $planning) {
                 $planning->setMois($mois);
+                $planning->setUser($user);
                 $em->persist($mois);
             }
             $em->flush();

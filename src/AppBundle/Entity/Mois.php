@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Planning;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,8 +15,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="moi_mois")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MoisRepository")
  * @UniqueEntity(
- *     fields={"nom"},
- *     message="Le mois de {{ value }} existe déjà, renseignez une autre valeur"
+ *     fields={"nom", "user"},
+ *     message="Le mois de {{ value }} existe déjà ! "
  * )
  */
 class Mois
@@ -65,6 +66,13 @@ class Mois
      * )
      */
     private $plannings;
+
+    /**
+     * Many Mois have one User. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="mois")
+     * @ORM\JoinColumn(name="use_oid", referencedColumnName="use_oid")
+     */
+    private $user;
 
     public function __toString()
     {
@@ -121,11 +129,11 @@ class Mois
     /**
      * Add planning
      *
-     * @param \AppBundle\Entity\Planning $planning
+     * @param Planning $planning
      *
      * @return Mois
      */
-    public function addPlanning(\AppBundle\Entity\Planning $planning)
+    public function addPlanning(Planning $planning)
     {
         $this->plannings[] = $planning;
 
@@ -135,9 +143,9 @@ class Mois
     /**
      * Remove planning
      *
-     * @param \AppBundle\Entity\Planning $planning
+     * @param Planning $planning
      */
-    public function removePlanning(\AppBundle\Entity\Planning $planning)
+    public function removePlanning(Planning $planning)
     {
         $this->plannings->removeElement($planning);
     }
@@ -214,5 +222,21 @@ class Mois
     public function getYear()
     {
         return $this->year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }
