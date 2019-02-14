@@ -1,0 +1,48 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    <div class="row">
+        <div class="col l6 offset-l3 m6">
+            <div class="card">
+                <div class="card-content white-text">
+                    <div class="card-title center-align text-connexion">Se connecter</div>
+                        {% if error %}
+                            <div class="row">
+                                <div class="col l6 offset-l3">
+                                    <div class="red-text center-align">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+                        <label class="deep-orange-text fz-16" for="username">{{ 'security.login.username'|trans }}</label>
+                        <input class="fz-20 white-text" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+                        <label class="deep-orange-text fz-16" for="password">{{ 'security.login.password'|trans }}</label>
+                        <input class="fz-20 white-text" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+
+                        <label class="white-text" for="remember_me">
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                            <span>{{ 'security.login.remember_me'|trans }}</span>
+                        </label>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col l12">
+                            {#<input class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit" value="" />#}
+                            <button class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit">
+                                <i class="large material-icons right">check</i>
+                                {{ 'security.login.submit'|trans }}
+                            </button>
+                        </div>
+                    </div>
+                    {#<a href="#">This is a link</a>#}
+                    {#<a href="#">This is a link</a>#}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

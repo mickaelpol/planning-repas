@@ -42,25 +42,58 @@
                 </a>
             </div>
         </li>
-        <li>
-            <a href="{{ path('mois_new') }}"><i class="small material-icons">date_range</i> Créer un planning</a>
-        </li>
-        <li>
-            <a href="{{ path('recette_new') }}"><i class="small material-icons">room_service</i> Ajouter une recette</a>
-        </li>
-        <li>
-            <a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> Ajouter un ingrédient</a>
-        </li>
-        <li>
-            <div class="divider"></div>
-        </li>
-        <li>
-            <a class="subheader">Ressources</a>
-        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <a href="{{ path('mois_new') }}"><i class="small material-icons">date_range</i> Créer un planning</a>
+            </li>
+        {% endif %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <a href="{{ path('recette_new') }}"><i class="small material-icons">room_service</i> Ajouter une recette</a>
+            </li>
+        {% endif %}
+
+        {% if is_granted("ROLE_ADMIN") %}
+            <li>
+                <a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> Ajouter un ingrédient</a>
+            </li>
+        {% endif %}
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a class="subheader">Ressources</a>
+            </li>
+        {% endif %}
         <li>
             <a href="{{ path('recette_index') }}"><i class="small material-icons">book</i> Liste des recettes</a>
         </li>
-        <li>
-            <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> Liste des plannings</a>
-        </li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li>
+                <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> Liste des plannings</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_profile_show') }}">
+                    <i class="small material-icons">person</i>
+                    {{ app.user.username }}
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}">
+                    <i class="small material-icons">exit_to_app</i>
+                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a href="{{ path('fos_user_security_login') }}">
+                    <i class="material-icons">input</i>
+                    {{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+                </a>
+            </li>
+        {% endif %}
     </ul>

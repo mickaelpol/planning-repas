@@ -95,7 +95,12 @@ $(document).ready(function () {
             error: function(result, statut, erreur) {
                 idTitre.html(statut).css('color', 'red');
                 idPara.html(erreur).css('color', 'red');
-                idPara.append('<br><div>Si vous voyez cette erreur contactez le développeur</div>');
+                idPara.html(erreur).css('text-align', 'center');
+                idPara.append('<br>' +
+                    '<div>' +
+                        'Si vous voyez cette erreur contactez le développeur' +
+                        '<br><a href="mailto:mickael.devweb@gmail.com">à cette adresse </a>' +
+                    '</div>');
             },
             complete: function() {
 

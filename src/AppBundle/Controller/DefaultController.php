@@ -7,7 +7,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ * @Security("has_role('ROLE_USER')")
+ */
 class DefaultController extends Controller
 {
     /**
