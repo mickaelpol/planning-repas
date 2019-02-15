@@ -1,0 +1,26 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/email-reset-send.css') }}">
+{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="row mt-60">
+        <div class="col l6 offset-l3 white-text">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title center-align">{{ 'resetting.email.subject'|trans({}) }}</span>
+                    <div class="divider mt-30 mb-30"></div>
+                    <div>
+                        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

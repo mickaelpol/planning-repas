@@ -1,0 +1,12 @@
+body {
+    background-image: url("../img/background2.jpg");
+    background-attachment: fixed;
+}
+
+.bandeau {
+    background-image: none !important;
+}
+
+.z-depth-3 {
+    box-shadow: none !important;
+}

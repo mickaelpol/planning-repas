@@ -28,19 +28,23 @@
                             <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
                             <span>{{ 'security.login.remember_me'|trans }}</span>
                         </label>
+                        <div class="mt-30">
+                            <label class="white-text" for="remember_me">
+                                <a class="forgot-password" href="{{ path('fos_user_resetting_request') }}">
+                                    <span>{{ 'security.login.forgot_me'|trans }}</span>
+                                </a>
+                            </label>
+                        </div>
                 </div>
                 <div class="card-action">
                     <div class="row">
                         <div class="col l12">
-                            {#<input class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit" value="" />#}
                             <button class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit">
                                 <i class="large material-icons right">check</i>
                                 {{ 'security.login.submit'|trans }}
                             </button>
                         </div>
                     </div>
-                    {#<a href="#">This is a link</a>#}
-                    {#<a href="#">This is a link</a>#}
                 </div>
             </div>
         </div>

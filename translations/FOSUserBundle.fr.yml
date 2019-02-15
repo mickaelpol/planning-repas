@@ -1,2 +1,5 @@
 layout.logout: Deconnexion
 layout.login: Connexion
+
+security:
+  login.forgot_me: Mot de passe oubliée ?
