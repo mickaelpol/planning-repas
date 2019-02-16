@@ -6,11 +6,13 @@ use AppBundle\Entity\Etape;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Etape controller.
  *
  * @Route("etape")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class EtapeController extends Controller
 {

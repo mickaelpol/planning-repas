@@ -1,0 +1,38 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/edit-profile.css') }}">
+{% endblock %}
+
+<div class="row">
+    <div class="col l6 offset-l3">
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title center-align">{{ 'form.edit.profile'|trans({}, 'FOSUserBundle') }}</span>
+                    <div class="input-field mt-40">
+                        {{ form_widget(form.username) }}
+                        {{ form_label(form.username, 'security.login.username'|trans({}, 'FOSUserBundle')) }}
+                    </div>
+                    <div class="input-field mt-40">
+                        {{ form_widget(form.email) }}
+                        {{ form_label(form.email, 'profile.show.email'|trans({}, 'FOSUserBundle')) }}
+                    </div>
+                    <div class="input-field mt-40">
+                        {{ form_widget(form.current_password) }}
+                        {{ form_label(form.current_password, 'security.login.password'|trans({}, 'FOSUserBundle')) }}
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col l12">
+                            <button class="btn btn-large deep-orange" type="submit">
+                                <i class="material-icons right">check</i>
+                                {{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+

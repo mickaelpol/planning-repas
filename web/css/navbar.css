@@ -190,3 +190,7 @@
     background-position: center;
     background-size: cover;
 }
+
+.sidenav li.active {
+    background-color: #BDBDBD;
+}

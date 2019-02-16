@@ -6,6 +6,7 @@ use AppBundle\Entity\Recette;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Recette controller.
@@ -36,6 +37,7 @@ class RecetteController extends Controller
      * @Route("/new", name="recette_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -93,6 +95,7 @@ class RecetteController extends Controller
      * @param Request $request
      * @param Recette $recette
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Recette $recette)
     {
@@ -120,6 +123,7 @@ class RecetteController extends Controller
      * @param Request $request
      * @param Recette $recette
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Recette $recette)
     {

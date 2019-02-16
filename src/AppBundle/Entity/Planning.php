@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Mois;
+use AppBundle\Entity\Recette;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,11 +35,12 @@ class Planning
      */
     private $recette;
 
-//    /**
-//     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Jour", inversedBy="plannings")
-//     * @ORM\JoinColumn(name="jour_oid", referencedColumnName="jou_oid")
-//     */
-//    private $jour;
+    /**
+     * Many Plannings have one User. This is the owning side.
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="plannings")
+     * @ORM\JoinColumn(name="user_oid", referencedColumnName="use_oid")
+     */
+    private $user;
 
 
     /**
@@ -54,11 +57,11 @@ class Planning
     /**
      * Set mois
      *
-     * @param \AppBundle\Entity\Mois $mois
+     * @param Mois $mois
      *
      * @return Planning
      */
-    public function setMois(\AppBundle\Entity\Mois $mois = null)
+    public function setMois(Mois $mois = null)
     {
         $this->mois = $mois;
 
@@ -68,7 +71,7 @@ class Planning
     /**
      * Get mois
      *
-     * @return \AppBundle\Entity\Mois
+     * @return Mois
      */
     public function getMois()
     {
@@ -78,11 +81,11 @@ class Planning
     /**
      * Set recette
      *
-     * @param \AppBundle\Entity\Recette $recette
+     * @param Recette $recette
      *
      * @return Planning
      */
-    public function setRecette(\AppBundle\Entity\Recette $recette = null)
+    public function setRecette(Recette $recette = null)
     {
         $this->recette = $recette;
 
@@ -92,34 +95,26 @@ class Planning
     /**
      * Get recette
      *
-     * @return \AppBundle\Entity\Recette
+     * @return Recette
      */
     public function getRecette()
     {
         return $this->recette;
     }
-//
-//    /**
-//     * Set jour
-//     *
-//     * @param \AppBundle\Entity\Jour $jour
-//     *
-//     * @return Planning
-//     */
-//    public function setJour(\AppBundle\Entity\Jour $jour = null)
-//    {
-//        $this->jour = $jour;
-//
-//        return $this;
-//    }
-//
-//    /**
-//     * Get jour
-//     *
-//     * @return \AppBundle\Entity\Jour
-//     */
-//    public function getJour()
-//    {
-//        return $this->jour;
-//    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 }

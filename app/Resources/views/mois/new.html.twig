@@ -17,7 +17,8 @@
 
     <div class="divider black"></div>
     <div class="section mt-60">
-        {{ form_start(form) }}
+        {{ form_start(form, {'action': path('mois_new'), 'method': 'POST'}) }}
+        {#{{ form_start(form) }}#}
         <div class="row">
             <div class="col l12 m7">
                 <div class="card z-depth-5">

@@ -1,0 +1,75 @@
+body {
+    background-image: none;
+    background-color: #FF9800;
+}
+
+h1.recette-list {
+    color: #212121;
+    letter-spacing: 20px;
+    font-family: 'Amatic';
+    font-weight: 700;
+}
+
+li a.recette {
+    text-decoration: none;
+    color: #212121;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: Righteous;
+}
+
+.pagination li a {
+    color: #212121;
+}
+
+.pagination li.active {
+    width: 4%;
+    height: auto;
+    font-size: 18px !important;
+    background-color: #FF5722 !important;
+}
+
+.prefix {
+    color: #757575;
+}
+
+.input-field .prefix.active {
+    color: #212121;
+}
+
+/* label focus color */
+.input-field input + label {
+    color: #757575 !important;
+    font-size: 18px;
+}
+
+.row .input-field input {
+    border-bottom: 1px solid #757575 !important;
+    box-shadow: 0 1px 0 0 #757575 !important
+}
+
+.input-field input:focus + label {
+    color: #212121 !important;
+    font-size: 20px;
+    font-weight: 700;
+}
+/* label underline focus color */
+.row .input-field input:focus {
+    border-bottom: 1px solid #212121 !important;
+    box-shadow: 0 1px 0 0 #212121 !important
+}
+
+input.search {
+    font-size: 20px;
+}
+
+.recette-indisponible {
+    color: #212121;
+    font-weight: 700;
+    font-family: Amatic;
+    letter-spacing: 20px;
+}
+.para-recette-indisponible {
+    font-size: 20px;
+    font-family: Righteous;
+}

@@ -6,11 +6,13 @@ use AppBundle\Entity\Composition;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Composition controller.
  *
  * @Route("composition")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class CompositionController extends Controller
 {

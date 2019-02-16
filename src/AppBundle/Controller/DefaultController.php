@@ -7,7 +7,13 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ * @Security("has_role('ROLE_USER')")
+ */
 class DefaultController extends Controller
 {
     /**
@@ -18,7 +24,8 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-        $mois = $em->getActualMonth();
+        $user = $this->getUser();
+        $mois = $em->getActualMonth($user);
 
         // Set la langue locale en Français
         setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
@@ -139,7 +146,8 @@ class DefaultController extends Controller
         if ($request->isXmlHttpRequest()) {
             if ($request->getMethod() === 'GET') {
                 $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-                $mois = $em->getActualMonth();
+                $user = $this->getUser();
+                $mois = $em->getActualMonth($user);
                 $idActualMonth = '';
                 $title = '';
                 $response = new JsonResponse();
@@ -192,7 +200,8 @@ class DefaultController extends Controller
         if ($request->isXmlHttpRequest()) {
             if ($request->getMethod() === 'GET') {
                 $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-                $mois = $em->getNextMonth();
+                $user = $this->getUser();
+                $mois = $em->getNextMonth($user);
                 $idNextMonth = '';
                 $title = '';
                 $response = new JsonResponse();

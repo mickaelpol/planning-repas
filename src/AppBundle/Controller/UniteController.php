@@ -6,11 +6,13 @@ use AppBundle\Entity\Unite;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Unite controller.
  *
  * @Route("unite")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class UniteController extends Controller
 {
