@@ -1,7 +1,5 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
 <form action="{{ path("fos_user_security_check") }}" method="post">
-    <div class="row">
+    <div class="row mt-60">
         <div class="col l6 offset-l3 m6">
             <div class="card">
                 <div class="card-content white-text">
@@ -18,31 +16,41 @@
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                         {% endif %}
 
-                        <label class="deep-orange-text fz-16" for="username">{{ 'security.login.username'|trans }}</label>
-                        <input class="fz-20 white-text" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                        <div class="input-field mt-40">
+                            <input class="fz-20 white-text" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                            <label class="deep-orange-text fz-16" for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                        </div>
 
-                        <label class="deep-orange-text fz-16" for="password">{{ 'security.login.password'|trans }}</label>
-                        <input class="fz-20 white-text" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                        <div class="input-field">
+                            <input class="fz-20 white-text" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                            <label class="deep-orange-text fz-16" for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                        </div>
 
                         <label class="white-text" for="remember_me">
-                            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                            <span>{{ 'security.login.remember_me'|trans }}</span>
+                            <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                            <span>{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</span>
                         </label>
                         <div class="mt-30">
                             <label class="white-text" for="remember_me">
                                 <a class="forgot-password" href="{{ path('fos_user_resetting_request') }}">
-                                    <span>{{ 'security.login.forgot_me'|trans }}</span>
+                                    <span>{{ 'security.login.forgot_me'|trans({}, 'FOSUserBundle') }}</span>
                                 </a>
                             </label>
                         </div>
                 </div>
                 <div class="card-action">
                     <div class="row">
-                        <div class="col l12">
+                        <div class="col l6">
                             <button class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit">
                                 <i class="large material-icons right">check</i>
-                                {{ 'security.login.submit'|trans }}
+                                {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}
                             </button>
+                        </div>
+                        <div class="col l6">
+                            <a href="{{ path('fos_user_registration_register') }}" class="btn btn-large deep-orange">
+                                <i class="large material-icons right">person</i>
+                                {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
+                            </a>
                         </div>
                     </div>
                 </div>

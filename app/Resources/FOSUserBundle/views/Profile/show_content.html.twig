@@ -1,13 +1,11 @@
-{% trans_default_domain 'FOSUserBundle' %}
-
 <div class="row mt-60">
     <div class="col l6 offset-l3">
         <div class="card">
             <div class="card-content white-text">
                 <span class="card-title center-align">Profil</span>
                 <div class="divider mt-30 mb-30"></div>
-                <p class="center-align">{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-                <p class="center-align">{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                <p class="center-align">{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
+                <p class="center-align">{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
             </div>
             <div class="card-action">
                 <div class="row">

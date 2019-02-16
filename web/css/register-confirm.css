@@ -21,7 +21,7 @@ body {
     text-transform: uppercase;
 }
 
-.col.l6 > .btn {
+.col.l12 > .btn {
     width: 100%;
 }
 
@@ -42,6 +42,7 @@ body {
     font-size: 20px;
     font-weight: 700;
 }
+
 /* label underline focus color */
 .row .input-field input:focus {
     color: #FFFFFF;
@@ -50,10 +51,5 @@ body {
 }
 
 .row .input-field input {
-    color: #FFFFFF;
-}
-
-.forgot-password {
-    text-decoration: none;
     color: #FFFFFF;
 }

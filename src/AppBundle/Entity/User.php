@@ -42,6 +42,7 @@ class User extends BaseUser
         parent::__construct();
         $this->mois = new ArrayCollection();
         $this->plannings = new ArrayCollection();
+        $this->roles = ['ROLE_USER'];
     }
 
 

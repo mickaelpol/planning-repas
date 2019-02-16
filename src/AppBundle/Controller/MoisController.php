@@ -12,7 +12,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * Mois controller.
  *
  * @Route("mois")
- * @Security("has_role('ROLE_ADMIN')")
  */
 class MoisController extends Controller
 {
@@ -21,6 +20,7 @@ class MoisController extends Controller
      * Lists all mois entities.
      *
      * @Route("/", name="mois_index", methods={"GET"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
     {
@@ -39,6 +39,7 @@ class MoisController extends Controller
      * @Route("/new", name="mois_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -77,6 +78,7 @@ class MoisController extends Controller
      * @Route("/{id}", name="mois_show", methods={"GET"})
      * @param Mois $mois
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function showAction(Mois $mois)
     {
@@ -95,6 +97,7 @@ class MoisController extends Controller
      * @param Request $request
      * @param Mois $mois
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Mois $mois)
     {
@@ -122,6 +125,7 @@ class MoisController extends Controller
      * @param Request $request
      * @param Mois $mois
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Mois $mois)
     {

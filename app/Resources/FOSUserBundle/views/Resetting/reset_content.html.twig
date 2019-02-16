@@ -1,8 +1,34 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/reset-token-password.css') }}">
+{% endblock %}
 
-{{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+<div class="row mt-60">
+    <div class="col l6 offset-l3">
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            <div class="card">
+                <div class="card-content white-text">
+                    <span class="card-title center-align">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</span>
+                    <div class="input-field mt-40">
+                        {{ form_widget(form.plainPassword.first) }}
+                        {{ form_label(form.plainPassword.first, 'form.new_password'|trans({}, 'FOSUserBundle')) }}
+                    </div>
+                    <div class="input-field">
+                        {{ form_widget(form.plainPassword.second) }}
+                        {{ form_label(form.plainPassword.second, 'form.new_password_confirmation'|trans({}, 'FOSUserBundle')) }}
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col l12">
+                            <button class="btn btn-large hoverable deep-orange" type="submit">
+                                <i class="material-icons left">check</i>
+                                {{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{ form_end(form) }}
     </div>
-{{ form_end(form) }}
+</div>
+

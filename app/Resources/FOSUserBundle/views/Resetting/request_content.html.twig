@@ -1,15 +1,16 @@
-{% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/request-reset-password.css') }}">
+{% endblock %}
 
 <div class="row mt-60">
     <div class="col l6 offset-l3">
         <div class="card">
             <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
                 <div class="card-content white-text">
-                    <span class="card-title center-align">{{ 'resetting.request.submit'|trans }}</span>
-                    <div class="divider mt-30 mb-30"></div>
-                    <div class="input-field">
+                    <span class="card-title center-align">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</span>
+                    <div class="input-field mt-40">
                         <input type="text" id="username" name="username" required="required" />
-                        <label for="username">{{ 'resetting.request.username'|trans }}</label>
+                        <label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
                     </div>
                 </div>
                 <div class="card-action">
@@ -17,7 +18,7 @@
                         <div class="col l12">
                             <button class="btn btn-large hoverable deep-orange" type="submit">
                                 <i class="material-icons left">check</i>
-                                {{ 'resetting.request.submit'|trans }}
+                                {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}
                             </button>
                         </div>
                     </div>
