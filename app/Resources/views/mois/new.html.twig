@@ -1,14 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Nouveau Planning
-{% endblock %}
-
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/planning.css') }}">
+    {{ 'mois.new'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/planning.css') }}">
+    {% endblock %}
+
     <div class="section">
         <div class="row">
             <h1 id="data-max" class="center-align planning-titre">Création d'un planning</h1>
@@ -108,5 +109,5 @@
 
 {% endblock %}
 {% block javascripts %}
-    <script src="{{ asset('js/addRecette.js') }}"></script>
+    <script async src="{{ asset('js/addRecette.js') }}"></script>
 {% endblock %}

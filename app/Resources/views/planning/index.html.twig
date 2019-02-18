@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'planning.index'|trans({}, 'FOSUserBundle') }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Plannings list</h1>
 
     <table>

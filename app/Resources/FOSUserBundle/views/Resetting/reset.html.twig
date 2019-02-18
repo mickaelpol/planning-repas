@@ -1,7 +1,11 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block title %}
+    {{ 'reset-password-confirmed'|trans({}, 'FOSUserBundle') }}
+{% endblock %}
+
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/reset-password.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/reset-token-password.css') }}">
 {% endblock %}
 
 {% block fos_user_content %}

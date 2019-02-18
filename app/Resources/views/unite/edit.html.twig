@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'unite.edit'|trans({}, 'FOSUserBundle') }} {{ unite.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Unite edit</h1>
 
     {{ form_start(edit_form) }}

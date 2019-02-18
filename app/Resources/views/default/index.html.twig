@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Accueil
+    {{ 'default.home'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
-{% endblock %}
 
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+    {% endblock %}
+
     {% set recetteId = '' %}
     {% for d in plannings %}
         {% for rec in d.plannings %}
@@ -221,7 +223,7 @@
             <div id="modal1" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <div class="row">
-                        <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
+                        <a class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title"></h4>
                     </div>
                     <p class="left-align" id="data"></p>
@@ -235,7 +237,7 @@
             <div id="modal2" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <div class="row">
-                        <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
+                        <a class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title2"></h4>
                     </div>
                     <p class="left-align" id="data2"></p>
@@ -250,6 +252,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('node_modules/jspdf/dist/jspdf.min.js') }}"></script>
-    <script src="{{ asset('js/accueil.js') }}"></script>
+    <script async src="{{ asset('node_modules/jspdf/dist/jspdf.min.js') }}"></script>
+    <script async type="text/javascript" src="{{ asset('js/accueil.js') }}"></script>
 {% endblock %}

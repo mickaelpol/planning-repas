@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/recette.css') }}">
+{% block title %}
+    {{ 'recette.new'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/recette.css') }}">
+    {% endblock %}
+
     <div class="row">
         <div class="divider"></div>
         <div class="section">
@@ -70,5 +75,5 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/addIngredient.js') }}"></script>
+    <script async type="text/javascript" src="{{ asset('js/addIngredient.js') }}"></script>
 {% endblock %}

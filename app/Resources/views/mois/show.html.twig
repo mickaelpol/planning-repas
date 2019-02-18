@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'mois.show'|trans({}, 'FOSUserBundle') }} {{ mois.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Mois</h1>
 
     <table>

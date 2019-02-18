@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'ingredient.show'|trans({}, 'FOSUserBundle') }} {{ ingredient.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Ingredient</h1>
 
     <table>

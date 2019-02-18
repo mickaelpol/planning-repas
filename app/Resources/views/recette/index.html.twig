@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/recetteIndex.css') }}">
+{% block title %}
+    {{ 'recette.index'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/recetteIndex.css') }}">
+    {% endblock %}
 
     {% if recettes %}
         <div class="row">

@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'composition.show'|trans({}, 'FOSUserBundle') }} {{ composition.id }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Composition</h1>
 
     <table>

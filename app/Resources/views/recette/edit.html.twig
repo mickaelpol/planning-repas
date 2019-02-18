@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'recette.edit'|trans({}, 'FOSUserBundle') }} {{ recette.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Recette edit</h1>
 
     {{ form_start(edit_form) }}

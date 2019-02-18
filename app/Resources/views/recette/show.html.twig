@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'recette.show'|trans({}, 'FOSUserBundle') }} {{ recette.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <div class="row">
         <h1 class="center-align">{{ recette.nom }}</h1>
     </div>
