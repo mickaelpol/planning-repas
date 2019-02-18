@@ -22,7 +22,7 @@ class CompositionType extends AbstractType
     {
         $builder
             ->add('quantite', IntegerType::class, [
-                'label' => 'Quantité de l\'ingrédient : ',
+                'label' => 'ingredient.quantity',
             ])
             ->add('ingredient', EntityType::class, [
                 'attr'         => [
@@ -30,8 +30,8 @@ class CompositionType extends AbstractType
                 ],
                 'class'        => Ingredient::class,
                 'choice_label' => 'label',
-                'label'        => 'Choix de l\'ingrédient : ',
-                'placeholder'  => 'Choisissez votre ingrédient',
+                'label'        => 'ingredient.choice',
+                'placeholder'  => 'ingredient.choices',
             ]);
     }
 

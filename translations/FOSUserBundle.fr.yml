@@ -84,6 +84,5 @@ unite.new: 'Nouvelle unité'
 unite.show: 'Unité'
 
 
-
 # Exception
 exception.message: 'Aucune page trouvé'

@@ -6,11 +6,11 @@
                     <span class="card-title center-align">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</span>
                     <div class="input-field mt-40">
                         {{ form_widget(form.plainPassword.first) }}
-                        {{ form_label(form.plainPassword.first, 'form.new_password'|trans({}, 'FOSUserBundle')) }}
+                        {{ form_label(form.plainPassword.first) }}
                     </div>
                     <div class="input-field">
                         {{ form_widget(form.plainPassword.second) }}
-                        {{ form_label(form.plainPassword.second, 'form.new_password_confirmation'|trans({}, 'FOSUserBundle')) }}
+                        {{ form_label(form.plainPassword.second) }}
                     </div>
                 </div>
                 <div class="card-action">
