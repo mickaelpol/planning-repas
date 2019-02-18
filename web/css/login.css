@@ -1,6 +1,7 @@
 body {
     background-image: url("../img/background2.jpg");
     background-attachment: fixed;
+    background-size: cover;
 }
 
 .bandeau {
@@ -25,6 +26,7 @@ body {
     width: 100%;
 }
 
+
 /* label focus color */
 .input-field input + label {
     color: #bdbdbd !important;
@@ -42,6 +44,13 @@ body {
     font-size: 20px;
     font-weight: 700;
 }
+
+.input-field label.active {
+    color: #e64a19 !important;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
 /* label underline focus color */
 .row .input-field input:focus {
     color: #FFFFFF;
@@ -57,3 +66,4 @@ body {
     text-decoration: none;
     color: #FFFFFF;
 }
+

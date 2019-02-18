@@ -17,7 +17,7 @@ class IngredientType extends AbstractType
             ->add('nom', null, [
             ])
             ->add('unite', null, [
-                'label' => 'Choisissez l\'unité de  mesure de l\'ingrédient',
+                'label' => 'unite.ingredient.mesure',
             ]);
     }
 

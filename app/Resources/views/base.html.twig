@@ -2,19 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('node_modules/materialize-css/dist/css/materialize.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/material-icons/iconfont/material-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/margin.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-size.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font.css') }}">
-        {% block stylesheets %}{% endblock %}
-
+        <script defer src="{{ asset('node_modules/turbolinks/dist/turbolinks.js') }}"></script>
+        <script defer src="{{ asset('js/turbolinks.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
+
+        {% block stylesheets %}{% endblock %}
 
         {# Ajout de la navbar #}
         {% include 'navbar.html.twig' %}
@@ -44,9 +46,15 @@
         <script src="{{ asset('node_modules/materialize-css/dist/js/materialize.js') }}"></script>
         <script src="{{ asset('node_modules/@fortawesome/fontawesome-free/js/all.js') }}"></script>
         <script src="{{ asset('node_modules/velocity-animate/velocity.js') }}"></script>
-
         {# Ajout des fichiers Js lié à chacun des pages #}
+        <script async src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
-        <script src="{{ asset('js/app.js') }}"></script>
+
+        <div class="container">
+            <button class="btn deep-orange btn-large hoverable" type="button" onClick="history.back()">
+                <i class="material-icons left">chevron_left</i>
+                Retour
+            </button>
+        </div>
     </body>
 </html>

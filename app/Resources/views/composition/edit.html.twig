@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'composition.edit'|trans({}, 'FOSUserBundle') }} {{ composition.id }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Composition edit</h1>
 
     {{ form_start(edit_form) }}

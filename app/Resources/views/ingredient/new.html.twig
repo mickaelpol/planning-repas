@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-
-{% endblock %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/newIngredient.css') }}">
+    {{ 'ingredient.new'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
 {% block body %}
 
-        <div class="row banderole-header z-depth-3">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/newIngredient.css') }}">
+    {% endblock %}
+
+    <div class="row banderole-header z-depth-3">
             <h1 class="center-align">Ingredient creation</h1>
         </div>
 

@@ -1,5 +1,9 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block title %}
+    {{ 'register.confirmed'|trans({}, 'FOSUserBundle') }}
+{% endblock %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/register-confirm.css') }}">
 {% endblock %}

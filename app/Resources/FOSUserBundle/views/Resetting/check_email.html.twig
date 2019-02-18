@@ -1,5 +1,8 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
+{% block title %}
+    {{ 'register.check_email'|trans({}, 'FOSUserBundle') }}
+{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/email-reset-send.css') }}">

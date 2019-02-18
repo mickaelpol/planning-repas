@@ -22,3 +22,8 @@ h2 {
     border-radius: 15px;
     line-height: 4em;
 }
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: #e64a19;
+}

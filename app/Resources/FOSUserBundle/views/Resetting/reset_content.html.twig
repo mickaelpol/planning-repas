@@ -1,7 +1,3 @@
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/reset-token-password.css') }}">
-{% endblock %}
-
 <div class="row mt-60">
     <div class="col l6 offset-l3">
         {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
@@ -10,11 +6,11 @@
                     <span class="card-title center-align">{{ 'resetting.reset.submit'|trans({}, 'FOSUserBundle') }}</span>
                     <div class="input-field mt-40">
                         {{ form_widget(form.plainPassword.first) }}
-                        {{ form_label(form.plainPassword.first, 'form.new_password'|trans({}, 'FOSUserBundle')) }}
+                        {{ form_label(form.plainPassword.first) }}
                     </div>
                     <div class="input-field">
                         {{ form_widget(form.plainPassword.second) }}
-                        {{ form_label(form.plainPassword.second, 'form.new_password_confirmation'|trans({}, 'FOSUserBundle')) }}
+                        {{ form_label(form.plainPassword.second) }}
                     </div>
                 </div>
                 <div class="card-action">
