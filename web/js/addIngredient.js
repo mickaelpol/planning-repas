@@ -1,9 +1,9 @@
 var $collectionHolder;
-var $addTagButton = $('<div class="col l2 offset-l10"><a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></a></div>');
+var $addTagButton = $('<div class="col mt-10 s2 offset-s3 l2 offset-l3 xl2 offset-xl3"><a class="btn-floating btn-large waves-effect waves-light deep-orange hoverable"><i class="material-icons">add</i></a></div>');
 var $newLinkLi = $('<li></li>').append($addTagButton);
 
 var etapes;
-var $addEtapesButton = $('<div class="col l2 offset-l10"><a class="btn-floating btn-large waves-effect waves-light green"><i class="material-icons">add</i></a></div>');
+var $addEtapesButton = $('<div class="col s2 offset-s3 l2 offset-l3 xl2 offset-xl3"><a class="btn-floating btn-large waves-effect waves-light deep-orange hoverable"><i class="material-icons">add</i></a></div>');
 var $newLinkLiEtapes = $('<li></li>').append($addEtapesButton);
 
 // setup an "add a tag" link
@@ -78,7 +78,7 @@ $(document).ready(function() {
 
     /* ======== Fonction ajout du bouton delete au formulaire ================ */
     function addTagFormDeleteLink($tagFormLi) {
-        var $removeFormButton = $('<div class="col l2 offset-l10 "><a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">clear</i></a></div>');
+        var $removeFormButton = $('<div class="row"><div class="col s2 offset-s8 m2 offset-m7 l2 offset-l8"><a class="btn-floating btn-large waves-effect waves-light red hoverable"><i class="material-icons">clear</i></a></div></div>');
         $tagFormLi.prepend($removeFormButton);
 
         $removeFormButton.on('click', function(e) {

@@ -74,6 +74,10 @@ planning.edit: 'Edition du planning'
 planning.index: 'Liste des plannings'
 planning.new: 'Nouveau planning'
 planning.show: 'Planning du mois de'
+recette.creation: 'Création de votre recette'
+recette.name: 'Nom de votre recette : '
+recette.etape: 'Etapes'
+recette.ingredient: 'Ingrédients'
 recette.edit: 'Edition de la recette'
 recette.index: 'Liste des recettes'
 recette.new: 'Nouvelle recette'
@@ -82,6 +86,7 @@ unite.edit: 'Edition de l''unité'
 unite.index: 'Liste des unités'
 unite.new: 'Nouvelle unité'
 unite.show: 'Unité'
+create: 'Créer'
 
 
 # Exception
