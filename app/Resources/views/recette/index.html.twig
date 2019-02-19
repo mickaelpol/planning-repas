@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% block title %}
     {{ 'recette.index'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
@@ -12,7 +14,7 @@
 
     {% if recettes %}
         <div class="row">
-            <h1 class="center-align recette-list">Liste des recettes</h1>
+            <h1 class="center-align recette-list">{{ 'recette.index'|trans }}</h1>
         </div>
 
         <div class="divider black"></div>
@@ -22,7 +24,7 @@
                 <div class="input-field col l4 offset-l2">
                     <i class="material-icons prefix">search</i>
                     <input id="icon_prefix" type="text" class="search"/>
-                    <label for="icon_prefix">Rechecher</label>
+                    <label for="icon_prefix">{{ 'recette.search'|trans }}</label>
                 </div>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <div class="col l6 right">
@@ -51,12 +53,12 @@
 
         <div class="row mt-60">
             <div class="col l12 center-align">
-                <h1 class="recette-indisponible">Aucune recette disponible !</h1>
+                <h1 class="recette-indisponible">{{ 'recette.none'|trans }}</h1>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <p class="para-recette-indisponible">Pour en créer une </p>
+                    <p class="para-recette-indisponible">{{ 'recette.create.that'|trans }}</p>
                     <a class="btn btn-large deep-orange pulse" href="{{ path('recette_new') }}">
                         <i class="material-icons right">add</i>
-                        Cliquez ici
+                        {{ 'recette.click'|trans }}
                     </a>
                 {% endif %}
 
