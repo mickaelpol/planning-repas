@@ -52,7 +52,7 @@
         {% else %}
 
         <div class="row mt-60">
-            <div class="col l12 center-align">
+            <div class="col s12 l12 center-align">
                 <h1 class="recette-indisponible">{{ 'recette.none'|trans }}</h1>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <p class="para-recette-indisponible">{{ 'recette.create.that'|trans }}</p>
@@ -71,6 +71,5 @@
 
 {% block javascripts %}
     <script src="{{ asset('node_modules/list.js/dist/list.js') }}"></script>
-    {#<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>#}
     <script src="{{ asset('js/paginationIndex.js') }}"></script>
 {% endblock %}
