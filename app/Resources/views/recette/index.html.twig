@@ -21,13 +21,13 @@
 
         <div id="list-recette">
             <div class="row center-align mt-100">
-                <div class="input-field col l4 offset-l2">
+                <div class="input-field col s4 offset-s2 l4 offset-l2">
                     <i class="material-icons prefix">search</i>
                     <input id="icon_prefix" type="text" class="search"/>
                     <label for="icon_prefix">{{ 'recette.search'|trans }}</label>
                 </div>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <div class="col l6 right">
+                    <div class="col s6 l6 right">
                         <a href="{{ path('recette_new') }}" class="btn-floating btn-large waves-effect waves-light deep-orange hoverable">
                             <i class="material-icons">add</i>
                         </a>
@@ -37,7 +37,7 @@
             <div class="row mt-60">
                 <ul class="list">
                     {% for recette in recettes %}
-                        <div class="col l6 center-align text-black">
+                        <div class="col s6 l6 center-align text-black">
                             <li>
                                 <div>
                                     <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette">{{ recette.nom }}</a>
