@@ -36,6 +36,12 @@ class User extends BaseUser
      */
     private $mois;
 
+    /**
+     * One User has many Recette. This is the inverse side.
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Recette", mappedBy="user")
+     */
+    private $recettes;
+
 
     public function __construct()
     {
@@ -70,6 +76,24 @@ class User extends BaseUser
     public function setMois($mois)
     {
         $this->mois = $mois;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRecettes()
+    {
+        return $this->recettes;
+    }
+
+    /**
+     * @param mixed $recettes
+     * @return User
+     */
+    public function setRecettes($recettes)
+    {
+        $this->recettes = $recettes;
+        return $this;
     }
 }
 

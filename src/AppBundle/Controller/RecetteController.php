@@ -52,7 +52,6 @@ class RecetteController extends Controller
 
             foreach ($etapes as $etape) {
                 $etape->setRecette($recette);
-                dump($etape);
                 $em->persist($recette);
             }
 
@@ -60,7 +59,14 @@ class RecetteController extends Controller
                 $composition->setRecette($recette);
                 $em->persist($recette);
             }
+
+            $recette->setUser($this->getUser());
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                $this->get('translator')->trans('recette.creation.success')
+            );
 
             return $this->redirectToRoute('recette_show', array('id' => $recette->getId()));
         }
@@ -99,21 +105,28 @@ class RecetteController extends Controller
      */
     public function editAction(Request $request, Recette $recette)
     {
-        $deleteForm = $this->createDeleteForm($recette);
-        $editForm = $this->createForm('AppBundle\Form\RecetteType', $recette);
-        $editForm->handleRequest($request);
+        $user = $this->getUser();
+        $author = $recette->getUser();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($user != $author) {
+            throw $this->createNotFoundException('Cette page n\'existe pas !');
+        } else {
+            $deleteForm = $this->createDeleteForm($recette);
+            $editForm = $this->createForm('AppBundle\Form\RecetteType', $recette);
+            $editForm->handleRequest($request);
 
-            return $this->redirectToRoute('recette_edit', array('id' => $recette->getId()));
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('recette_edit', array('id' => $recette->getId()));
+            }
+
+            return $this->render('recette/edit.html.twig', array(
+                'recette' => $recette,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
         }
-
-        return $this->render('recette/edit.html.twig', array(
-            'recette' => $recette,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**

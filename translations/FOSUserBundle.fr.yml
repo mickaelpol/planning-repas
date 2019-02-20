@@ -86,11 +86,15 @@ recette.edit: 'Edition de la recette'
 recette.index: 'Liste des recettes'
 recette.new: 'Nouvelle recette'
 recette.show: 'Recette'
+recette.list.get_back: 'Recettes'
 unite.edit: 'Edition de l''unité'
 unite.index: 'Liste des unités'
 unite.new: 'Nouvelle unité'
 unite.show: 'Unité'
 create: 'Créer'
+delete: 'Supprimer'
+author: 'Auteur :'
+etape: 'Etape :'
 
 
 # Exception
