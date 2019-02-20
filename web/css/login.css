@@ -35,7 +35,7 @@ body {
 
 .row .input-field input {
     border-bottom: 1px solid #757575 !important;
-    box-shadow: 0 1px 0 0 #757575 !important
+    box-shadow: 0 0px 0 0 #757575 !important
 }
 
 .input-field input:focus + label {
@@ -55,7 +55,7 @@ body {
 .row .input-field input:focus {
     color: #FFFFFF;
     border-bottom: 1px solid #E64A19 !important;
-    box-shadow: 0 1px 0 0 #E64A19 !important
+    box-shadow: 0 0px 0 0 #E64A19 !important
 }
 
 .row .input-field input {
