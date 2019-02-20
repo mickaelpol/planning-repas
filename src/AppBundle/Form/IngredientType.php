@@ -15,6 +15,7 @@ class IngredientType extends AbstractType
     {
         $builder
             ->add('nom', null, [
+                'label' => 'ingredient.name'
             ])
             ->add('unite', null, [
                 'label' => 'unite.ingredient.mesure',

@@ -1,23 +1,75 @@
 body {
     background-image: none;
-}
-.cadre {
-    border: 1px solid #757575;
-}
-.banderole-header {
-    margin-top: 120px;
-    background-color: #FF5722;
-    border-top: 1px solid #FF5722;
-    border-right: 1px solid #BDBDBD;
-    border-left: 1px solid #BDBDBD;
+    background-color: #FF9800;
 }
 
-.banderole-body {
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #BDBDBD;
-    border-right: 1px solid #BDBDBD;
-    border-left: 1px solid #BDBDBD;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-top: -30px;
+
+.card {
+    background-color: #212121;
+    border: 1px solid #FF5722;
+    border-radius: 5px;
 }
+
+.card-title {
+    text-transform: uppercase;
+    font-family: Amatic;
+    letter-spacing: 10px;
+    font-weight: 900 !important;
+    font-size: 50px !important;
+    line-height: 60px !important;
+}
+
+
+/* label focus color */
+.input-field input + label {
+    color: #bdbdbd !important;
+    font-size: 18px;
+}
+
+.row .input-field input {
+    border-bottom: 1px solid #757575 !important;
+    box-shadow: 0 0px 0 0 #757575 !important
+}
+
+.input-field input:focus + label {
+    color: #E64A19 !important;
+    /*text-transform: uppercase;*/
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.input-field label.active {
+    color: #e64a19 !important;
+    font-size: 20px;
+}
+
+.input-field .prefix.active {
+    color: #e64a19 !important;
+}
+
+/* label underline focus color */
+.row .input-field input:focus {
+    color: #FFFFFF;
+    border-bottom: 1px solid #E64A19 !important;
+    box-shadow: 0 0px 0 0 #E64A19 !important
+}
+
+.row .input-field input {
+    color: #FFFFFF;
+}
+
+.col.s12.m12.l12.xl12 > .btn {
+    width: 100%;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    color: #212121;
+}
+
+/*[class*="col"], footer {*/
+/*background-color: #004aee;*/
+/*border: 2px solid black;*/
+/*border-radius: 6px;*/
+/*line-height: 40px;*/
+/*text-align: center;*/
+/*}*/
