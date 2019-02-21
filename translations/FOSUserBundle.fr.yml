@@ -91,7 +91,7 @@ planning.add.recette: 'Ajouter vos Recettes et choisissez leurs jours d''attribu
 planning.edit: 'Edition du planning'
 planning.index: 'Liste des plannings'
 planning.new: 'Nouveau planning'
-planning.create: 'Planning du mois de :'
+planning.create: 'Planning de :'
 planning.show: 'Planning du mois de'
 planning.mois.select: 'Selectionnez un mois'
 planning.button.create: 'Créer le planning'
