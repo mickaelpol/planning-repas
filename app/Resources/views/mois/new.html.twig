@@ -12,7 +12,7 @@
 
     <div class="section">
         <div class="row">
-            <h1 id="data-max" class="center-align planning-titre">Création d'un planning</h1>
+            <h1 id="data-max" class="center-align planning-titre">{{ 'planning.new'|trans({}, 'FOSUserBundle') }}</h1>
         </div>
     </div>
 
@@ -26,23 +26,23 @@
                         <div class="row">
                             <div class="col l12 fz-20">
                                 <div class="col l5">
-                                    <h5 class="left-align page-planning-titre">Planning du mois de :</h5>
+                                    <h5 class="left-align page-planning-titre">{{ 'planning.create'|trans({}, 'FOSUserBundle') }}</h5>
                                 </div>
                                 <div class="col l6 mt-10">
                                     <select id="select" class="page-planning-size mt-15 ">
-                                        <option value="" disabled selected>Selectionnez un mois</option>
-                                        <option value="01">Janvier</option>
-                                        <option value="02">Fevrier</option>
-                                        <option value="03">Mars</option>
-                                        <option value="04">Avril</option>
-                                        <option value="05">Mai</option>
-                                        <option value="06">Juin</option>
-                                        <option value="07">Juillet</option>
-                                        <option value="08">Aout</option>
-                                        <option value="09">Septembre</option>
-                                        <option value="10">Octobre</option>
-                                        <option value="11">Novembre</option>
-                                        <option value="12">Decembre</option>
+                                        <option value="" disabled selected>{{ 'planning.mois.select'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="01">{{ 'mois.select.name.janvier'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="02">{{ 'mois.select.name.fevrier'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="03">{{ 'mois.select.name.mars'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="04">{{ 'mois.select.name.avril'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="05">{{ 'mois.select.name.mai'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="06">{{ 'mois.select.name.juin'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="07">{{ 'mois.select.name.juillet'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="08">{{ 'mois.select.name.aout'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="09">{{ 'mois.select.name.septembre'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="10">{{ 'mois.select.name.octobre'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="11">{{ 'mois.select.name.novembre'|trans({}, 'FOSUserBundle') }}</option>
+                                        <option value="12">{{ 'mois.select.name.decembre'|trans({}, 'FOSUserBundle') }}</option>
                                     </select>
                                     {{ form_widget(form.nom, { 'id': 'form-blind', 'attr': {'class': 'hide' }}) }}
                                     {{ form_widget(form.days, { 'id': 'form-blind-days', 'attr': {'class': 'hide' }}) }}
@@ -68,7 +68,7 @@
                             <div class="section">
                                 <div class="col l12">
                                     <div class="col l12">
-                                        <h5 class="page-planning-recette">Ajouter vos Recettes et choisissez leurs jours d'attribution</h5>
+                                        <h5 class="page-planning-recette">{{ 'planning.add.recette'|trans({}, 'FOSUserBundle') }}</h5>
                                         <small id="contains" class="indication"></small>
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="card-action">
-                        <button id="btn-submit" type="submit" class="btn-4"><span class="span-btn-4">Créer le planning</span></button>
+                        <button id="btn-submit" type="submit" class="btn-4"><span class="span-btn-4">{{ 'planning.button.create'|trans({}, 'FOSUserBundle') }}</span></button>
                     </div>
                 </div>
             </div>
