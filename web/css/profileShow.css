@@ -18,6 +18,6 @@ body {
     border-radius: 5px;
 }
 
-.col.l6 > .btn {
+.btn-edit-profile, .btn-edit-paswword {
     width: 100%;
 }
