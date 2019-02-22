@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recette;
+use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,26 @@ class RecetteController extends Controller
         $recettes = $em->getRepository('AppBundle:Recette')->findAll();
 
         return $this->render('recette/index.html.twig', array(
+            'recettes' => $recettes,
+        ));
+    }
+
+    /**
+     * Lists all recette by user.
+     *
+     * @Route("/my-recipes/{id}", name="recette_my_index", methods={"GET"})
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function indexUserAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $recettes = $em->getRepository('AppBundle:Recette')->findBy([
+            'user' => $id,
+        ]);
+
+        return $this->render('recette/my_index.html.twig', array(
             'recettes' => $recettes,
         ));
     }
@@ -73,7 +94,7 @@ class RecetteController extends Controller
 
         return $this->render('recette/new.html.twig', array(
             'recette' => $recette,
-            'form' => $form->createView(),
+            'form'    => $form->createView(),
         ));
     }
 
@@ -89,7 +110,7 @@ class RecetteController extends Controller
         $deleteForm = $this->createDeleteForm($recette);
 
         return $this->render('recette/show.html.twig', array(
-            'recette' => $recette,
+            'recette'     => $recette,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -122,8 +143,8 @@ class RecetteController extends Controller
             }
 
             return $this->render('recette/edit.html.twig', array(
-                'recette' => $recette,
-                'edit_form' => $editForm->createView(),
+                'recette'     => $recette,
+                'edit_form'   => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
             ));
         }
@@ -164,7 +185,6 @@ class RecetteController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recette_delete', array('id' => $recette->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

@@ -33,12 +33,12 @@ class Recette
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Composition", mappedBy="recette", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Composition", mappedBy="recette", cascade={"persist", "remove"})
      */
     private $compositions;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Planning", mappedBy="recette", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Planning", mappedBy="recette", cascade={"persist", "remove"})
      */
     private $plannings;
 
