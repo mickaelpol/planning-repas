@@ -69,10 +69,12 @@
         <li class="{% if currentPath == path('recette_index') %}active{% endif %}">
             <a href="{{ path('recette_index') }}"><i class="small material-icons">book</i> {{ 'recette.list'|trans({}, 'messages') }}</a>
         </li>
-        <li class="{% if currentPath == path('recette_my_index', {'id': app.user.id}) %}active{% endif %}">
-            <a href="{{ path('recette_my_index', {'id': app.user.id}) }}"><i class="small material-icons">bookmark</i> {{ 'recette.my.list'|trans({}, 'messages') }}</a>
-        </li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <li class="{% if currentPath == path('recette_my_index', {'id': app.user.id}) %}active{% endif %}">
+                <a href="{{ path('recette_my_index', {'id': app.user.id}) }}"><i class="small material-icons">bookmark</i> {{ 'recette.my.list'|trans({}, 'messages') }}</a>
+            </li>
+
             <li class="{% if currentPath == path('mois_index') %}active{% endif %}">
                 <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> {{ 'planning.list'|trans({}, 'messages') }}</a>
             </li>
