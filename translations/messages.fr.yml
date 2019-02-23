@@ -1,6 +1,6 @@
 planning.list: 'Liste de mes plannings'
 planning.create: 'Créer un planning'
-recette.list: 'Liste des recettes'
+recette.list: 'Toutes les recettes'
 add.recette: 'Ajouter une recette'
 add.ingredient: 'Ajouter un ingredient'
 ingredient.quantity: 'Quantité de l''ingrédient : '

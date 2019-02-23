@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recette;
 use AppBundle\Entity\User;
+use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,18 +39,28 @@ class RecetteController extends Controller
      * @Route("/my-recipes/{id}", name="recette_my_index", methods={"GET"})
      * @param $id
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexUserAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
 
+        if ($user->getId() !== (int)$id) {
+            dump('ho bah shit alors');
+            die;
+        }
+
+        $em = $this->getDoctrine()->getManager();
         $recettes = $em->getRepository('AppBundle:Recette')->findBy([
             'user' => $id,
         ]);
 
+
         return $this->render('recette/my_index.html.twig', array(
             'recettes' => $recettes,
         ));
+
+//            throw $this->createNotFoundException('Cette page n\'existe pas !');
     }
 
     /**
