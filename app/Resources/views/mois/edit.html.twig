@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'mois.edit'|trans({}, 'FOSUserBundle') }} {{ mois.nom }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Mois edit</h1>
 
     {{ form_start(edit_form) }}

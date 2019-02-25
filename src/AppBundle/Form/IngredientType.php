@@ -15,9 +15,10 @@ class IngredientType extends AbstractType
     {
         $builder
             ->add('nom', null, [
+                'label' => 'ingredient.name'
             ])
             ->add('unite', null, [
-                'label' => 'Choisissez l\'unité de  mesure de l\'ingrédient',
+                'label' => 'unite.ingredient.mesure',
             ]);
     }
 

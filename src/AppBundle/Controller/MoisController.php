@@ -6,6 +6,7 @@ use AppBundle\Entity\Mois;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Mois controller.
@@ -19,12 +20,13 @@ class MoisController extends Controller
      * Lists all mois entities.
      *
      * @Route("/", name="mois_index", methods={"GET"})
+     * @Security("has_role('ROLE_USER')")
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
-        $mois = $em->getRepository('AppBundle:Mois')->findAll();
+        $user = $this->getUser();
+        $mois = $em->getRepository('AppBundle:Mois')->getMonthByUser($user);
 
         return $this->render('mois/index.html.twig', array(
             'mois' => $mois,
@@ -37,10 +39,13 @@ class MoisController extends Controller
      * @Route("/new", name="mois_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
         $mois = new Mois();
+        $user = $this->getUser();
+        $mois->setUser($user);
         $form = $this->createForm('AppBundle\Form\MoisType', $mois);
         $form->handleRequest($request);
 
@@ -50,6 +55,7 @@ class MoisController extends Controller
 
             foreach ($plannings as $planning) {
                 $planning->setMois($mois);
+                $planning->setUser($user);
                 $em->persist($mois);
             }
             $em->flush();
@@ -72,6 +78,7 @@ class MoisController extends Controller
      * @Route("/{id}", name="mois_show", methods={"GET"})
      * @param Mois $mois
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function showAction(Mois $mois)
     {
@@ -87,6 +94,10 @@ class MoisController extends Controller
      * Displays a form to edit an existing mois entity.
      *
      * @Route("/{id}/edit", name="mois_edit", methods={"GET", "POST"})
+     * @param Request $request
+     * @param Mois $mois
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Mois $mois)
     {
@@ -114,6 +125,7 @@ class MoisController extends Controller
      * @param Request $request
      * @param Mois $mois
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Mois $mois)
     {

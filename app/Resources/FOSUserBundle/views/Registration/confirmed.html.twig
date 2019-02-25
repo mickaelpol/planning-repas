@@ -1,0 +1,35 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block title %}
+    {{ 'register.confirmed'|trans({}, 'FOSUserBundle') }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/register-confirm.css') }}">
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="row mt-60">
+        <div class="col s6 offset-s3 l7 offset-l2 xl7 offset-xl2">
+            <div class="card">
+                <div class="card-content white-text">
+                    <div class="card-title center-align">{{ 'registration.email.subject'|trans({'%username%': user.username}, 'FOSUserBundle') }}</div>
+                    <div class="mt-30">{{ 'registration.confirmed'|trans({'%username%': user.username}, 'FOSUserBundle') }}</div>
+                </div>
+                <div class="card-action">
+                    {% if targetUrl %}
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <a class="btn btn-register-confirm btn-large deep-orange hoverable" href="{{ targetUrl }}">
+                                    <i class="large material-icons right">check</i>
+                                    {{ 'registration.back'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}

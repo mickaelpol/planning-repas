@@ -6,6 +6,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 h1 {
@@ -16,8 +17,17 @@ h2 {
     color: #FFFFFF;
 }
 
+.row .col {
+    padding: 0;
+}
+
 .green {
     height: 4em;
     border-radius: 15px;
     line-height: 4em;
+}
+
+.turbolinks-progress-bar {
+    height: 5px;
+    background-color: #e64a19;
 }

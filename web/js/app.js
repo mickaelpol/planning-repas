@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+    Turbolinks.start();
+    Turbolinks.clearCache();
+
     var msg = $('#message');
     var message = $("#message").attr("data-message");
     var content = `<div class="mt-30 ">\
@@ -18,6 +21,10 @@ $(document).ready(function(){
         msg.html(content).hide().velocity("slideDown", { duration: 500 }).velocity("slideUp", { delay: 4000, duration: 500 });
     }
 
-    $('.sidenav').sidenav();
+
+    $('.sidenav-trigger').on('click', function(e) {
+        e.preventDefault();
+        $('.sidenav').sidenav();
+    });
 
 });

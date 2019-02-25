@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Accueil
+    {{ 'default.home'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
-{% endblock %}
 
 {% block body %}
 
-    <style>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
+    {% endblock %}
 
-    </style>
     {% set recetteId = '' %}
+    {% set nothing = 'recette.nothing.or.delete'|trans({}, 'FOSUserBundle') %}
+
     {% for d in plannings %}
         {% for rec in d.plannings %}
             {% if loop.index == now %}
@@ -27,34 +27,37 @@
         <div class="row">
             {% if plannings %}
                 {% for planning in plannings %}
-                    <h1 class="center-align">Planning du mois de {{ planning.nom }}</h1>
-                    <a class="col l4 offset-l4" href="{{ path('recette_show', { 'id': recetteId }) }}">
+                    <h1 class="center-align hide-on-med-and-down">{{ 'mois.show'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</h1>
+                    <a
+                        class="{% if not recetteId %} center-align {% endif %}col s12 m6 offset-m3 xl4 offset-xl4"
+                        {% if recetteId %} href="{{ path('recette_show', {'id': recetteId}) }}"{% endif %}>
                         <time class="icon z-depth-4 hoverable">
-                            {#<em></em>#}{# jour chiffre #}
                             <strong>{{ dday }} {{ now }}</strong>{# jour en lettre #}
-                            {#<span>{{ now }}</span>#}
-                            {% for day in planning.plannings %}
-                                {% if loop.index == now %}
-                                    <div>
-                                        {{ day.recette.nom }}
-                                    </div>
-                                {% endif %}
-                                {% for compo in day.recette.compositions %}
-                                    {#{% dump(compo.quantite ~ ' ' ~ compo.ingredient.unite ~ ' ' ~ compo.ingredient.nom) %}#}
+                            {% if recetteId %}
+                                {% for day in planning.plannings %}
+                                    {% if loop.index == now %}
+                                        <div>
+                                            {{ day.recette.nom }}
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
-                            {% endfor %}
+                            {% else %}
+                                <div class="nothing">{{ nothing }}</div>
+                            {% endif %}
                         </time>
                     </a>
                 {% endfor %}
             {% else %}
-                <div class="title-block">
-                    <h1 class="center-align">
-                        Aucun Planning Créer
-                    </h1>
-                    <p class="center-align">Pour en créer cliquez sur le bouton ci-dessous</p>
-                </div>
-                <div class="center-align">
-                    <a class="btn btn-large z-depth-3 pulse orange" href="{{ path('mois_new') }}"><i class="material-icons icone-resto">date_range</i></a>
+                <div class="col s12">
+                    <div class="title-block">
+                        <h1 class="center-align">
+                            {{ 'planning.nothing'|trans({}, 'FOSUserBundle') }}
+                        </h1>
+                        <p class="center-align">{{ 'planning.nothing.create'|trans({}, 'FOSUserBundle') }}</p>
+                    </div>
+                    <div class="center-align">
+                        <a class="btn btn-large z-depth-3 pulse orange" href="{{ path('mois_new') }}"><i class="material-icons icone-resto">date_range</i></a>
+                    </div>
                 </div>
             {% endif %}
         </div>
@@ -215,23 +218,29 @@
                     <i class="large material-icons">menu</i>
                 </a>
                 <ul>
-                    <li class="waves-effect waves-light"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> Editer {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a id="BtnModalActualMonth" class="amber"><i class="material-icons">add_shopping_cart</i>Liste de course {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a id="BtnModalNextMonth" class="red"><i class="material-icons">add_shopping_cart</i>Liste de course du mois prochain</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}</a></li>
+
+                    <li class="waves-effect waves-light hide-on-large-only"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i></a></li>
+                    <li class="waves-effect waves-light hide-on-large-only BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i></a></li>
+                    <li class="waves-effect waves-light hide-on-large-only BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i></a></li>
                 </ul>
             </div>
+
+            <div id="lang" data-lang="{{ app.request.locale }}" class="hide"></div>
 
             {# Modal du mois acutel #}
             <div id="modal1" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <div class="row">
-                        <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
+                        <a class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title"></h4>
                     </div>
                     <p class="center-align" id="data"></p>
                 </div>
                 <div class="modal-footer">
-                    <a id="downloadBtn" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>Télécharger</a>
+                    <a id="downloadBtn" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>{{ 'download'|trans({}, 'FOSUserBundle') }}</a>
                 </div>
             </div>
 
@@ -239,13 +248,13 @@
             <div id="modal2" class="modal modal-fixed-footer">
                 <div class="modal-content">
                     <div class="row">
-                        <a href="#!" class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
+                        <a class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title2"></h4>
                     </div>
-                    <p class="center-align" id="data2"></p>
+                    <p class="left-align" id="data2"></p>
                 </div>
                 <div class="modal-footer">
-                    <a id="downloadBtnNext" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>Télécharger</a>
+                    <a id="downloadBtnNext" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>{{ 'download'|trans({}, 'FOSUserBundle') }}</a>
                 </div>
             </div>
         {% endfor %}
@@ -254,6 +263,6 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/accueil.js') }}"></script>
+    <script async src="{{ asset('node_modules/jspdf/dist/jspdf.min.js') }}"></script>
+    <script async type="text/javascript" src="{{ asset('js/accueil.js') }}"></script>
 {% endblock %}

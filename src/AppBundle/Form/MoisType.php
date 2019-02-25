@@ -18,9 +18,9 @@ class MoisType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Planning du mois de : ',
+                'label' => 'mois.select',
                 'attr'  => [
-                    'placeholder' => 'Veuillez saisir le mois',
+                    'placeholder' => 'mois.title',
                 ],
             ])
             ->add('days', IntegerType::class, [])

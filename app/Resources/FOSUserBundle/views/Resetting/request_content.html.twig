@@ -1,0 +1,25 @@
+<div class="row mt-60">
+    <div class="col s7 offset-2 m7 offset-m2 l12 xl8 offset-xl2">
+        <div class="card">
+            <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+                <div class="card-content white-text">
+                    <span class="card-title center-align">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</span>
+                    <div class="input-field mt-40">
+                        <input type="text" id="username" name="username" required="required" />
+                        <label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <button class="btn btn-request-content btn-large hoverable deep-orange" type="submit">
+                                <i class="material-icons left">check</i>
+                                {{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

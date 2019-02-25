@@ -16,9 +16,10 @@ class EtapeType extends AbstractType
     {
         $builder
             ->add('description', TextareaType::class, [
-                'label' => 'Decrivez l\'étape : ',
+                'label' => 'etape.description',
                 'attr'  => [
-                    'class' => 'materialize-textarea',
+                    'class'     => 'materialize-textarea',
+                    'autofocus' => true,
                 ],
             ]);
     }

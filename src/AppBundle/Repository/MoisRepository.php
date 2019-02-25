@@ -13,30 +13,36 @@ use AppBundle\Entity;
 class MoisRepository extends \Doctrine\ORM\EntityRepository
 {
 
-    public function getActualMonth()
+    public function getActualMonth($user)
     {
         $actualMonth = date('m') - 1;
         $actualYear = date('Y');
         $qb = $this->createQueryBuilder('m')
             ->where('m.monthNumber = :month')
             ->andWhere('m.year = :year')
+            ->join('m.plannings', 'p')
+            ->andWhere('p.user = :user')
             ->setParameter('month', $actualMonth)
             ->setParameter('year', $actualYear)
+            ->setParameter('user', $user)
 	        ->getQuery();
 
         return $qb->getResult();
     }
 
-    public function getNextMonth()
+    public function getNextMonth($user)
     {
         $nextMonth = date('m');
         $actualYear = date('Y');
         $qb = $this->createQueryBuilder('m')
             ->where('m.monthNumber = :month')
             ->andWhere('m.year = :year')
+            ->join('m.plannings', 'p')
+            ->andWhere('p.user = :user')
             ->setParameter('month', $nextMonth)
             ->setParameter('year', $actualYear)
-	        ->getQuery();
+            ->setParameter('user', $user)
+            ->getQuery();
 
         return $qb->getResult();
     }
@@ -44,7 +50,7 @@ class MoisRepository extends \Doctrine\ORM\EntityRepository
     public function getListeCourses($id)
     {
     	$req = $this->getEntityManager()->createQuery(
-    		'SELECT i.nom ingredient, u.nom unite, SUM(comp.quantite) quantite
+    		'SELECT i.nom ingredient, u.symbole unite, SUM(comp.quantite) quantite
     		      FROM AppBundle:Mois m
 				  JOIN m.plannings p
 				  JOIN p.recette r
@@ -57,6 +63,16 @@ class MoisRepository extends \Doctrine\ORM\EntityRepository
 
 
     	return $req->getResult();
+    }
+
+    public function getMonthByUser($user)
+    {
+        $req = $this->createQueryBuilder('m')
+            ->where('m.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery();
+
+        return $req->getResult();
     }
 
 }

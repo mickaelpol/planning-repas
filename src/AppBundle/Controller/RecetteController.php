@@ -3,9 +3,12 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Recette;
+use AppBundle\Entity\User;
+use mysql_xdevapi\Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Recette controller.
@@ -31,11 +34,42 @@ class RecetteController extends Controller
     }
 
     /**
+     * Lists all recette by user.
+     *
+     * @Route("/my-recipes/{id}", name="recette_my_index", methods={"GET"})
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function indexUserAction($id)
+    {
+        $user = $this->getUser();
+
+        if ($user->getId() !== (int)$id) {
+            dump('ho bah shit alors');
+            die;
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $recettes = $em->getRepository('AppBundle:Recette')->findBy([
+            'user' => $id,
+        ]);
+
+
+        return $this->render('recette/my_index.html.twig', array(
+            'recettes' => $recettes,
+        ));
+
+//            throw $this->createNotFoundException('Cette page n\'existe pas !');
+    }
+
+    /**
      * Creates a new recette entity.
      *
      * @Route("/new", name="recette_new", methods={"GET", "POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -50,7 +84,6 @@ class RecetteController extends Controller
 
             foreach ($etapes as $etape) {
                 $etape->setRecette($recette);
-                dump($etape);
                 $em->persist($recette);
             }
 
@@ -58,14 +91,21 @@ class RecetteController extends Controller
                 $composition->setRecette($recette);
                 $em->persist($recette);
             }
+
+            $recette->setUser($this->getUser());
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                $this->get('translator')->trans('recette.creation.success')
+            );
 
             return $this->redirectToRoute('recette_show', array('id' => $recette->getId()));
         }
 
         return $this->render('recette/new.html.twig', array(
             'recette' => $recette,
-            'form' => $form->createView(),
+            'form'    => $form->createView(),
         ));
     }
 
@@ -81,7 +121,7 @@ class RecetteController extends Controller
         $deleteForm = $this->createDeleteForm($recette);
 
         return $this->render('recette/show.html.twig', array(
-            'recette' => $recette,
+            'recette'     => $recette,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -93,24 +133,32 @@ class RecetteController extends Controller
      * @param Request $request
      * @param Recette $recette
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
      */
     public function editAction(Request $request, Recette $recette)
     {
-        $deleteForm = $this->createDeleteForm($recette);
-        $editForm = $this->createForm('AppBundle\Form\RecetteType', $recette);
-        $editForm->handleRequest($request);
+        $user = $this->getUser();
+        $author = $recette->getUser();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($user != $author) {
+            throw $this->createNotFoundException('Cette page n\'existe pas !');
+        } else {
+            $deleteForm = $this->createDeleteForm($recette);
+            $editForm = $this->createForm('AppBundle\Form\RecetteType', $recette);
+            $editForm->handleRequest($request);
 
-            return $this->redirectToRoute('recette_edit', array('id' => $recette->getId()));
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('recette_edit', array('id' => $recette->getId()));
+            }
+
+            return $this->render('recette/edit.html.twig', array(
+                'recette'     => $recette,
+                'edit_form'   => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
         }
-
-        return $this->render('recette/edit.html.twig', array(
-            'recette' => $recette,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
     }
 
     /**
@@ -120,6 +168,7 @@ class RecetteController extends Controller
      * @param Request $request
      * @param Recette $recette
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @Security("has_role('ROLE_USER')")
      */
     public function deleteAction(Request $request, Recette $recette)
     {
@@ -147,7 +196,6 @@ class RecetteController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('recette_delete', array('id' => $recette->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

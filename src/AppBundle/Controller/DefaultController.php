@@ -6,9 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+/**
+ * Class DefaultController
+ * @package AppBundle\Controller
+ * @Security("has_role('ROLE_USER')")
+ */
 class DefaultController extends Controller
 {
     /**
@@ -19,7 +24,8 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-        $mois = $em->getActualMonth();
+        $user = $this->getUser();
+        $mois = $em->getActualMonth($user);
 
         // Set la langue locale en Français
         setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
@@ -127,75 +133,4 @@ class DefaultController extends Controller
             'plannings' => $mois,
         ));
     }
-
-    /**
-     * @Route("actual_course", name="actual_course")
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getCourseActualMonth(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-            $mois = $em->getActualMonth();
-            $idActualMonth = '';
-            $title = '';
-
-
-            if ($mois) {
-
-                foreach ($mois as $k => $v) {
-                    $idActualMonth = $v->getId();
-                    $title = $v->getNom();
-                }
-                $ing = $em->getListeCourses($idActualMonth);
-                $response = new JsonResponse([
-                    'titre' => $title,
-                    'liste' => $ing
-                ], Response::HTTP_OK);
-
-                $response->headers->set('Content-Type', 'application/json');
-            } else {
-                throw new NotFoundHttpException("Page not found");
-            }
-
-        }
-        return $response;
-    }
-
-    /**
-     * @Route("next_course", name="next_course")
-     * @param Request $request
-     * @return JsonResponse
-     */
-    public function getCourseNextMonth(Request $request)
-    {
-        if ($request->isXmlHttpRequest()) {
-            $em = $this->getDoctrine()->getRepository('AppBundle:Mois');
-            $mois = $em->getNextMonth();
-            $idNextMonth = '';
-            $title = '';
-
-
-            if ($mois) {
-
-                foreach ($mois as $k => $v) {
-                    $idNextMonth = $v->getId();
-                    $title = $v->getNom();
-                }
-                $ing = $em->getListeCourses($idNextMonth);
-                $response = new JsonResponse([
-                    'titre' => $title,
-                    'liste' => $ing
-                ], Response::HTTP_OK);
-
-                $response->headers->set('Content-Type', 'application/json');
-            } else {
-                throw new NotFoundHttpException("Page not found");
-            }
-
-        }
-        return $response;
-    }
-
 }

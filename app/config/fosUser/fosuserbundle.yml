@@ -1,0 +1,15 @@
+fos_user:
+  db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+  firewall_name: main
+  user_class: AppBundle\Entity\User
+  from_email:
+    address: "%mailer_user%"
+    sender_name: "%mailer_user%"
+
+  resetting:
+    retry_ttl: 7200 # Valeur en seconde pour la demande de reinitialisation du mot de passe
+    token_ttl: 86400 # Valeur en seconde de la durée de vie du token du mot de passe oubliée
+
+  registration:
+    form:
+      type: AppBundle\Form\RegistrationType

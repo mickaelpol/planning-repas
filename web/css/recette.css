@@ -1,3 +1,99 @@
 body {
     background-image: none;
+    background-color: #FFC107;
+}
+
+.card {
+    background-color: #212121;
+    border: 1px solid #FF5722;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-transform: uppercase;
+    font-family: Amatic;
+    letter-spacing: 10px;
+    font-weight: 900 !important;
+    font-size: 50px !important;
+}
+
+.input-field .btn-floating {
+    border-radius: 50%;
+}
+
+.collection {
+    border: none;
+}
+
+.tags .collection-item {
+    background-color: #FF5722;
+    border: 1px solid #FFC107;
+    border-radius: 5px;
+}
+
+
+/* label focus color */
+.collection-item label {
+    color: #212121 !important;
+    font-size: 18px;
+}
+.etapes .collection-item label {
+    color: #ffffff !important;
+    font-size: 18px;
+}
+
+.row .input-field input {
+    border-bottom: 1px solid #212121 !important;
+    box-shadow: 0 0px 0 0 #212121 !important
+}
+
+.input-field input:focus + label {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.input-field label.active {
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+/* label underline focus color */
+.row .input-field input:focus {
+    color: #212121;
+    border-bottom: 1px solid #212121 !important;
+    box-shadow: 0 0px 0 0 #212121 !important
+}
+
+.row .input-field input {
+    color: #212121;
+}
+
+.etapes .materialize-textarea {
+    color: #FFFFFF;
+}
+
+textarea.materialize-textarea {
+    border-bottom: 1px solid #FF5722 !important;
+    box-shadow: 0 0px 0 0 #FF5722 !important
+}
+
+.dropdown-content li span {
+    color: #212121 !important;
+}
+
+.recette-title input:focus + label {
+    text-transform: uppercase;
+    color: #FF5722;
+}
+
+.recette-title input {
+    border-bottom: 1px solid #FF5722 !important;
+    box-shadow: 0 0px 0 0 #FF5722 !important;
+}
+
+
+.col.l12 > .btn {
+    width: 100%;
 }

@@ -21,9 +21,6 @@ class PlanningType extends AbstractType
                 'class'        => Recette::class,
                 'choice_label' => 'nom',
                 'label'        => false,
-                'attr' => [
-                    'class' => 'testing'
-                ]
             ])
         ;
     }

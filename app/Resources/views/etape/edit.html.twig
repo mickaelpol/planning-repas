@@ -1,6 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    {{ 'etape.edit'|trans({}, 'FOSUserBundle') }} {{ etape.id }}
+{% endblock %}
+
 {% block body %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="">
+    {% endblock %}
+
     <h1>Etape edit</h1>
 
     {{ form_start(edit_form) }}

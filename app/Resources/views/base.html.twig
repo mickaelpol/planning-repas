@@ -2,19 +2,24 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="{{ asset('node_modules/materialize-css/dist/css/materialize.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/material-icons/iconfont/material-icons.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/@fortawesome/fontawesome-free/css/all.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/margin.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font-size.css') }}">
         <link rel="stylesheet" href="{{ asset('css/font.css') }}">
-        {% block stylesheets %}{% endblock %}
-
+        <script defer src="{{ asset('node_modules/turbolinks/dist/turbolinks.js') }}"></script>
+        <script defer src="{{ asset('js/turbolinks.js') }}"></script>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
     <body>
+
+        {% block stylesheets %}{% endblock %}
 
         {# Ajout de la navbar #}
         {% include 'navbar.html.twig' %}
@@ -35,7 +40,9 @@
 
         {# Ajout du block body contenant le cops de la page #}
         <div class="container">
-            {% block body %}{% endblock %}
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
         </div>
 
 
@@ -44,9 +51,19 @@
         <script src="{{ asset('node_modules/materialize-css/dist/js/materialize.js') }}"></script>
         <script src="{{ asset('node_modules/@fortawesome/fontawesome-free/js/all.js') }}"></script>
         <script src="{{ asset('node_modules/velocity-animate/velocity.js') }}"></script>
-
         {# Ajout des fichiers Js lié à chacun des pages #}
+        <script async src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
-        <script src="{{ asset('js/app.js') }}"></script>
+
+        <div class="container hide-on-med-and-down">
+            <div class="row mt-30">
+                <div class="col s7">
+                    <button class="btn btn-large deep-orange hoverable" type="button" onClick="history.back()">
+                        <i class="material-icons left">chevron_left</i>
+                        {{ 'get.back.button'|trans({}, 'FOSUserBundle') }}
+                    </button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

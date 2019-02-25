@@ -1,15 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    background-image: url('../img/background2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: unset;
+}
+
 .accueil {
     color: #FFFFFF;
 }
 
 .accueil h1 {
-    font-size: 62px;
+    font-size: 3.4em;
     line-height: 62px;
     font-weight: 700;
     font-style: normal;
     margin-bottom: 20px;
     letter-spacing: 20px;
     font-family: "Amatic";
+}
+
+@media screen and (max-width: 768px) {
+    .accueil h1 {
+        margin: 0;
+        font-size: 40px;
+        font-weight: 900;
+        line-height: 40px;
+    }
 }
 
 .accueil p {
@@ -40,6 +61,13 @@ time.icon
     overflow: hidden;
     transition: transform .2s;
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    time.icon {
+        margin: auto auto auto auto;
+        font-size: 1.5em;
+    }
 }
 
 time.icon:hover {
@@ -88,6 +116,13 @@ time.icon div
     letter-spacing: -0.05em;
     position: absolute;
     top: 3em;
+    color: #2f2f2f;
+}
+
+time.icon .nothing {
+    font-size: 1.5em;
+    letter-spacing: -0.05em;
+    margin-top: -40px;
     color: #2f2f2f;
 }
 

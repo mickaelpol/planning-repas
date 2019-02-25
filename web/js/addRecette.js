@@ -138,7 +138,7 @@ jQuery(document).ready(function() {
             newForm = newForm.replace(/__name__/g, index);
             // increase the index with one for the next item
             $collectionHolder.data('index', index + 1);
-            var $newFormLi = $('<div class="col l3 mb-15 z-depth-3 card-calendar"></div>').append(newForm);
+            var $newFormLi = $('<div class="col s3 l3 mb-15 z-depth-3 card-calendar"></div>').append(newForm);
             form.append($newFormLi)
         }
 
@@ -153,7 +153,7 @@ jQuery(document).ready(function() {
 
     /* ======== Fonction ajout du bouton delete au formulaire ================ */
     function addTagFormDeleteLink($tagFormLi) {
-        var $removeFormButton = $('<div class="col l2 offset-l9"><a class="ml-30 mt-5 btn-floating btn-small waves-effect waves-light red clear"><i class="material-icons">clear</i></a></div>');
+        var $removeFormButton = $('<div class="col s2 offset-s9 l2 offset-l9"><a class="ml-30 mt-5 btn-floating btn-small waves-effect waves-light red clear"><i class="material-icons">clear</i></a></div>');
         $tagFormLi.prepend($removeFormButton);
 
         $removeFormButton.on('click', function(e) {

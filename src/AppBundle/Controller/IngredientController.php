@@ -6,11 +6,13 @@ use AppBundle\Entity\Ingredient;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Ingredient controller.
  *
  * @Route("ingredient")
+ * @Security("has_role('ROLE_ADMIN')")
  */
 class IngredientController extends Controller
 {

@@ -1,0 +1,22 @@
+body {
+    background-image: url("../img/background2.jpg");
+    background-attachment: fixed;
+}
+
+.bandeau {
+    background-image: none !important;
+}
+
+.z-depth-3 {
+    box-shadow: none !important;
+}
+
+.card {
+    background-color: #212121;
+    border: 1px solid #FF5722;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-transform: uppercase;
+}

@@ -1,164 +1,183 @@
 $(document).ready(function () {
 
+    // Bouton du premier modal
+    const btnModal1 = $('.BtnModalActualMonth');
+    // Bouton du second modal
+    const btnModal2 = $('.BtnModalNextMonth');
+
     // Id de l'endroit ou les data seront ecrite dans le modal
     const data = $('#data');
     const data2 = $('#data2');
     // Id de l'endroit ou sera écrit le titre du modal
     const title = $('#title');
     const title2 = $('#title2');
+    // Titre du PDF
+    let titrePdf = '';
+    let titre = '';
+
     // Url ou sera dirigé la requête Ajax
-    const url = '/actual_course';
+    const url = btnModal1.children().attr('href');
     // Url ou sera dirigé la requête Ajax
-    const url2 = '/next_course';
+    const url2 = btnModal2.children().attr('href');
     // Bouton de download
     const dlBtn = $('#downloadBtn');
+    const dlBtn2 = $('#downloadBtnNext');
     // tableau de la liste des ingrédients
     let tabIng = [];
     let tabIng2 = [];
+    // récupère la langue locale du navigateur
+    const lang = $('#lang').data('lang');
 
-    const doc = new jsPDF();
-    doc.setFontSize(20);
 
-    // doc.text('Blabla', 40, 250, {
-    //     align: 'center',
-    // });
-
+    // Fonction propre à materialize
     $('.fixed-action-btn').floatingActionButton({
         toolbarEnabled: true,
+        hoverEnabled: true,
     });
     $('.tooltipped').tooltip();
     $('.modal').modal();
 
+
     // Fonction permettant de vider le contenu du modal à sa fermeture
-    function onModalClose() {
-        title.empty();
+    function onModalClose1() {
+        titre = '';
+        tabIng = [];
         data.empty();
-        title2.empty();
+    }
+
+    // Fonction permettant de vider le contenu du modal mois prochain à sa fermeture
+    function onModalClose2() {
+        titre = '';
+        tabIng2 = [];
         data2.empty();
     }
 
-    // Listenner du bouton pour ouvrir le modal
-    $('#BtnModalActualMonth').click(function (e) {
-        e.preventDefault();
-        $('#modal1').modal('open', {
-            onCloseEnd: onModalClose()
+    // Function de gestion de la requete ajax
+    function reqAjax(modal, fonction, url, idTitre, idPara, tableau) {
+        modal.modal('open', {
+            onCloseEnd: fonction
         });
-        // Requête Ajax au clic sur le bouton de liste des course
         $.ajax({
             url: url,
             type: 'GET',
             dataType: 'JSON',
             success: function (result, statut) {
+                console.log(result, statut);
                 let tab = result.liste;
-                let ingredient;
-                let info;
-                let quantite;
-                let unite;
+                titrePdf = result.titre;
+                titre = `Liste des courses de ${titrePdf}`;
                 for (let i = 0; i < tab.length; i++) {
-                    info = tab[i];
-                    ingredient = info.ingredient;
-                    quantite = info.quantite;
-                    unite = info.unite;
+                    let info = tab[i];
+                    let ingredient = info.ingredient;
+                    let quantite = info.quantite;
+                    let unite = info.unite;
+                    let result;
 
-                    // Conversion des Centilitres en Litres
-                    if (unite === 'Centilitres') {
-                        let result = (quantite * 1) / 100;
-                        if (ingredient === 'Eau') {
-                            quantite = `${result} Litres d'`;
-                        } else {
-                            quantite = `${result} Litres de `
-                        }
+                    // Conversion des unités
+                    switch (unite) {
+                        case 'Cl':
+                            if (quantite >= 100) {
+                                result = (quantite * 1) / 100;
+                                quantite = `${result} L`;
+                            } else {
+                                quantite = `${quantite} Cl`;
+                            }
+                            break;
+                        case 'Gr':
+                            if (quantite >= 1000) {
+                                result = (quantite * 1) / 1000;
+                                quantite = `${result} Kg`;
+                            } else {
+                                quantite = `${quantite} Gr`;
+                            }
+                            break;
+                        case 'L':
+                            quantite = `${quantite} L`;
+                            break;
+                        case 'Kg':
+                            quantite = `${quantite} Kg`;
+                            break;
+                    }
 
-                    }
-                    // conversion des gramme en Kg
-                    if (unite === 'Gramme') {
-                        quantite = (quantite * 1) / 1000 + ' Kg de ';
-                    }
-                    // Affichage des info sur le modal
-                    tabIng.push(`${quantite} ${ingredient}`);
-                    title.html(result.titre);
-                    data.append(
+                    // // Affichage des info sur le modal
+                    tableau.push(`${ingredient}: ${quantite}`);
+                    idTitre.html(titre);
+                    idPara.append(
                         `<div>
-                            ${quantite} ${ingredient}
+                            ${ingredient}: ${quantite}
                          </div>`);
                 }
-                dlBtn.click(e => {
-                    e.preventDefault();
-                    doc.text(`Liste des courses de ${result.titre}`, 80, 10, {
-                        align: 'center',
-                        charSpace: 1.5
+            },
+            error: function (result, statut, erreur) {
+                let code = result.status;
+                let message = result.responseJSON.message;
+                let error;
+                if (code !== 400) {
+                    if (lang === 'fr') {
+                        error = `<br><div>Si vous voyez cette erreur contactez le développeur <br><a href="mailto:mickael.devweb@gmail.com">à cette adresse </a></div>`;
+                    }  else if (lang === 'en') {
+                        error = `<br><div>If you see this error contact the developer <br><a href="mailto:mickael.devweb@gmail.com">at this address </a></div>`;
+                    }
+                    idTitre.html(erreur).css('color', 'red');
+                    idPara.html(error).css({
+                        'color': 'red',
+                        'text-align': 'center',
                     });
-                    doc.setFontSize(12);
-                    doc.text(tabIng, 10, 30, {
-                        charSpace: 1.5
-                    })
-                    doc.save(`${result.titre}.pdf`);
-                })
-            },
-            error: function (result, statut, erreur) {
-                title.html(statut).css('color', 'red');
-                data.html(erreur).css('color', 'red');
-                data.append('<br><div>Si vous voyez cette erreur contactez le développeur</div>');
-            },
-            complete: function (result, statut) {
-            }
-
-        });
-    });
-
-    $('#BtnModalNextMonth').click(e => {
-       e.preventDefault();
-        $('#modal2').modal('open', {
-            onCloseEnd: onModalClose()
-        });
-        // Requête Ajax pour le prochain mois
-        $.ajax({
-            url: url2,
-            type: 'GET',
-            dataType: 'JSON',
-            success: function (result, statut) {
-                let tab = result.liste;
-                let ingredient;
-                let info;
-                let quantite;
-                let unite;
-                for (let i = 0; i < tab.length; i++) {
-                    info = tab[i];
-                    ingredient = info.ingredient;
-                    quantite = info.quantite;
-                    unite = info.unite;
-
-                    // Conversion des Centilitres en Litres
-                    if (unite === 'Centilitres') {
-                        let result = (quantite * 1) / 100;
-                        if (ingredient === 'Eau') {
-                            quantite = `${result} Litres d'`;
-                        } else {
-                            quantite = `${result} Litres de `
-                        }
-
-                    }
-                    // conversion des gramme en Kg
-                    if (unite === 'Gramme') {
-                        quantite = (quantite * 1) / 1000 + ' Kg de ';
-                    }
-                    // Affichage des info sur le modal
-                    tabIng2.push(`${quantite} ${ingredient}`);
-                    title2.html(result.titre);
-                    data2.append(
-                        `<div>
-                            ${quantite} ${ingredient}
-                         </div>`);
+                }  else {
+                    const buttonAdd = `<br><div class="center-align"><a class="btn btn-large z-depth-3 pulse orange mt-60" href="/mois/new"><i class="material-icons icone-resto">date_range</i></a></div>`
+                    idTitre.html(erreur).css('color', 'red');
+                    idPara.html(message).css({
+                        'color': 'red',
+                        'text-align': 'center'
+                    });
+                    idPara.append(buttonAdd);
                 }
             },
-            error: function (result, statut, erreur) {
-                title2.html(statut).css('color', 'red');
-                data2.html(erreur).css('color', 'red');
-                data2.append('<br><div>Si vous voyez cette erreur contactez le développeur</div>');
-            },
-            complete: function (result, statut) {
+            complete: function () {
+
             }
         })
+
+    }
+
+    // Fonction permettant de telecharger en pdf la liste des courses du mois selectionné
+    function downloadPDF(title, tab) {
+        const doc = new jsPDF();
+        doc.setFontSize(20);
+        doc.text(titre, 80, 10, {
+            align: 'center',
+            charSpace: 1.5
+        });
+        doc.setFontSize(12);
+        doc.text(tab, 10, 30, {
+            charSpace: 1.5
+        })
+        doc.save(`${titrePdf}.pdf`);
+    }
+
+
+    // Listenner du bouton pour ouvrir le modal 1
+    btnModal1.click(e => {
+        e.preventDefault();
+        reqAjax($('#modal1'), onModalClose1(), url, title, data, tabIng);
     });
+
+    // Listenner du bouton pour ouvrir le modal 2
+    btnModal2.click(e => {
+        e.preventDefault();
+        reqAjax($('#modal2'), onModalClose2(), url2, title2, data2, tabIng2);
+    });
+
+    // Bouton pour download le pdf du modal 1
+    dlBtn.click(e => {
+        e.preventDefault();
+        downloadPDF(titre, tabIng);
+    })
+
+    // Bouton pour download le pdf du modal 2
+    dlBtn2.click(e => {
+        e.preventDefault();
+        downloadPDF(titre, tabIng2);
+    })
 
 })
