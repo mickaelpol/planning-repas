@@ -28,7 +28,7 @@ class ApiController extends Controller
     {
         $translator = $this->get('translator');
 
-//        if ($request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             if ($request->getMethod() === 'GET') {
                 $user = $this->getUser();
                 $em = $this->getDoctrine()->getRepository(Mois::class);
@@ -67,9 +67,9 @@ class ApiController extends Controller
 
                 return $response;
             }
-//        } else {
-//            throw $this->createNotFoundException('Cette page n\'existe pas !');
-//        }
+        } else {
+            throw $this->createNotFoundException('Cette page n\'existe pas !');
+        }
 
     }
 
