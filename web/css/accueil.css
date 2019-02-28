@@ -116,3 +116,17 @@ time.icon .nothing {
     color: #212121;
     font-family: Amatic;
 }
+
+.modal {
+    width: 30% !important;
+    max-height: 100% !important;
+    overflow-y: hidden !important;
+}
+
+@media screen and (min-width: 300px) and (max-width: 1500px) {
+    .modal {
+        width: 50% !important;
+        max-height: 30em !important;
+        overflow-y: hidden !important;
+    }
+}

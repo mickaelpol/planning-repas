@@ -24,12 +24,15 @@ class ApiController extends Controller
      * @Rest\Get(path="/api/get-actual-course", name="actual_month")
      * @return JsonResponse
      */
-    public function getActualMonth(Request $request)
+    public function getApiActualMonth(Request $request)
     {
-        if ($request->isXmlHttpRequest()) {
+        $translator = $this->get('translator');
+
+//        if ($request->isXmlHttpRequest()) {
             if ($request->getMethod() === 'GET') {
+                $user = $this->getUser();
                 $em = $this->getDoctrine()->getRepository(Mois::class);
-                $mois = $em->getActualMonth();
+                $mois = $em->getActualMonth($user);
 
                 if ($mois) {
                     $idMois = '';
@@ -40,51 +43,18 @@ class ApiController extends Controller
                         $actualMonth = $moi->getNom();
                     }
                     $ings = $em->getListeCourses($idMois);
-                    $ingredient = '';
-                    $unite = '';
-                    $quantite = '';
-                    $result = [];
-
-                    foreach ($ings as $ing) {
-                        $ingredient = $ing['ingredient'];
-                        $unite = $ing['unite'];
-                        $quantite = $ing['quantite'];
-                        if ($unite === 'Gr') {
-                            if ($quantite >= 1000) {
-                                $quantite = ($quantite * 1 ) / 1000 . 'Kg';
-                                $r = $ingredient . ' : ' . $quantite;
-                                array_push($result, $r);
-                            } else {
-                                $r = $ingredient . ' : ' . $quantite .' '. $unite;
-                                array_push($result, $r);
-                            }
-                        } elseif ($unite === 'Cl') {
-                            if ($quantite >= 100) {
-                                $quantite = ($quantite * 1 ) / 100 . 'L';
-                                $r = $ingredient . ' : ' . $quantite;
-                                array_push($result, $r);
-                            } else {
-                                $r = $ingredient . ' : ' . $quantite.' '.$unite;
-                                array_push($result, $r);
-                            }
-                        } else {
-                            $r = $ingredient . ' : ' . $quantite;
-                            array_push($result, $r);
-                        }
-                    }
-
 
                     // Tableau receptionnant la liste des course du mois en cours
                     $response = new JsonResponse([
                         'titre' => $actualMonth,
-                        'liste' => $result,
+                        'liste' => $ings,
                     ], Response::HTTP_OK);
 
                     return $response;
                 } else {
                     $response = new JsonResponse([
                         'titre'   => 'Erreur',
-                        'message' => 'Le Mois n\'existe pas',
+                        'message' => $translator->trans('mois.does.not.exist'),
                     ], Response::HTTP_NOT_FOUND);
 
                     return $response;
@@ -92,14 +62,14 @@ class ApiController extends Controller
             } else {
                 $response = new JsonResponse([
                     'titre'   => 'Erreur',
-                    'message' => 'La requête est erronnée',
+                    'message' => $translator->trans('request.error'),
                 ], Response::HTTP_BAD_REQUEST);
 
                 return $response;
             }
-        } else {
-            throw $this->createNotFoundException('Cette page n\'existe pas !');
-        }
+//        } else {
+//            throw $this->createNotFoundException('Cette page n\'existe pas !');
+//        }
 
     }
 
@@ -108,75 +78,45 @@ class ApiController extends Controller
      * @Rest\Get(path="/api/get-next-course", name="next_month")
      * @return JsonResponse
      */
-    public function getNextMonth(Request $request)
+    public function getApiNextMonth(Request $request)
     {
+        $translator = $this->get('translator');
+
         if ($request->isXmlHttpRequest()) {
             if ($request->getMethod() === 'GET') {
-        $em = $this->getDoctrine()->getRepository(Mois::class);
-        $mois = $em->getNextMonth();
+                $user = $this->getUser();
+                $em = $this->getDoctrine()->getRepository(Mois::class);
+                $mois = $em->getNextMonth($user);
 
-        if ($mois) {
-            $idMois = '';
-            $actualMonth = '';
+                if ($mois) {
+                    $idMois = '';
+                    $actualMonth = '';
 
-            foreach ($mois as $moi) {
-                $idMois = $moi->getId();
-                $actualMonth = $moi->getNom();
-            }
-            $ings = $em->getListeCourses($idMois);
-            $ingredient = '';
-            $unite = '';
-            $quantite = '';
-            $result = [];
-
-            foreach ($ings as $ing) {
-                $ingredient = $ing['ingredient'];
-                $unite = $ing['unite'];
-                $quantite = $ing['quantite'];
-                if ($unite === 'Gr') {
-                    if ($quantite >= 1000) {
-                        $quantite = ($quantite * 1 ) / 1000 . 'Kg';
-                        $r = $ingredient . ' : ' . $quantite;
-                        array_push($result, $r);
-                    } else {
-                        $r = $ingredient . ' : ' . $quantite .' '. $unite;
-                        array_push($result, $r);
+                    foreach ($mois as $moi) {
+                        $idMois = $moi->getId();
+                        $actualMonth = $moi->getNom();
                     }
-                } elseif ($unite === 'Cl') {
-                    if ($quantite >= 100) {
-                        $quantite = ($quantite * 1 ) / 100 . 'L';
-                        $r = $ingredient . ' : ' . $quantite;
-                        array_push($result, $r);
-                    } else {
-                        $r = $ingredient . ' : ' . $quantite.' '.$unite;
-                        array_push($result, $r);
-                    }
+                    $ings = $em->getListeCourses($idMois);
+
+                    // Tableau receptionnant la liste des course du mois en cours
+                    $response = new JsonResponse([
+                        'titre' => $actualMonth,
+                        'liste' => $ings,
+                    ], Response::HTTP_OK);
+
+                    return $response;
                 } else {
-                    $r = $ingredient . ' : ' . $quantite;
-                    array_push($result, $r);
+                    $response = new JsonResponse([
+                        'titre'   => 'Erreur',
+                        'message' => $translator->trans('mois.does.not.exist'),
+                    ], Response::HTTP_BAD_REQUEST);
+
+                    return $response;
                 }
-            }
-
-
-            // Tableau receptionnant la liste des course du mois en cours
-            $response = new JsonResponse([
-                'titre' => $actualMonth,
-                'liste' => $result,
-            ], Response::HTTP_OK);
-
-            return $response;
-        } else {
-            $response = new JsonResponse([
-                'titre'   => 'Erreur',
-                'message' => 'Le Mois n\'existe pas',
-            ], Response::HTTP_NOT_FOUND);
-
-            return $response;
-        }
             } else {
                 $response = new JsonResponse([
                     'titre'   => 'Erreur',
-                    'message' => 'La requête est erronnée',
+                    'message' => $translator->trans('request.error'),
                 ], Response::HTTP_BAD_REQUEST);
 
                 return $response;

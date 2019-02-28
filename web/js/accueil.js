@@ -25,6 +25,8 @@ $(document).ready(function () {
     // tableau de la liste des ingrédients
     let tabIng = [];
     let tabIng2 = [];
+    // récupère la langue locale du navigateur
+    const lang = $('#lang').data('lang');
 
 
     // Fonction prorpre à materialize
@@ -41,6 +43,7 @@ $(document).ready(function () {
         tabIng = [];
         data.empty();
     }
+
     // Fonction permettant de vider le contenu du modal mois prochain à sa fermeture
     function onModalClose2() {
         titre = '';
@@ -49,16 +52,16 @@ $(document).ready(function () {
     }
 
     // Function de gestion de la requete ajax
-    function reqAjax(modal, fonction, url, idTitre, idPara, tableau)
-    {
+    function reqAjax(modal, fonction, url, idTitre, idPara, tableau) {
         modal.modal('open', {
-           onCloseEnd: fonction
+            onCloseEnd: fonction
         });
         $.ajax({
             url: url,
             type: 'GET',
             dataType: 'JSON',
-            success: function(result, statut) {
+            success: function (result, statut) {
+                console.log(result, statut);
                 let tab = result.liste;
                 titrePdf = result.titre;
                 titre = `Liste des courses de ${titrePdf}`;
@@ -67,22 +70,34 @@ $(document).ready(function () {
                     let ingredient = info.ingredient;
                     let quantite = info.quantite;
                     let unite = info.unite;
+                    let result;
 
-                    // Conversion des Centilitres en Litres
-                    if (unite === 'Cl') {
-                        if (quantite >= 100) {
-                            let result = (quantite * 1) / 100;
-                            quantite = `${result} L`
-                        }
+                    // Conversion des unités
+                    switch (unite) {
+                        case 'Cl':
+                            if (quantite >= 100) {
+                                result = (quantite * 1) / 100;
+                                quantite = `${result} L`;
+                            } else {
+                                quantite = `${quantite} Cl`;
+                            }
+                            break;
+                        case 'Gr':
+                            if (quantite >= 1000) {
+                                result = (quantite * 1) / 1000;
+                                quantite = `${result} Kg`;
+                            } else {
+                                quantite = `${quantite} Gr`;
+                            }
+                            break;
+                        case 'L':
+                            quantite = `${quantite} L`;
+                            break;
+                        case 'Kg':
+                            quantite = `${quantite} Kg`;
+                            break;
                     }
-                    // conversion des gramme en Kg
-                    if (unite === 'Gr') {
-                        if (quantite >= 1000) {
-                            quantite = (quantite * 1) / 1000 + ' Kg';
-                        } else {
-                            quantite = `${quantite} Gr`;
-                        }
-                    }
+
                     // // Affichage des info sur le modal
                     tableau.push(`${ingredient}: ${quantite}`);
                     idTitre.html(titre);
@@ -92,17 +107,32 @@ $(document).ready(function () {
                          </div>`);
                 }
             },
-            error: function(result, statut, erreur) {
-                idTitre.html(statut).css('color', 'red');
-                idPara.html(erreur).css('color', 'red');
-                idPara.html(erreur).css('text-align', 'center');
-                idPara.append('<br>' +
-                    '<div>' +
-                        'Si vous voyez cette erreur contactez le développeur' +
-                        '<br><a href="mailto:mickael.devweb@gmail.com">à cette adresse </a>' +
-                    '</div>');
+            error: function (result, statut, erreur) {
+                let code = result.status;
+                let message = result.responseJSON.message;
+                let error;
+                if (code !== 400) {
+                    if (lang === 'fr') {
+                        error = `<br><div>Si vous voyez cette erreur contactez le développeur <br><a href="mailto:mickael.devweb@gmail.com">à cette adresse </a></div>`;
+                    }  else if (lang === 'en') {
+                        error = `<br><div>If you see this error contact the developer <br><a href="mailto:mickael.devweb@gmail.com">at this address </a></div>`;
+                    }
+                    idTitre.html(erreur).css('color', 'red');
+                    idPara.html(error).css({
+                        'color': 'red',
+                        'text-align': 'center',
+                    });
+                }  else {
+                    const buttonAdd = `<br><div class="center-align"><a class="btn btn-large z-depth-3 pulse orange mt-60" href="/mois/new"><i class="material-icons icone-resto">date_range</i></a></div>`
+                    idTitre.html(erreur).css('color', 'red');
+                    idPara.html(message).css({
+                        'color': 'red',
+                        'text-align': 'center'
+                    });
+                    idPara.append(buttonAdd);
+                }
             },
-            complete: function() {
+            complete: function () {
 
             }
         })
@@ -110,8 +140,7 @@ $(document).ready(function () {
     }
 
     // Fonction permettant de telecharger en pdf la liste des courses du mois selectionné
-    function downloadPDF(title, tab)
-    {
+    function downloadPDF(title, tab) {
         const doc = new jsPDF();
         doc.setFontSize(20);
         doc.text(titre, 80, 10, {
@@ -134,7 +163,7 @@ $(document).ready(function () {
 
     // Listenner du bouton pour ouvrir le modal 2
     btnModal2.click(e => {
-       e.preventDefault();
+        e.preventDefault();
         reqAjax($('#modal2'), onModalClose2(), url2, title2, data2, tabIng2);
     });
 
