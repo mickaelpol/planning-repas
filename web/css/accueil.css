@@ -103,6 +103,13 @@ time.icon div
     color: #2f2f2f;
 }
 
+time.icon .nothing {
+    font-size: 1.5em;
+    letter-spacing: -0.05em;
+    margin-top: -40px;
+    color: #2f2f2f;
+}
+
 .fixed-action-btn.toolbar ul li a {
     font-size: 30px;
     font-weight: 800;
