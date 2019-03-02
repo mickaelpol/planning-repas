@@ -17,6 +17,10 @@ h2 {
     color: #FFFFFF;
 }
 
+.row .col {
+    padding: 0;
+}
+
 .green {
     height: 4em;
     border-radius: 15px;

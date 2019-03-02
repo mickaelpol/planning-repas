@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
     // Bouton du premier modal
-    const btnModal1 = $('#BtnModalActualMonth');
+    const btnModal1 = $('.BtnModalActualMonth');
     // Bouton du second modal
-    const btnModal2 = $('#BtnModalNextMonth');
+    const btnModal2 = $('.BtnModalNextMonth');
 
     // Id de l'endroit ou les data seront ecrite dans le modal
     const data = $('#data');
@@ -16,9 +16,9 @@ $(document).ready(function () {
     let titre = '';
 
     // Url ou sera dirigé la requête Ajax
-    const url = btnModal1.attr('href');
+    const url = btnModal1.children().attr('href');
     // Url ou sera dirigé la requête Ajax
-    const url2 = btnModal2.attr('href');
+    const url2 = btnModal2.children().attr('href');
     // Bouton de download
     const dlBtn = $('#downloadBtn');
     const dlBtn2 = $('#downloadBtnNext');
@@ -29,9 +29,10 @@ $(document).ready(function () {
     const lang = $('#lang').data('lang');
 
 
-    // Fonction prorpre à materialize
+    // Fonction propre à materialize
     $('.fixed-action-btn').floatingActionButton({
         toolbarEnabled: true,
+        hoverEnabled: true,
     });
     $('.tooltipped').tooltip();
     $('.modal').modal();

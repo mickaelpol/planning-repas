@@ -27,37 +27,37 @@
         <div class="row">
             {% if plannings %}
                 {% for planning in plannings %}
-                    <h1 class="center-align">{{ 'mois.show'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</h1>
-                    {% if recetteId %}
-                        <a class="col s6 offset-s3 xl4 offset-xl4" href="{{ path('recette_show', { 'id': recetteId }) }}">
-                        {% else %}
-                        <a class="center-align col s6 offset-s3 xl4 offset-xl4">
-                    {% endif %}
-                            <time class="icon z-depth-4 hoverable">
-                                <strong>{{ dday }} {{ now }}</strong>{# jour en lettre #}
-                                {% if recetteId %}
-                                    {% for day in planning.plannings %}
-                                        {% if loop.index == now %}
-                                            <div>
-                                                {{ day.recette.nom }}
-                                            </div>
-                                        {% endif %}
-                                    {% endfor %}
-                                {% else %}
-                                    <div class="nothing">{{ nothing }}</div>
-                                {% endif %}
-                            </time>
-                        </a>
+                    <h1 class="center-align hide-on-med-and-down">{{ 'mois.show'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</h1>
+                    <a
+                        class="{% if not recetteId %} center-align {% endif %}col s12 m6 offset-m3 xl4 offset-xl4"
+                        {% if recetteId %} href="{{ path('recette_show', {'id': recetteId}) }}"{% endif %}>
+                        <time class="icon z-depth-4 hoverable">
+                            <strong>{{ dday }} {{ now }}</strong>{# jour en lettre #}
+                            {% if recetteId %}
+                                {% for day in planning.plannings %}
+                                    {% if loop.index == now %}
+                                        <div>
+                                            {{ day.recette.nom }}
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <div class="nothing">{{ nothing }}</div>
+                            {% endif %}
+                        </time>
+                    </a>
                 {% endfor %}
             {% else %}
-                <div class="title-block">
-                    <h1 class="center-align">
-                        {{ 'planning.nothing'|trans({}, 'FOSUserBundle') }}
-                    </h1>
-                    <p class="center-align">{{ 'planning.nothing.create'|trans({}, 'FOSUserBundle') }}</p>
-                </div>
-                <div class="center-align">
-                    <a class="btn btn-large z-depth-3 pulse orange" href="{{ path('mois_new') }}"><i class="material-icons icone-resto">date_range</i></a>
+                <div class="col s12">
+                    <div class="title-block">
+                        <h1 class="center-align">
+                            {{ 'planning.nothing'|trans({}, 'FOSUserBundle') }}
+                        </h1>
+                        <p class="center-align">{{ 'planning.nothing.create'|trans({}, 'FOSUserBundle') }}</p>
+                    </div>
+                    <div class="center-align">
+                        <a class="btn btn-large z-depth-3 pulse orange" href="{{ path('mois_new') }}"><i class="material-icons icone-resto">date_range</i></a>
+                    </div>
                 </div>
             {% endif %}
         </div>
@@ -218,13 +218,17 @@
                     <i class="large material-icons">menu</i>
                 </a>
                 <ul>
-                    <li class="waves-effect waves-light"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a href="{{ path('actual_month') }}" id="BtnModalActualMonth" class="amber"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light"><a href="{{ path('next_month') }}" id="BtnModalNextMonth" class="red"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
+                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}</a></li>
+
+                    <li class="waves-effect waves-light hide-on-large-only"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i></a></li>
+                    <li class="waves-effect waves-light hide-on-large-only BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i></a></li>
+                    <li class="waves-effect waves-light hide-on-large-only BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i></a></li>
                 </ul>
             </div>
 
-            <div id="lang" data-lang="{{ app.request.locale }}" class="hide">coucou</div>
+            <div id="lang" data-lang="{{ app.request.locale }}" class="hide"></div>
 
             {# Modal du mois acutel #}
             <div id="modal1" class="modal modal-fixed-footer">

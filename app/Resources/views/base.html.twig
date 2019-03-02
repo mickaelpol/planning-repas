@@ -40,7 +40,9 @@
 
         {# Ajout du block body contenant le cops de la page #}
         <div class="container">
-            {% block body %}{% endblock %}
+            <div class="row">
+                {% block body %}{% endblock %}
+            </div>
         </div>
 
 
@@ -53,10 +55,10 @@
         <script async src="{{ asset('js/app.js') }}"></script>
         {% block javascripts %}{% endblock %}
 
-        <div class="container">
+        <div class="container hide-on-med-and-down">
             <div class="row mt-30">
-                <div class="col s12 m12 l12 xl12">
-                    <button class="btn deep-orange btn-large hoverable" type="button" onClick="history.back()">
+                <div class="col s7">
+                    <button class="btn btn-large deep-orange hoverable" type="button" onClick="history.back()">
                         <i class="material-icons left">chevron_left</i>
                         {{ 'get.back.button'|trans({}, 'FOSUserBundle') }}
                     </button>
