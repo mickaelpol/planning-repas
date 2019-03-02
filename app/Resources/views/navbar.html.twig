@@ -3,14 +3,14 @@
     {% set currentPath = path(app.request.attributes.get('_route'),
         app.request.attributes.get('_route_params')) %}
 
-        <div class="{% if currentPath == '/' %}row pd-30{% else %}row pd-30 bandeau z-depth-3{% endif %}">
-            <div class="col l2">
+        <div class="{% if currentPath == '/' %}row{% else %}row bandeau z-depth-3{% endif %}">
+            <div class="col l2 m2">
                 <a href="#" data-target="slide-out" class="sidenav-trigger btn black">
                     <i class="large material-icons" style="color:orange; font-size: 30px;">menu</i>
                 </a>
             </div>
             <a href="{{ path('homepage') }}">
-                <div class="col l2 offset-l3 cadre">
+                <div class="col xl2 offset-xl3 l3 offset-l2 m4 offset-m2 hide-on-med-and-down cadre">
                     <div class="snip1307">
                         <h1>Planning</h1>
                     </div>
@@ -18,7 +18,7 @@
             </a>
         </div>
 
-    <ul id="slide-out" class="sidenav">
+    <ul id="slide-out" class="sidenav fixed">
         <li>
             <div class="user-view">
                 <div class="background">
@@ -70,6 +70,11 @@
             <a href="{{ path('recette_index') }}"><i class="small material-icons">book</i> {{ 'recette.list'|trans({}, 'messages') }}</a>
         </li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+            <li class="{% if currentPath == path('recette_my_index', {'id': app.user.id}) %}active{% endif %}">
+                <a href="{{ path('recette_my_index', {'id': app.user.id}) }}"><i class="small material-icons">bookmark</i> {{ 'recette.my.list'|trans({}, 'messages') }}</a>
+            </li>
+
             <li class="{% if currentPath == path('mois_index') %}active{% endif %}">
                 <a href="{{ path('mois_index') }}"><i class="small material-icons">insert_invitation</i> {{ 'planning.list'|trans({}, 'messages') }}</a>
             </li>

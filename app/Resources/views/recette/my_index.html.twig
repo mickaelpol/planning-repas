@@ -3,7 +3,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block title %}
-    {{ 'recette.index'|trans({}, 'FOSUserBundle') }}
+    {{ 'recette.my.list'|trans({}, 'messages') }}
 {% endblock %}
 
 {% block body %}
@@ -14,7 +14,7 @@
 
     {% if recettes %}
         <div class="row">
-            <h1 class="center-align recette-list">{{ 'recette.index'|trans }}</h1>
+            <h1 class="center-align recette-list">{{ 'recette.my.list'|trans({}, 'messages') }}</h1>
         </div>
 
         <div class="divider black"></div>
@@ -49,7 +49,7 @@
             </div>
             <ul class="pagination center-align mt-80"></ul>
         </div>
-        {% else %}
+    {% else %}
 
         <div class="row mt-60">
             <div class="col s12 l12 center-align">

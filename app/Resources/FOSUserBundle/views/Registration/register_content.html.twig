@@ -1,13 +1,13 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="row mt-60">
-    <div class="col l8 offset-l2">
+    <div class="col s8 offset-s2 l8 offset-l2">
         {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
             <div class="card">
                 <div class="card-content white-text">
                     <span class="card-title center-align">{{ 'layout.register'|trans }}</span>
                     <div class="row">
-                        <div class="col l6">
+                        <div class="col s6 l6">
                             <div class="input-field mt-40">
                                 {{ form_label(form.username) }}
                                 {{ form_widget(form.username) }}
@@ -17,7 +17,7 @@
                                 {{ form_widget(form.email) }}
                             </div>
                         </div>
-                        <div class="col l6">
+                        <div class="col s6 l6">
                             <div class="input-field mt-40">
                                 {{ form_label(form.plainPassword.first) }}
                                 {{ form_widget(form.plainPassword.first) }}
@@ -31,8 +31,8 @@
                 </div>
                 <div class="card-action">
                     <div class="row">
-                        <div class="col l12">
-                            <button class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit">
+                        <div class="col s12 l12">
+                            <button class="btn btn-inscription btn-large deep-orange" type="submit" id="_submit" name="_submit">
                                 <i class="large material-icons right">check</i>
                                 {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
                             </button>

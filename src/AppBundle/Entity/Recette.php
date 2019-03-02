@@ -2,6 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Composition;
+use AppBundle\Entity\Etape;
+use AppBundle\Entity\Planning;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,12 +33,12 @@ class Recette
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Composition", mappedBy="recette", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Composition", mappedBy="recette", cascade={"persist", "remove"})
      */
     private $compositions;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Planning", mappedBy="recette", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Planning", mappedBy="recette", cascade={"persist", "remove"})
      */
     private $plannings;
 
@@ -44,6 +47,13 @@ class Recette
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Etape", mappedBy="recette", cascade={"persist", "remove"})
      */
     private $etapes;
+
+    /**
+     * Manty Recette have One user
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="recettes")
+     * @ORM\JoinColumn(name="use_oid", referencedColumnName="use_oid")
+     */
+    private $user;
 
     public function __construct()
     {
@@ -94,11 +104,11 @@ class Recette
     /**
      * Add composition
      *
-     * @param \AppBundle\Entity\Composition $composition
+     * @param Composition $composition
      *
      * @return Recette
      */
-    public function addComposition(\AppBundle\Entity\Composition $composition)
+    public function addComposition(Composition $composition)
     {
         $this->compositions[] = $composition;
 
@@ -108,9 +118,9 @@ class Recette
     /**
      * Remove composition
      *
-     * @param \AppBundle\Entity\Composition $composition
+     * @param Composition $composition
      */
-    public function removeComposition(\AppBundle\Entity\Composition $composition)
+    public function removeComposition(Composition $composition)
     {
         $this->compositions->removeElement($composition);
     }
@@ -128,11 +138,11 @@ class Recette
     /**
      * Add planning
      *
-     * @param \AppBundle\Entity\Planning $planning
+     * @param Planning $planning
      *
      * @return Recette
      */
-    public function addPlanning(\AppBundle\Entity\Planning $planning)
+    public function addPlanning(Planning $planning)
     {
         $this->plannings[] = $planning;
 
@@ -142,9 +152,9 @@ class Recette
     /**
      * Remove planning
      *
-     * @param \AppBundle\Entity\Planning $planning
+     * @param Planning $planning
      */
-    public function removePlanning(\AppBundle\Entity\Planning $planning)
+    public function removePlanning(Planning $planning)
     {
         $this->plannings->removeElement($planning);
     }
@@ -162,11 +172,11 @@ class Recette
     /**
      * Add etape
      *
-     * @param \AppBundle\Entity\Etape $etape
+     * @param Etape $etape
      *
      * @return Recette
      */
-    public function addEtape(\AppBundle\Entity\Etape $etape)
+    public function addEtape(Etape $etape)
     {
         $this->etapes[] = $etape;
 
@@ -176,9 +186,9 @@ class Recette
     /**
      * Remove etape
      *
-     * @param \AppBundle\Entity\Etape $etape
+     * @param Etape $etape
      */
-    public function removeEtape(\AppBundle\Entity\Etape $etape)
+    public function removeEtape(Etape $etape)
     {
         $this->etapes->removeElement($etape);
     }
@@ -191,5 +201,21 @@ class Recette
     public function getEtapes()
     {
         return $this->etapes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 }

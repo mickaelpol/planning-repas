@@ -21,7 +21,7 @@ body {
     text-transform: uppercase;
 }
 
-.col.l12 > .btn {
+.btn-register-confirm {
     width: 100%;
 }
 

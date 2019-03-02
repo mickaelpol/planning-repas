@@ -150,6 +150,8 @@ button.btn-4:hover span.span-btn-4::before, button.btn-4:hover span.span-btn-4::
     font-size: 30px;
 }
 .dropdown-content {
+    max-height:250px;
+    overflow:auto;
     top: -5em !important;
 }
 

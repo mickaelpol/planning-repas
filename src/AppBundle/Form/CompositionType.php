@@ -32,7 +32,8 @@ class CompositionType extends AbstractType
                 'choice_label' => 'label',
                 'label'        => 'ingredient.choice',
                 'placeholder'  => 'ingredient.choices',
-            ]);
+            ])
+        ;
     }
 
     /**

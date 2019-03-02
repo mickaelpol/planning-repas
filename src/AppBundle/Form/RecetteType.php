@@ -32,23 +32,13 @@ class RecetteType extends AbstractType
                 'allow_delete'  => true,
                 'by_reference'  => false,
             ])
-//            ->add('etapes', CollectionType::class, [
-//                'entry_type'    => EtapeType::class,
-//                'entry_options' => [
-//                    'label' => false,
-//                ],
-//                'allow_add'     => true,
-//                'allow_delete'  => true,
-//                'by_reference'  => false,
-//            ])
-            ->add('etapes', CollectionType::class,array(
-                'label' => false,
-                'entry_type' => EtapeType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ))
-        ;
+            ->add('etapes', CollectionType::class, array(
+                'label'         => false,
+                'entry_type'    => EtapeType::class,
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'by_reference'  => false,
+            ));
     }
 
     /**

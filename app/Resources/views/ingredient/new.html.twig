@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{#{% trans_default_domain 'FOSUserBundle' %}#}
+
 {% block title %}
     {{ 'ingredient.new'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
@@ -10,71 +12,44 @@
         <link rel="stylesheet" href="{{ asset('css/newIngredient.css') }}">
     {% endblock %}
 
-    <div class="row banderole-header z-depth-3">
-            <h1 class="center-align">Ingredient creation</h1>
-        </div>
-
+    {{ form_start(form) }}
     <div class="row">
-        <div class="col s12 m7">
+        <div class="col s6 offset-s3 m6 offset-m3 l6 offset-l3 xl6 offset-xl3">
             <div class="card">
-                <div class="card-image">
-                    <img class="responsive-img" src="{{ asset('img/comptoir-nourriture.jpg') }}">
-                    <span class="card-title">Ajout d'ingrédient</span>
-                </div>
-                <div class="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                <div class="card-content white-text">
+                    <h1 class="card-title center-align">{{ 'ingredient.creation'|trans({}, 'FOSUserBundle') }}</h1>
+                    <div class="row mt-60">
+                        <div class="col s12 m12 l12 xl12">
+                            <div class="input-field col s12 m12 l12 xl12 fz-20">
+                                <i class="material-icons prefix">create</i>
+                                {{ form_widget(form.nom, {'attr': {'class': 'autocomplete'}}) }}
+                                {{ form_label(form.nom) }}
+                            </div>
+                        </div>
+                        <div class="col s12 m12 l12 xl12">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <i class="material-icons prefix">straighten</i>
+                                {{ form_widget(form.unite, { 'attr': { 'class' : 'autocomplete' } } ) }}
+                                {{ form_label(form.unite) }}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <button class="btn btn-large deep-orange hoverable" type="submit" id="_submit" name="_submit">
+                                <i class="large material-icons right">check</i>
+                                {{ 'create'|trans({}, 'FOSUserBundle') }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    {{ form_end(form) }}
 
-        {{ form_start(form) }}
-        <div class="banderole-body z-depth-3">
-            <div class="row">
-                <div class="col l4 offset-l4">
-                    <div class="row mt-30">
-                        <div class="input-field col s12 fz-20">
-                            <i class="material-icons prefix">create</i>
-                            {{ form_widget(form.nom, { 'id': 'autocomplete-input',  'attr': { 'class' : 'autocomplete' } } ) }}
-                            <label for="autocomplete-input">Nom de l'ingrédient</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col l4 offset-l4">
-                    <div class="row mt-30">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">straighten</i>
-                            {{ form_widget(form.unite, { 'id': 'autocomplete-select',  'attr': { 'class' : 'autocomplete' } } ) }}
-                            {{ form_label(form.unite) }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <input type="submit" value="Ajouter">
-                {#<div class="col l4 offset-l4">#}
-                    {#<a type="submit" class="btn btn-block z-depth-3 pulse orange"><b>Ajouter</b> <i class="material-icons right">add</i></a>#}
-                {#</div>#}
-            </div>
-
-            {{ form_end(form) }}
-        </div>
-
-
-
-
-    <ul>
-        <li>
-            <a href="{{ path('ingredient_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}
 
 {% block javascripts %}

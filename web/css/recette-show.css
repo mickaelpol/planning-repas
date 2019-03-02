@@ -1,0 +1,40 @@
+body {
+    background-image: none;
+    background-color: #FF9800;
+}
+
+.bouton .btn {
+    width: 100%;
+}
+
+.card {
+    background-color: #212121;
+    border: 1px solid #FF5722;
+    border-radius: 5px;
+}
+
+h1.card-title {
+    color: #212121;
+    letter-spacing: 20px !important;
+    font-family: 'Amatic';
+    font-weight: 700 !important;
+    font-size: 50px !important;
+}
+
+@media screen and (max-width: 1440px) {
+    h1.card-title {
+        line-height: 50px !important;
+        text-align: center;
+    }
+}
+
+.collection .collection-item {
+    background-color: #FF5722;
+    /*border: 1px solid #FF5722;*/
+    /*border-radius: 5px;*/
+}
+
+ul.collection {
+    border: 1px solid #FFC107;
+    border-radius: 5px;
+}

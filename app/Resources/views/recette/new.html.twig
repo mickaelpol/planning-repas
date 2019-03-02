@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% block title %}
-    {{ 'recette.new'|trans({}, 'FOSUserBundle') }}
+    {{ 'recette.new'|trans }}
 {% endblock %}
 
 {% block body %}
@@ -10,60 +12,61 @@
         <link rel="stylesheet" href="{{ asset('css/recette.css') }}">
     {% endblock %}
 
-    <div class="row">
-        <div class="divider"></div>
-        <div class="section">
-            <h1 class="center-align">Création de votre recette</h1>
-        </div>
-    </div>
-
-    <div class="row">
-        {{ form_start(form) }}
-
-        <div class="divider"></div>
-        <div class="section">
-
-            <div class="row">
-                <div class="col l6">
-                    <div>
-                        <h5>Nom de votre recette : </h5>
-                        {{ form_widget(form.nom) }}
-                    </div>
+    <div class="row mt-60">
+        <div class="col s10 offset-s1 m10 offset-m1 l12 xl12">
+            {{ form_start(form) }}
+            <div class="card">
+                <div class="card-content white-text">
+                    <div class="card-title center-align">{{ 'recette.creation'|trans }}</div>
+                    <div class="divider mt-30 mb-30"></div>
                     <div class="row">
-                        <div class="input-field col s12">
-                            <h5>etapes</h5>
-                            <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
-                                {% for eta in form.etapes %}
-                                    <li>{{ form_row(eta.description) }}</li>
-                                {% endfor %}
-                            </ul>
+                        <div class="col s12 m10 l10 recette-title">
+                            <h5>{{ 'recette.name'|trans }}</h5>
+                            {{ form_widget(form.nom, {'attr': {'class': 'white-text'}}) }}
+                        </div>
+                        <div class="col s8 m8 l8">
+                            <div class="input-field">
+                                <h5>{{ 'recette.etape'|trans }}</h5>
+                                <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+                                    {% for eta in form.etapes %}
+                                        <div class="row">
+                                            <li>{{ form_label(eta.description) }}</li>
+                                            <li>{{ form_widget(eta.description) }}</li>
+                                        </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <div class="input-field">
+                                <h5>{{ 'recette.ingredient'|trans }}</h5>
+                                <ul class="tags collection" data-prototype="{{ form_widget(form.compositions.vars.prototype)|e('html_attr') }}">
+                                    {% for ing in form.compositions %}
+                                        <li class="collection-item">
+                                            {{ form_widget(ing.quantite) }}
+                                        </li>
+                                        <li class="collection-item">
+                                            {{ form_row(ing.ingredient) }}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="input-field col l4 offset-l2">
-                    <h5>Ajouter vos ingrédients</h5>
-                    <ul class="tags collection" data-prototype="{{ form_widget(form.compositions.vars.prototype)|e('html_attr') }}">
-                        {% for ing in form.compositions %}
-                            <li class="collection-item">
-                                {{ form_widget(ing.quantite) }}
-                            </li>
-                            <li class="collection-item">
-                                {{ form_row(ing.ingredient) }}
-                            </li>
-                        {% endfor %}
-                    </ul>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <button class="btn btn-large deep-orange hoverable" type="submit" id="_submit" name="_submit">
+                                <i class="large material-icons right">check</i>
+                                {{ 'create'|trans }}
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
-            <div class="row">
-                <div class="col l3">
-                    <input type="submit" value="Create"/>
-                </div>
-            </div>
+            {{ form_end(form) }}
         </div>
-
-        {{ form_end(form) }}
     </div>
 
 {% endblock %}
