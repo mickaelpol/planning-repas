@@ -1,5 +1,6 @@
 planning.list: 'List of my schedules'
 planning.create: 'Create a schedule'
+planning.added: 'The planning of mois has been added'
 recette.list: 'List of my recipes'
 add.recette: 'Add a recipe'
 add.ingredient: 'Add an ingredient'

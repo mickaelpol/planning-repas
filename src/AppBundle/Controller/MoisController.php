@@ -43,6 +43,7 @@ class MoisController extends Controller
      */
     public function newAction(Request $request)
     {
+        $translator = $this->get('translator');
         $mois = new Mois();
         $user = $this->getUser();
         $mois->setUser($user);
@@ -61,7 +62,9 @@ class MoisController extends Controller
             $em->flush();
             $this->addFlash(
                 'success',
-                'Le planning de ' . $mois->getNom() . ' à bien été ajouté !'
+                $translator->trans('planning.added', [
+                    'mois' => $mois->getNom()
+                ])
             );
             return $this->redirectToRoute('homepage');
         }

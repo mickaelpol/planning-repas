@@ -20,10 +20,16 @@ body {
 }
 
 .planning-titre {
-    color: #212121;
+    color: #ffffff;
     letter-spacing: 20px;
     font-family: 'Amatic';
     font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .planning-titre {
+        font-size: 40px;
+    }
 }
 
 .page-planning-recette {

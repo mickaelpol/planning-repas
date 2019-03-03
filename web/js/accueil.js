@@ -26,7 +26,7 @@ $(document).ready(function () {
     let tabIng = [];
     let tabIng2 = [];
     // récupère la langue locale du navigateur
-    const lang = $('#lang').data('lang');
+    let locale = localStorage.getItem('language');
 
 
     // Fonction propre à materialize
@@ -65,7 +65,12 @@ $(document).ready(function () {
                 console.log(result, statut);
                 let tab = result.liste;
                 titrePdf = result.titre;
-                titre = `Liste des courses de ${titrePdf}`;
+                switch (locale) {
+                    case 'fr': titre = `Liste des courses de ${titrePdf}`;
+                    break;
+                    case 'en': titre = `List of ${titrePdf} shopping`;
+                    break;
+                }
                 for (let i = 0; i < tab.length; i++) {
                     let info = tab[i];
                     let ingredient = info.ingredient;
@@ -113,9 +118,9 @@ $(document).ready(function () {
                 let message = result.responseJSON.message;
                 let error;
                 if (code !== 400) {
-                    if (lang === 'fr') {
+                    if (locale === 'fr') {
                         error = `<br><div>Si vous voyez cette erreur contactez le développeur <br><a href="mailto:mickael.devweb@gmail.com">à cette adresse </a></div>`;
-                    }  else if (lang === 'en') {
+                    }  else if (locale === 'en') {
                         error = `<br><div>If you see this error contact the developer <br><a href="mailto:mickael.devweb@gmail.com">at this address </a></div>`;
                     }
                     idTitre.html(erreur).css('color', 'red');

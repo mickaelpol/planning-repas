@@ -1,7 +1,11 @@
 $(document).ready(function(){
 
+    let locale = $('#language').data('locale');
+
     Turbolinks.start();
     Turbolinks.clearCache();
+
+    localStorage.setItem('language', locale);
 
     var msg = $('#message');
     var message = $("#message").attr("data-message");

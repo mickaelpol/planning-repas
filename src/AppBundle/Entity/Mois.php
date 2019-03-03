@@ -15,8 +15,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Table(name="moi_mois")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MoisRepository")
  * @UniqueEntity(
- *     fields={"nom", "user"},
- *     message="Le mois de {{ value }} existe déjà ! "
+ *     fields={"monthNumber", "user"},
+ *     message="mois.exist"
  * )
  */
 class Mois

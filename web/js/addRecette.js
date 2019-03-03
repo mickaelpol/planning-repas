@@ -2,11 +2,27 @@ var collectionRecette;
 
 jQuery(document).ready(function() {
 
+    let locale = localStorage.getItem('language');
+
     var dateObj = new Date();
     var actualMonth = dateObj.getMonth();
     var year = dateObj.getUTCFullYear();
-    var weeks = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-    var months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Semptembre', 'Octobre', 'Novembre', 'Decembre'];
+    let jour;
+    let mois;
+
+    switch (locale) {
+        case 'fr': jour = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+        break;
+        case 'en': jour = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        break;
+    }
+
+    switch (locale) {
+        case 'fr': mois = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Semptembre', 'Octobre', 'Novembre', 'Decembre'];
+        break;
+        case 'en': mois = ['January', 'February', 'March', 'April', 'May', 'June', 'Juily', 'August', 'September', 'October', 'November', 'December'];
+        break;
+    }
 
     if (actualMonth === 11) {
         year = dateObj.getUTCFullYear() + 1;
@@ -32,11 +48,18 @@ jQuery(document).ready(function() {
         var value = $('#select').val()-1;
         var nbr = $('#select').val();
         var day = new Date(year + "-"+ nbr + "-01").getDay();
-        var dDay = weeks[day];
+        var dDay = jour[day];
         var content = daysInMonth(nbr, year);
+        let description;
+        switch (locale) {
+            case 'fr': description = `Le début du mois de ${mois[value]} ${year} commence un ${dDay} et contient ${content} Jours`
+            break
+            case 'en': description = `The beginning of ${mois[value]} ${year} starts on a ${dDay} and contains ${content} days`
+            break
+        }
 
-        $('#contains').html(`Le début du mois de ${months[value]} ${year} commence un ${dDay} et contient ${content} Jours`)
-        $('#form-blind').val(months[value]);
+        $('#contains').html(description)
+        $('#form-blind').val(mois[value]);
         $('#form-blind-days').val(content);
         $('#form-blind-number').val(value);
         $('#form-blind-years').val(year);
@@ -58,6 +81,13 @@ jQuery(document).ready(function() {
     // collectionRecette.append($newLinkLiRecette);
     var max = $('.planning-titre').data('max');
 
+    let popup;
+    switch (locale) {
+        case 'fr': popup = 'Le maximum de repas à été ajouté'
+            break
+        case 'en': popup = 'Maximum meal has been added'
+    }
+
     if ($('.erreur').children().length > 0) {
         var length = $('.card-calendar').length;
         if (length === max) {
@@ -73,7 +103,7 @@ jQuery(document).ready(function() {
                 if (length === max) {
                     $('.button-add').hide()
                     M.toast({
-                        html: '<div>Le maximum de repas à été ajouté</div>',
+                        html: `<div>${popup}</div>`,
                         classes: 'rounded red'
                     });
                 } else if (length < max) {
@@ -101,7 +131,7 @@ jQuery(document).ready(function() {
                 if (length === max) {
                     $('.button-add').hide()
                     M.toast({
-                        html: '<div>Le maximum de repas à été ajouté</div>',
+                        html: `<div>${popup}</div>`,
                         classes: 'rounded red'
                     });
                 } else if (length < max) {
@@ -164,6 +194,29 @@ jQuery(document).ready(function() {
 
     }
 
+    let mealsAndMonth;
+    let errorMonth;
+    let meals;
+
+    switch (locale) {
+        case 'fr': mealsAndMonth = 'Un mois et un repas minimum doit être renseigné';
+        break
+        case 'en': mealsAndMonth = 'One month and a minimum meal must be completed';
+        break
+    }
+    switch (locale) {
+        case 'fr': errorMonth = 'Le mois du planning doit être renseigné';
+        break
+        case 'en': errorMonth = 'The month of the planning must be completed';
+        break
+    }
+    switch (locale) {
+        case 'fr': meals = 'Un repas minimum doit être ajouté';
+        break
+        case 'en': meals = 'A minimum meal must be added';
+        break
+    }
+
     $('#btn-submit').on('click', function(e) {
 
         var plannings = $('.card-calendar').length;
@@ -173,14 +226,14 @@ jQuery(document).ready(function() {
             e.preventDefault();
             $('#appbundle_mois_nom').addClass('invalid');
                 M.toast({
-                    html: '<div>Un mois et un repas minimum doit être renseigné</div>',
+                    html: `<div>${mealsAndMonth}</div>`,
                     classes: 'rounded red'
                 });
         } else if (title === "") {
             e.preventDefault();
             $('#appbundle_mois_nom').addClass('invalid');
             M.toast({
-                html: '<div>Le mois du planning doit être renseigné</div>',
+                html: `<div>${errorMonth}</div>`,
                 classes: 'rounded red'
             });
         } else if (plannings === 0 && title !== "") {
@@ -188,24 +241,10 @@ jQuery(document).ready(function() {
             $('#appbundle_mois_nom').removeClass('invalid');
             $('#appbundle_mois_nom').addClass('valid');
             M.toast({
-                html: '<div>Un repas minimum doit être ajouté</div>',
+                html: `<div>${meals}</div>`,
                 classes: 'rounded red'
             });
         }
     });
 
 });
-
-// $(document).ready(function(){
-//     $('select').formSelect();
-//
-//     $('#select').on('change', function(e){
-//         // addRecetteForm(collectionRecette, $newLinkLiRecette);
-//         $('#test').empty();
-//         for (var i = 1; i <= 21; i++) {
-//             $('#test').append('<div class="col l3 mb-15 z-depth-3 card-calendar">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus adipisci atque dolor ea enim esse est fuga iure, maxime molestias nobis obcaecati, optio placeat possimus quibusdam rem similique unde voluptates?</div>');
-//         }
-//         $('#test').append($('#select').val())
-//     })
-//
-// })
