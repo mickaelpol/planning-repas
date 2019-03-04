@@ -62,7 +62,6 @@ $(document).ready(function () {
             type: 'GET',
             dataType: 'JSON',
             success: function (result, statut) {
-                console.log(result, statut);
                 let tab = result.liste;
                 titrePdf = result.titre;
                 switch (locale) {

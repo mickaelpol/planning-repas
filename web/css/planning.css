@@ -38,6 +38,12 @@ body {
     letter-spacing: 5px;
 }
 
+@media screen and (max-width: 768px) {
+    .page-planning-recette {
+        font-size: 16px;
+    }
+}
+
 .page-planning-titre {
     font-family: 'Muli';
     color: #ffffff;
@@ -49,6 +55,17 @@ body {
     font-weight: 500;
     font-size: 26px !important;
     color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+    span.badge {
+        padding: 0px 0px !important;
+        display: block;
+        width: 25%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+    }
 }
 
 .badge {
@@ -87,6 +104,13 @@ span.span-btn-4{
     display: block;
     padding: 15px 80px;
 }
+
+@media screen and (max-width: 430px) {
+    span.span-btn-4 {
+        padding: 15px 30px;
+    }
+}
+
 button.btn-4::before, button.btn-4::after{
     content:"";
     width: 0;
@@ -141,6 +165,12 @@ button.btn-4:hover span.span-btn-4::before, button.btn-4:hover span.span-btn-4::
     color: #FFFFFF;
 }
 
+@media screen and (max-width: 768px) {
+    .indication {
+        font-size: 16px;
+    }
+}
+
 .select-wrapper .caret {
     fill: #FFFFFF;
 }
@@ -161,4 +191,8 @@ button.btn-4:hover span.span-btn-4::before, button.btn-4:hover span.span-btn-4::
     top: -5em !important;
 }
 
-
+.card-calendar .select-wrapper .select-dropdown.dropdown-trigger {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: none;
+}

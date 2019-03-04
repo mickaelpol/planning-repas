@@ -55,8 +55,10 @@
                         {% if not form.monthNumber.vars.valid %}
 
                             {% for error in form.monthNumber.vars.errors %}
-                                <span class="badge left-align red white-text" data-badge-caption="Erreur"></span>
-                                <b class="red-text text-darken-2">{{ error.message }}</b>
+                                <div class="center-align mt-60">
+                                    <span class="badge left-align red white-text" data-badge-caption="Erreur"></span>
+                                    <b class="red-text text-darken-2">{{ error.message }}</b>
+                                </div>
                             {% endfor %}
                         {% endif %}
                     </div>
@@ -86,7 +88,7 @@
                                     </div>
                                 {% endif %}
                                 {% for rec in form.plannings %}
-                                    <div class="col s3 l3 mb-15 z-depth-3 card-calendar">
+                                    <div class="col s12 m4 l3 mb-15 z-depth-3 card-calendar">
                                         {#<div class="col l2 offset-l9"><a class="ml-30 mt-5 btn-floating btn-small waves-effect waves-light red clear"><i class="material-icons">clear</i></a></div>#}
                                         {{ form_row(rec.recette) }}
                                     </div>

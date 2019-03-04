@@ -168,7 +168,14 @@ jQuery(document).ready(function() {
             newForm = newForm.replace(/__name__/g, index);
             // increase the index with one for the next item
             $collectionHolder.data('index', index + 1);
-            var $newFormLi = $('<div class="col s3 l3 mb-15 z-depth-3 card-calendar"></div>').append(newForm);
+            let numberDay;
+            switch (locale) {
+                case 'fr': numberDay = 'Jour';
+                break;
+                case 'en': numberDay = 'Day';
+                break;
+            }
+            var $newFormLi = $('<div class="col s12 m4 l3 mb-15 z-depth-3 card-calendar"></div>').append(newForm).prepend(`<div class="center-align mt-30 mb-30">${numberDay} ${i}</div>`);
             form.append($newFormLi)
         }
 
