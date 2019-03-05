@@ -13,31 +13,20 @@
     {% endblock %}
 
     <div class="row mt-60">
-        <div class="col s10 offset-s1 m10 offset-m1 l12 xl12">
+        <div class="col s12 m10 offset-m1 l12 xl12">
             {{ form_start(form) }}
             <div class="card">
                 <div class="card-content white-text">
                     <div class="card-title center-align">{{ 'recette.creation'|trans }}</div>
                     <div class="divider mt-30 mb-30"></div>
                     <div class="row">
-                        <div class="col s12 m10 l10 recette-title">
-                            <h5>{{ 'recette.name'|trans }}</h5>
-                            {{ form_widget(form.nom, {'attr': {'class': 'white-text'}}) }}
-                        </div>
-                        <div class="col s8 m8 l8">
-                            <div class="input-field">
-                                <h5>{{ 'recette.etape'|trans }}</h5>
-                                <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
-                                    {% for eta in form.etapes %}
-                                        <div class="row">
-                                            <li>{{ form_label(eta.description) }}</li>
-                                            <li>{{ form_widget(eta.description) }}</li>
-                                        </div>
-                                    {% endfor %}
-                                </ul>
+                        <div class="col s12 m10 l6 offset-l4 mb-30 mt-30">
+                            <div class="input-field col s10 offset-s1 m8 offset-m3 l10">
+                                {{ form_widget(form.nom, {'attr': {'class': 'white-text'}}) }}
+                                {{ form_label(form.nom) }}
                             </div>
                         </div>
-                        <div class="col s4 m4 l4">
+                        <div class="col s12 m6 l4">
                             <div class="input-field">
                                 <h5>{{ 'recette.ingredient'|trans }}</h5>
                                 <ul class="tags collection" data-prototype="{{ form_widget(form.compositions.vars.prototype)|e('html_attr') }}">
@@ -48,6 +37,19 @@
                                         <li class="collection-item">
                                             {{ form_row(ing.ingredient) }}
                                         </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col s12 offset-m1 m5 l7 offset-l1">
+                            <div class="input-field">
+                                <h5>{{ 'recette.etape'|trans }}</h5>
+                                <ul class="etapes" data-prototype="{{ form_widget(form.etapes.vars.prototype)|e('html_attr') }}">
+                                    {% for eta in form.etapes %}
+                                        <div class="row">
+                                            <li>{{ form_label(eta.description) }}</li>
+                                            <li>{{ form_widget(eta.description) }}</li>
+                                        </div>
                                     {% endfor %}
                                 </ul>
                             </div>
