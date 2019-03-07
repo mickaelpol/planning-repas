@@ -98,20 +98,6 @@
     border: 1px solid #bdbdbd;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .cadre {
-        max-width: 280px;
-        height: auto;
-    }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 2560px) {
-    .cadre {
-        max-width: 280px;
-        height: auto;
-    }
-}
-
 .snip1307 {
     font-family: 'Raleway', Arial, sans-serif;
     color: #bdbdbd;
@@ -209,4 +195,28 @@
 
 .sidenav li.active {
     background-color: #BDBDBD;
+}
+
+.sidenav-trigger {
+    margin: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .sidenav-trigger {
+        margin: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cadre {
+        max-width: 280px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2560px) {
+    .cadre {
+        max-width: 280px;
+        height: auto;
+    }
 }
