@@ -19,6 +19,10 @@ body {
     line-height: 60px !important;
 }
 
+.divider {
+    background-color: #757575;
+}
+
 
 /* label focus color */
 .input-field input + label {
@@ -64,6 +68,14 @@ body {
 
 .dropdown-content li > a, .dropdown-content li > span {
     color: #212121;
+}
+
+@media screen and (max-width: 930px) {
+    .card-title {
+        font-size: 30px !important;
+        line-height: 45px !important;
+        margin-bottom: 0px;
+    }
 }
 
 /*[class*="col"], footer {*/
