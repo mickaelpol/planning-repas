@@ -1,6 +1,6 @@
 <form action="{{ path("fos_user_security_check") }}" method="post">
     <div class="row mt-60">
-        <div class="col s7 offset-s2 l9 offset-l1">
+        <div class="col s12 m10 offset-m1 m1 l8 offset-l2 xl8 offset-xl2">
             <div class="card">
                 <div class="card-content white-text">
                     <div class="card-title center-align text-connexion">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</div>
@@ -40,13 +40,13 @@
                 </div>
                 <div class="card-action">
                     <div class="row">
-                        <div class="col s6 m6 l6 xl6">
+                        <div class="col s12 m12 l6 xl6 mt-5">
                             <button class="btn btn-large deep-orange" type="submit" id="_submit" name="_submit">
                                 <i class="large material-icons right">check</i>
                                 {{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}
                             </button>
                         </div>
-                        <div class="col s6 m6 l6 xl6">
+                        <div class="col s12 m12 l6 xl6 mt-5">
                             <a href="{{ path('fos_user_registration_register') }}" class="btn btn-large deep-orange">
                                 <i class="large material-icons right">person</i>
                                 {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
