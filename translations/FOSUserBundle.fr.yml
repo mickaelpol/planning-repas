@@ -25,6 +25,7 @@ registration.submit: 'Créer un compte'
 registration.flash.user_created: 'L''utilisateur a été créé avec succès.'
 registration.email.subject: 'Bienvenue %username% !'
 registration.email.message: "Bonjour %username% !\n\nPour valider votre compte utilisateur, merci de vous rendre sur %confirmationUrl%\n\nCe lien ne peut être utilisé qu'une seule fois pour valider votre compte.\n\nCordialement,\nL'équipe\n"
+show.password: 'Voir le mot de passe'
 resetting.check_email: "Un e-mail a été envoyé. Il contient un lien sur lequel il vous faudra cliquer pour réinitialiser votre mot de passe.\nRemarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %tokenLifetime% heures.\n\nSi vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.\n"
 resetting.request.username: 'Nom d''utilisateur ou adresse e-mail'
 resetting.request.submit: 'Réinitialiser le mot de passe'
