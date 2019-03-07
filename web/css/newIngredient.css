@@ -19,7 +19,7 @@ body {
     line-height: 60px !important;
 }
 
-.divider {
+.card .card-content .divider {
     background-color: #757575;
 }
 
