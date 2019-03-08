@@ -42,9 +42,11 @@
                                     {% for recette in recettes %}
                                         <div class="col s12 m6 l6 xl6 center-align text-black mb-15">
                                             <li>
-                                                <div>
-                                                    <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette">{{ recette.nom }}</a>
-                                                </div>
+                                                <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette-nom">
+                                                    <div class="recette">
+                                                        {{ recette.nom }}
+                                                    </div>
+                                                </a>
                                             </li>
                                         </div>
                                     {% endfor %}

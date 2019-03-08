@@ -17,18 +17,25 @@ body {
     font-weight: 700;
 }
 
-li a.recette {
+li a.recette-nom {
     text-decoration: none;
     color: #FF5722;
     text-transform: uppercase;
     font-size: 20px;
     font-family: Righteous;
-    transition: font-size .2s; /* Animation */
 }
 
-li a.recette:hover {
-    font-size: 30px;
+.recette {
+    transition: transform .2s; /* Animation */
 }
+
+.recette:hover {
+    transform: scale(1.25);
+}
+
+/*li a.recette:hover {*/
+    /*font-size: 30px;*/
+/*}*/
 
 .pagination li a {
     color: #FFFFFF;
