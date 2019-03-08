@@ -98,6 +98,18 @@
     border: 1px solid #bdbdbd;
 }
 
+.logo-shadow {
+    filter: blur(1px);
+    width: 45%;
+    height: 1%;
+    background-color: #212121;
+    margin-top: 5px;
+    border: 1px solid #212121;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .logo {
     width: 100%;
     height: auto;
