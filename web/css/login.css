@@ -22,8 +22,28 @@ body {
     text-transform: uppercase;
 }
 
-.col.l6 > .btn {
-    width: 100%;
+@media screen and (min-width: 1418px) {
+    .col.l6 > .btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 993px) {
+    .col.s12 > .btn, .col.m12 > .btn {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 993px) and (max-width: 1418px) {
+    .col.s12 > .btn, .col.m12 > .btn {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
 }
 
 

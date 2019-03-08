@@ -21,6 +21,8 @@
 
         {% block stylesheets %}{% endblock %}
 
+        <div id="language" data-locale="{{ app.request.locale }}"></div>
+
         {# Ajout de la navbar #}
         {% include 'navbar.html.twig' %}
 

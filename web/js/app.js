@@ -1,7 +1,28 @@
+
+    // fonction permettant de changer le type d'un input de type "password"
+    // Avec en paramètres le bouton qui permet de changer le type et en second l'input ou les input à modifiers
+    // peut prendre plusieurs input
+    function showPassword(button, inputPassword){
+        button.on('click', function(e) {
+            e.preventDefault();
+            for (let i = 0; i < inputPassword.length; i++) {
+                if (inputPassword[i].type === 'password') {
+                    inputPassword[i].setAttribute('type', 'text');
+                } else {
+                    inputPassword[i].setAttribute('type', 'password');
+                }
+            }
+        });
+    }
+
 $(document).ready(function(){
+
+    let locale = $('#language').data('locale');
 
     Turbolinks.start();
     Turbolinks.clearCache();
+
+    localStorage.setItem('language', locale);
 
     var msg = $('#message');
     var message = $("#message").attr("data-message");
@@ -26,5 +47,8 @@ $(document).ready(function(){
         e.preventDefault();
         $('.sidenav').sidenav();
     });
+
+    $('.materialboxed').materialbox();
+
 
 });

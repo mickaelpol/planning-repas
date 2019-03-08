@@ -29,6 +29,8 @@ body {
     background-color: #FF5722;
     border: 1px solid #FFC107;
     border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
 }
 
 
@@ -38,62 +40,122 @@ body {
     font-size: 18px;
 }
 .etapes .collection-item label {
-    color: #ffffff !important;
+    color: #212121 !important;
     font-size: 18px;
 }
 
-.row .input-field input {
-    border-bottom: 1px solid #212121 !important;
-    box-shadow: 0 0px 0 0 #212121 !important
-}
-
-.input-field input:focus + label {
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.input-field label.active {
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 20px;
-}
-
-/* label underline focus color */
-.row .input-field input:focus {
-    color: #212121;
-    border-bottom: 1px solid #212121 !important;
-    box-shadow: 0 0px 0 0 #212121 !important
-}
-
-.row .input-field input {
-    color: #212121;
-}
-
-.etapes .materialize-textarea {
-    color: #FFFFFF;
-}
-
-textarea.materialize-textarea {
-    border-bottom: 1px solid #FF5722 !important;
-    box-shadow: 0 0px 0 0 #FF5722 !important
+.etapes .collection-item {
+    background-color: #FF5722;
+    border: 1px solid #FFC107;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 15px;
+    color: #ffffff !important;
+    font-size: 18px;
 }
 
 .dropdown-content li span {
     color: #212121 !important;
 }
 
-.recette-title input:focus + label {
-    text-transform: uppercase;
-    color: #FF5722;
-}
-
-.recette-title input {
-    border-bottom: 1px solid #FF5722 !important;
-    box-shadow: 0 0px 0 0 #FF5722 !important;
-}
-
-
 .col.l12 > .btn {
     width: 100%;
+}
+
+/* label focus color */
+.input-field input + label {
+    color: #bdbdbd !important;
+    font-size: 18px;
+}
+
+.row .input-field input, .row .input-field textarea {
+    border-bottom: 1px solid #FFFFFF !important;
+    box-shadow: 0 0px 0 0 #FFFFFF !important
+}
+
+.row .input-field .select-dropdown, .row .input-field .select-dropdown:focus {
+    color: #212121;
+}
+
+.input-field input:focus + label {
+    color: #e64a19 !important;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.input-field label.active {
+    color: #e64a19 !important;
+    text-transform: uppercase;
+    font-size: 20px;
+}
+
+.tags .collection-item label.active {
+    color: #212121 !important;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.etapes .collection-item label.active {
+    color: #212121 !important;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* label underline focus color */
+.row .input-field input:focus {
+    color: #FFFFFF;
+    border-bottom: 1px solid #E64A19 !important;
+    box-shadow: 0 0px 0 0 #E64A19 !important
+}
+
+.input-field .tags input:focus {
+    border-bottom: 1px solid #212121 !important;
+    box-shadow: 0 0px 0 0 #212121 !important
+}
+
+.row .input-field input {
+    color: #FFFFFF;
+}
+
+.input-field .tags input, .input-field .etapes textarea, .input-field .tags input:focus, .input-field .etapes textarea:focus {
+    color: #212121;
+}
+
+@media screen and (max-width: 940px) {
+    .card .card-content .card-title {
+        font-size: 30px !important;
+        line-height: 45px !important;
+    }
+
+    .input-field input:focus + label {
+        font-size: 15px;
+        color: #e64a19 !important;
+    }
+
+    .input-field label.active {
+        color: #e64a19 !important;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    .input-field input + label {
+        text-align: center;
+    }
+
+    .tags .collection-item label.active {
+        color: #212121 !important;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .input-field .etapes label.active {
+        color: #212121 !important;
+        text-transform: uppercase;
+        font-size: 15px;
+        font-weight: bold;
+    }
 }

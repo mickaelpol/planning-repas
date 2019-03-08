@@ -98,102 +98,93 @@
     border: 1px solid #bdbdbd;
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    .cadre {
-        max-width: 280px;
-        height: auto;
-    }
-}
-
-@media screen and (min-width: 1024px) and (max-width: 2560px) {
-    .cadre {
-        max-width: 280px;
-        height: auto;
-    }
-}
-
-.snip1307 {
-    font-family: 'Raleway', Arial, sans-serif;
-    color: #bdbdbd;
-    max-width: 285px;
+.logo {
     width: 100%;
-    text-align: center;
-    font-size: 16px;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    padding: 30px 0 10px 0;
+    height: auto;
 }
 
-.snip1307 h1,
-.snip1307 h5 {
-    margin: 0;
-    text-transform: uppercase;
-}
-.snip1307 h1 {
-    font-family: 'Righteous';
-    font-size: 1.8em;
-    line-height: 50px;
-    position: relative;
-    background-color: #bdbdbd;
-    color: #212121;
-    text-align: center;
-    margin: 0 30px 10px;
-}
-.snip1307 h1:before,
-.snip1307 h1:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0;
-    top: -5px;
-    border-width: 25px 10px;
-    border-style: solid;
-}
-.snip1307 h1:before {
-    left: -23px;
-    border-color: #bdbdbd #bdbdbd #bdbdbd transparent;
-}
-.snip1307 h1:after {
-    right: -23px;
-    border-color: #bdbdbd transparent #bdbdbd #bdbdbd;
-}
-.snip1307 h5 {
-    font-weight: 500;
-}
-.snip1307 h6 {
-    margin: 0;
-    display: inline-block;
-    position: relative;
-}
-.snip1307 h6:before,
-.snip1307 h6:after {
-    position: absolute;
-    height: 1px;
-    content: '';
-    background: #bdbdbd;
-    width: 30px;
-    top: 50%;
-}
-.snip1307 h6:before {
-    left: -35px;
-}
-.snip1307 h6:after {
-    right: -35px;
-}
-.snip1307 .diamond {
-    width: 10px;
-    height: 10px;
-    margin: 15px 5px;
-    display: inline-block;
-    line-height: 80px;
-    background: #bdbdbd;
-    -webkit-transform: rotateZ(-45deg);
-    transform: rotateZ(-45deg);
-}
-.snip1307 .diamond:nth-of-type(2) {
-    -webkit-transform: rotateZ(-45deg) scale(2) translate(2px, -2px);
-    transform: rotateZ(-45deg) scale(2) translate(2px, -2px);
-}
+/*.snip1307 {*/
+    /*font-family: 'Raleway', Arial, sans-serif;*/
+    /*color: #bdbdbd;*/
+    /*max-width: 285px;*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+    /*font-size: 16px;*/
+    /*-webkit-box-sizing: content-box;*/
+    /*box-sizing: content-box;*/
+    /*padding: 30px 0 10px 0;*/
+/*}*/
+
+/*.snip1307 h1,*/
+/*.snip1307 h5 {*/
+    /*margin: 0;*/
+    /*text-transform: uppercase;*/
+/*}*/
+/*.snip1307 h1 {*/
+    /*font-family: 'Righteous';*/
+    /*font-size: 1.8em;*/
+    /*line-height: 50px;*/
+    /*position: relative;*/
+    /*background-color: #bdbdbd;*/
+    /*color: #212121;*/
+    /*text-align: center;*/
+    /*margin: 0 30px 10px;*/
+/*}*/
+/*.snip1307 h1:before,*/
+/*.snip1307 h1:after {*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*top: -5px;*/
+    /*border-width: 25px 10px;*/
+    /*border-style: solid;*/
+/*}*/
+/*.snip1307 h1:before {*/
+    /*left: -23px;*/
+    /*border-color: #bdbdbd #bdbdbd #bdbdbd transparent;*/
+/*}*/
+/*.snip1307 h1:after {*/
+    /*right: -23px;*/
+    /*border-color: #bdbdbd transparent #bdbdbd #bdbdbd;*/
+/*}*/
+/*.snip1307 h5 {*/
+    /*font-weight: 500;*/
+/*}*/
+/*.snip1307 h6 {*/
+    /*margin: 0;*/
+    /*display: inline-block;*/
+    /*position: relative;*/
+/*}*/
+/*.snip1307 h6:before,*/
+/*.snip1307 h6:after {*/
+    /*position: absolute;*/
+    /*height: 1px;*/
+    /*content: '';*/
+    /*background: #bdbdbd;*/
+    /*width: 30px;*/
+    /*top: 50%;*/
+/*}*/
+/*.snip1307 h6:before {*/
+    /*left: -35px;*/
+/*}*/
+/*.snip1307 h6:after {*/
+    /*right: -35px;*/
+/*}*/
+/*.snip1307 .diamond {*/
+    /*width: 10px;*/
+    /*height: 10px;*/
+    /*margin: 15px 5px;*/
+    /*display: inline-block;*/
+    /*line-height: 80px;*/
+    /*background: #bdbdbd;*/
+    /*-webkit-transform: rotateZ(-45deg);*/
+    /*transform: rotateZ(-45deg);*/
+/*}*/
+/*.snip1307 .diamond:nth-of-type(2) {*/
+    /*-webkit-transform: rotateZ(-45deg) scale(2) translate(2px, -2px);*/
+    /*transform: rotateZ(-45deg) scale(2) translate(2px, -2px);*/
+/*}*/
 
 .sidenav .user-view .email {
     padding-bottom: 210px;
@@ -209,4 +200,33 @@
 
 .sidenav li.active {
     background-color: #BDBDBD;
+}
+
+.bouton-menu {
+    z-index: 1;
+    position: fixed;
+}
+
+.sidenav-trigger {
+    margin: 20px;
+}
+
+@media screen and (max-width: 425px) {
+    .sidenav-trigger {
+        margin: 0px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .cadre {
+        max-width: 280px;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 2560px) {
+    .cadre {
+        max-width: 280px;
+        height: auto;
+    }
 }

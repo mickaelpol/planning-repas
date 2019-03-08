@@ -25,16 +25,16 @@
             <div class="card">
                 <div class="card-content white-text">
                     <div class="row">
-                        <div class="col s3 m3 l3">
-                            <img class="responsive-img" src="https://picsum.photos/5000" alt="">
+                        <div class="col s4 offset-s4 m3 l3">
+                            <img class="materialboxed circle responsive-img" src="https://picsum.photos/5000" alt="">
                         </div>
-                        <div class="col s6 offset-s1 m6 offset-m1 l6 offset-l1 left-align">
+                        <div class="col s12 m8 l8 center-align">
                             <h1 class="card-title white-text">{{ recette.nom }}</h1>
                         </div>
                     </div>
                     <div class="divider mt-60"></div>
                     <div class="row mt-60">
-                        <div class="col s4 m4 l4">
+                        <div class="col s12 m4 l3">
                             <ul class="collection fz-16 z-depth-3">
                                 {% for compo in recette.compositions %}
                                     {% if compo.ingredient.unite.symbole == 'Pcs' %}
@@ -50,11 +50,12 @@
                                 {{ 'author'|trans }} {{ recette.user.username }}
                             </div>
                         </div>
-                        <div class="col s8 m8 l7">
+                        <div class="col s12 m8 l6 offset-l1">
                             <ul class="center-align">
                                 {% for etape in recette.etapes %}
                                     <div class="section fz-16">
-                                        <li><b><u>{{ 'etape'|trans }} {{ loop.index }}:</u></b> <br>{{ etape.description }}</li>
+                                        <li class="mb-10"><b><u>{{ 'etape'|trans }} {{ loop.index }}:</u></b></li>
+                                        <li>{{ etape.description }}</li>
                                         <br>
                                     </div>
                                 {% endfor %}
@@ -64,7 +65,12 @@
                 </div>
                 <div class="card-action">
                     <div class="row bouton">
-                        <div class="col s4 m4 l4 xl4">
+                        <div class="col s4 hide-on-med-and-up">
+                            <a href="{{ path('recette_index') }}" class="btn btn-large deep-orange hoverable">
+                                <i class="large material-icons center">chevron_left</i>
+                            </a>
+                        </div>
+                        <div class="col hide-on-small-only m4 l4 xl4">
                             <a href="{{ path('recette_index') }}" class="btn btn-large deep-orange hoverable">
                                 <i class="large material-icons left">chevron_left</i>
                                 {{ 'recette.list.get_back'|trans }}
@@ -81,29 +87,29 @@
                 <div class="card">
                     <div class="card-content white-text">
                         <div class="row">
-                            <div class="col s3 m3 l3">
-                                <img class="responsive-img" src="https://picsum.photos/5000" alt="">
+                            <div class="col s4 offset-s4 m3 l3">
+                                <img class="materialboxed circle responsive-img" src="https://picsum.photos/5000" alt="">
                             </div>
                             {% if currentUser == author %}
-                            <div class="col s6 m6 l6 center-align">
+                            <div class="col s12 m8 l8 center-align">
                                 <h1 class="card-title white-text">{{ recette.nom }}</h1>
                             </div>
-                            <div class="col s3 m3 l3">
-                                <a href="{{ path('recette_edit', {'id': recette.id}) }}" class="btn btn-large btn-floating deep-orange right">
+                            <div class="col center s12 m1 l1 mt-20">
+                                <a href="{{ path('recette_edit', {'id': recette.id}) }}" class="btn btn-large btn-floating deep-orange pulse">
                                     <i class="material-icons">edit</i>
                                 </a>
                             </div>
 
                             {% else %}
 
-                            <div class="col s6 offset-s1 m6 offset-m1 l6 offset-l1 left-align">
-                            <h1 class="card-title white-text">{{ recette.nom }}</h1>
+                            <div class="col s12 m6 offset-m1 l8 center-align">
+                                <h1 class="card-title white-text">{{ recette.nom }}</h1>
                             </div>
                             {% endif %}
                         </div>
                         <div class="divider mt-60"></div>
                         <div class="row mt-60">
-                            <div class="col s4 m4 l4">
+                            <div class="col s12 m4 l3">
                                 <ul class="collection fz-16 z-depth-3">
                                     {% for compo in recette.compositions %}
                                         {% if compo.ingredient.unite.symbole == 'Pcs' %}
@@ -119,11 +125,12 @@
                                     {{ 'author'|trans }} {{ recette.user.username }}
                                 </div>
                             </div>
-                            <div class="col s8 m8 l7">
+                            <div class="col s12 m8 l6 offset-l1">
                                 <ul class="center-align">
                                     {% for etape in recette.etapes %}
                                         <div class="section fz-16">
-                                            <li><b><u>{{ 'etape'|trans }} {{ loop.index }}:</u></b> <br>{{ etape.description }}</li>
+                                            <li class="mb-10"><b><u>{{ 'etape'|trans }} {{ loop.index }}:</u></b></li>
+                                            <li>{{ etape.description }}</li>
                                             <br>
                                         </div>
                                     {% endfor %}
@@ -134,23 +141,39 @@
                     <div class="card-action">
                         <div class="row bouton">
                             {% if currentUser == author %}
-                            <div class="col s4 m4 l4 xl4">
+                            <div class="col hide-on-small-only m4 l4 xl4">
                                 <a href="{{ path('recette_index') }}" class="btn btn-large deep-orange hoverable">
                                     <i class="large material-icons left">chevron_left</i>
                                     {{ 'recette.list.get_back'|trans }}
                                 </a>
                             </div>
-                            <div class="col s4 m4 l4 xl4">
+                            <div class="col hide-on-small-only m4 l4 xl4">
                                 <a href="{{ path('recette_new') }}" class="btn btn-large deep-orange hoverable">
-                                    <i class="large material-icons right">check</i>
+                                    <i class="large material-icons right">add</i>
                                     {{ 'create'|trans }}
                                 </a>
                             </div>
                             {{ form_start(delete_form) }}
-                            <div class="col s4 m4 l4 xl4">
+                            <div class="col hide-on-small-only m4 l4 xl4">
                                 <button class="btn btn-large deep-orange hoverable" type="submit" id="_submit" name="_submit">
                                     <i class="large material-icons right">delete</i>
                                     {{ 'delete'|trans }}
+                                </button>
+                            </div>
+                            <div class="col s4 hide-on-med-and-up">
+                                <a href="{{ path('recette_index') }}" class="btn btn-large deep-orange hoverable">
+                                    <i class="large material-icons center">chevron_left</i>
+                                </a>
+                            </div>
+                            <div class="col s4 hide-on-med-and-up">
+                                <a href="{{ path('recette_new') }}" class="btn btn-large deep-orange hoverable">
+                                    <i class="large material-icons center">add</i>
+                                </a>
+                            </div>
+                            {{ form_start(delete_form) }}
+                            <div class="col s4 hide-on-med-and-up">
+                                <button class="btn btn-large deep-orange hoverable" type="submit" id="_submit" name="_submit">
+                                    <i class="large material-icons center">delete</i>
                                 </button>
                             </div>
                             {{ form_end(delete_form) }}

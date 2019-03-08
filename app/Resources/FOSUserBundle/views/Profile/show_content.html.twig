@@ -1,5 +1,5 @@
 <div class="row mt-60">
-    <div class="col s7 offset-s2 l12">
+    <div class="col s12 m8 offset-m2 l6 offset-l3 xl6 offset-xl3">
         <div class="card hoverable">
             <div class="card-content white-text">
                 <span class="card-title center-align">{{ 'profile.title'|trans({}, 'FOSUserBundle') }}</span>
@@ -9,13 +9,13 @@
             </div>
             <div class="card-action">
                 <div class="row">
-                    <div class="col s12 offset-xl3 xl3">
+                    <div class="col s12 m12 l12 xl12 mt-5">
                         <a class="btn btn-edit-profile btn-large hoverable deep-orange" href="{{ path('fos_user_profile_edit') }}">
                             <i class="material-icons left">edit</i>
                             <span>{{ 'edit'|trans({}, 'FOSUserBundle') }}</span>
                         </a>
                     </div>
-                    <div class="col s12 xl3">
+                    <div class="col s12 m12 l12 xl12 mt-5">
                         <a class="btn btn-large btn-edit-paswword hoverable red" href="{{ path('fos_user_change_password') }}">
                             <i class="material-icons left">lock</i>
                            <span>{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</span>

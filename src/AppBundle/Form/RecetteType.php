@@ -17,7 +17,7 @@ class RecetteType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom de votre Recette : ',
+                'label' => 'recette.name',
             ])
             ->add('compositions', CollectionType::class, [
                 'attr'          => [
