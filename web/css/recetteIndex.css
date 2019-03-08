@@ -3,16 +3,24 @@ body {
     background-color: #FF9800;
 }
 
-h1.recette-list {
-    color: #212121;
+.card {
+    background-color: #212121;
+    border: 1px solid #FF5722;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-transform: uppercase;
+    color: #FFFFFF;
     letter-spacing: 20px;
     font-family: 'Amatic';
     font-weight: 700;
 }
 
+
 li a.recette {
     text-decoration: none;
-    color: #212121;
+    color: #FF5722;
     text-transform: uppercase;
     font-size: 20px;
     font-family: Righteous;
@@ -39,7 +47,7 @@ li a.recette:hover {
 }
 
 .input-field .prefix.active {
-    color: #212121;
+    color: #FFFFFF;
 }
 
 /* label focus color */
@@ -54,22 +62,23 @@ li a.recette:hover {
 }
 
 .input-field input:focus + label {
-    color: #212121 !important;
+    color: #FFFFFF !important;
     font-size: 20px;
     font-weight: 700;
 }
 /* label underline focus color */
 .row .input-field input:focus {
-    border-bottom: 1px solid #212121 !important;
-    box-shadow: 0 0px 0 0 #212121 !important
+    border-bottom: 1px solid #BDBDBD !important;
+    box-shadow: 0 0px 0 0 #BDBDBD !important
 }
 
 input.search {
     font-size: 20px;
+    color: #FFFFFF;
 }
 
 .recette-indisponible {
-    color: #212121;
+    color: #BDBDBD;
     font-weight: 700;
     font-family: Amatic;
     letter-spacing: 20px;
