@@ -29,7 +29,9 @@ show.password: 'Voir le mot de passe'
 resetting.check_email: "Un e-mail a été envoyé. Il contient un lien sur lequel il vous faudra cliquer pour réinitialiser votre mot de passe.\nRemarque : Vous ne pouvez demander un nouveau mot de passe que toutes les %tokenLifetime% heures.\n\nSi vous ne recevez pas un email, vérifiez votre dossier spam ou essayez à nouveau.\n"
 resetting.request.username: 'Nom d''utilisateur ou adresse e-mail'
 resetting.request.submit: 'Réinitialiser le mot de passe'
+resetting.request.button: 'Réinitialiser'
 resetting.reset.submit: 'Modifier le mot de passe'
+resetting.reset.button: 'Modifier'
 resetting.flash.success: 'Le mot de passe a été réinitialisé avec succès.'
 resetting.email.subject: 'Réinitialisation de votre mot de passe'
 resetting.email.message: "Bonjour %username% !\n\nPour réinitialiser votre mot de passe, merci de vous rendre sur %confirmationUrl%\n\nCordialement,\nL'équipe\n"
