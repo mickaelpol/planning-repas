@@ -89,4 +89,17 @@ $(document).ready(function() {
 
     }
 
+    $('#btnOpen').on('click', function(e) {
+        $('.image-upload').click();
+    });
+    let $val = $('.image-uload').val();
+
+    $('.image-uload').on('change', function(e) {
+        console.log($val);
+    })
+
+    // function openImageInput(firstBtn, secondBtn) {
+    //
+    // }
+
 });

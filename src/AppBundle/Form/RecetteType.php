@@ -21,6 +21,9 @@ class RecetteType extends AbstractType
                 'label' => 'recette.name',
             ])
             ->add('imageFile', VichImageType::class, [
+                'attr' => [
+                    'class' => 'hide image-upload',
+                ],
                 'required' => false,
                 'allow_delete' => true,
                 'download_uri' => true,
