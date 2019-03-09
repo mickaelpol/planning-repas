@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class RecetteType extends AbstractType
 {
@@ -18,6 +19,12 @@ class RecetteType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'recette.name',
+            ])
+            ->add('imageFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_uri' => true,
+                'label' => false,
             ])
             ->add('compositions', CollectionType::class, [
                 'attr'          => [
