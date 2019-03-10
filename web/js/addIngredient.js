@@ -89,17 +89,25 @@ $(document).ready(function() {
 
     }
 
+    function readURL(input, id, idImg) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(`#${id}`).html(`<img id="${idImg}" class="responsive-img preview-image" src="" alt="preview image">`)
+                $(`#${idImg}`).attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     $('#btnOpen').on('click', function(e) {
         $('.image-upload').click();
     });
-    let $val = $('.image-uload').val();
 
-    $('.image-uload').on('change', function(e) {
-        console.log($val);
+    $('.image-upload').change(function(e) {
+        readURL(this, 'preview', 'blob');
     })
-
-    // function openImageInput(firstBtn, secondBtn) {
-    //
-    // }
 
 });

@@ -15,19 +15,24 @@
     <div class="row mt-60">
         <div class="col s12 m10 offset-m1 l12 xl12">
             {{ form_start(form) }}
-            <button id="btnOpen" class="btn" type="button">
-                ajouter une image
-            </button>
-            {{ form_widget(form.imageFile) }}
             <div class="card">
                 <div class="card-content white-text">
                     <div class="card-title center-align">{{ 'recette.creation'|trans }}</div>
                     <div class="divider mt-30 mb-30"></div>
                     <div class="row">
-                        <div class="col s12 m10 l6 offset-l4 mb-30 mt-30">
-                            <div class="input-field col s10 offset-s1 m8 offset-m3 l10">
-                                {{ form_widget(form.nom, {'attr': {'class': 'white-text'}}) }}
-                                {{ form_label(form.nom) }}
+                        <div class="row">
+                            <div class="col s12 l4 xl4 center-align">
+                                <button id="btnOpen" class="btn btn-large deep-orange add-image mb-30" type="button" style="">
+                                    {{ 'add.image'|trans({}, 'FOSUserBundle') }}
+                                </button>
+                                <div class="mt-30 preview" id="preview"></div>
+                                {{ form_widget(form.imageFile) }}
+                            </div>
+                            <div class="col s12 m10 l5 xl5 mb-30 mt-30">
+                                <div class="input-field col s10 offset-s1 m8 offset-m3 l10">
+                                    {{ form_widget(form.nom, {'attr': {'class': 'white-text'}}) }}
+                                    {{ form_label(form.nom) }}
+                                </div>
                             </div>
                         </div>
                         <div class="col s12 m6 l4">
