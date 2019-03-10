@@ -9,6 +9,23 @@ body {
     border-radius: 5px;
 }
 
+.add-image {
+    position: relative;
+    top: 50%;
+    transform: translateY(100%);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preview {
+    position: relative;
+}
+
+.preview-image {
+    width: 80%;
+    height: auto;
+}
+
 .card-title {
     text-transform: uppercase;
     font-family: Amatic;
@@ -80,7 +97,7 @@ body {
 .input-field input:focus + label {
     color: #e64a19 !important;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 900;
 }
 

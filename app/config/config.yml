@@ -8,6 +8,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    app.path.image_recettes: /uploads/images/recettes
 
 framework:
     #esi: ~
@@ -79,3 +80,14 @@ sensio_framework_extra:
 fos_rest:
     routing_loader:
         default_format: json
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        image_recettes:
+            uri_prefix:         '%app.path.image_recettes%'
+            upload_destination: '%kernel.root_dir%/../web/uploads/images/recettes'
+            namer: vich_uploader.namer_uniqid
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

@@ -1,5 +1,6 @@
 planning.list: 'Liste de mes plannings'
 planning.create: 'Créer un planning'
+planning.added: 'Le planning de mois à bien été ajouté'
 recette.list: 'Toutes les recettes'
 recette.name: 'Nom de votre Recette'
 add.recette: 'Ajouter une recette'
