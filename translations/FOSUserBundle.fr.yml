@@ -93,6 +93,7 @@ mois:
 planning.add.recette: 'Ajouter vos Recettes et choisissez leurs jours d''attribution'
 planning.edit: 'Edition du planning'
 planning.index: 'Liste des plannings'
+planning.my.index: 'Liste de mes plannings'
 planning.new: 'Nouveau planning'
 planning.create: 'Planning de :'
 planning.show: 'Planning du mois de'
