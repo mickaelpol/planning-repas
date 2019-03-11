@@ -44,7 +44,7 @@
                                             <li>
                                                 <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette-nom">
                                                     <figure class="snip1585">
-                                                        <img src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="sample106" />
+                                                        <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="sample106" />
                                                         <figcaption>
                                                             <h3>Recette <span class="recette">{{ recette.nom }}</span></h3>
                                                         </figcaption>

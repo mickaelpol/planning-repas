@@ -31,13 +31,13 @@ li a.recette-nom {
     display: inline-block;
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
-    margin: 10px;
+    margin: 0px;
     max-width: 315px;
     min-width: 230px;
     overflow: hidden;
     position: relative;
     text-align: center;
-    /*width: 100%;*/
+    width: 100%;
 }
 
 .snip1585 * {
