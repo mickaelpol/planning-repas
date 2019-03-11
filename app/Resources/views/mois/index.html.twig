@@ -1,48 +1,68 @@
 {% extends 'base.html.twig' %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% block title %}
     {{ 'mois.index'|trans({}, 'FOSUserBundle') }}
 {% endblock %}
 
 {% block body %}
 
-    {% block stylesheets %}
-        <link rel="stylesheet" href="">
-    {% endblock %}
+    {#{% block stylesheets %}#}
+        {#<link rel="stylesheet" href="">#}
+    {#{% endblock %}#}
 
-    <h1>Mois list</h1>
+    <link rel="stylesheet" href="{{ asset('css/planning_index.css') }}">
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mois in mois %}
-            <tr>
-                <td><a href="{{ path('mois_show', { 'id': mois.id }) }}">{{ mois.id }}</a></td>
-                <td>{{ mois.nom }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('mois_show', { 'id': mois.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('mois_edit', { 'id': mois.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="row mt-60">
+        <div class="col s12 m10 offset-m1 l12 xl12">
+            <div class="card">
+                <div class="card-content white-text">
+                    <div class="card-title">
+                        <h1 class="center-align recette-list">{{ 'planning.my.index'|trans }}</h1>
+                    </div>
+                    <div class="divider mt-30 mb-50"></div>
+                    <div id="list-planning">
+                        <div class="row center-align mt-30">
+                            <div class="input-field col s12 m6 l4 offset-l2 mb-30">
+                                <i class="material-icons prefix">search</i>
+                                <input id="icon_prefix" type="text" class="search"/>
+                                <label for="icon_prefix">{{ 'recette.search'|trans }}</label>
+                            </div>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <div class="col s12 m6 l6 right">
+                                    <a href="{{ path('mois_new') }}" class="btn-floating btn-large waves-effect waves-light deep-orange hoverable">
+                                        <i class="material-icons">add</i>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row mt-60">
+                            <ul class="list">
+                                {# ICI LES PLANNINGS #}
+                                {% for mois in mois %}
+                                    <div class="col s12 m6 l6 xl6 center-align text-black mb-15">
+                                        <li>
+                                            <a href="{{ path('mois_show', { 'id': mois.id }) }}" class="planning-nom">
+                                                <div class="planning">
+                                                    {{ mois.nom }}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <ul class="pagination center-align mt-80"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('mois_new') }}">Create a new mois</a>
-        </li>
-    </ul>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('node_modules/list.js/dist/list.js') }}"></script>
+    <script src="{{ asset('js/paginationIndex.js') }}"></script>
 {% endblock %}
