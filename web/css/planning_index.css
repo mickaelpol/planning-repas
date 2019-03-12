@@ -91,6 +91,15 @@ input.search {
     font-family: Righteous;
 }
 
+.planning-nothing {
+    color: #FF5722;
+}
+.planning-nothing h3 {
+    font-family: Amatic;
+    font-weight: 700;
+    letter-spacing: 15px;
+}
+
 @media only screen and (max-width: 600px) {
     .card-title h1 {
         font-size: 30px;
