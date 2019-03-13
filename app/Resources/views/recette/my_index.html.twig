@@ -42,9 +42,12 @@
                                         <div class="col s12 m6 l6 xl6 center-align text-black mb-15">
                                             <li>
                                                 <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette-nom">
-                                                    <div class="recette">
-                                                        {{ recette.nom }}
-                                                    </div>
+                                                    <figure class="snip1585">
+                                                        <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="sample106" />
+                                                        <figcaption>
+                                                            <h3>{{ recette.nom }}</h3>
+                                                        </figcaption>
+                                                    </figure>
                                                 </a>
                                             </li>
                                         </div>
@@ -59,17 +62,26 @@
         </div>
         {% else %}
 
-        <div class="row mt-60">
-            <div class="col s12 l12 center-align">
-                <h1 class="recette-indisponible">{{ 'recette.none'|trans }}</h1>
-                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                    <p class="para-recette-indisponible">{{ 'recette.create.that'|trans }}</p>
-                    <a class="btn btn-large deep-orange pulse" href="{{ path('recette_new') }}">
-                        <i class="material-icons right">add</i>
-                        {{ 'recette.click'|trans }}
-                    </a>
-                {% endif %}
-
+        <div class="row">
+            <div class="row">
+                <div class="col s12 m8 offset-m2 l10 offset-l1 xl6 offset-xl3">
+                    <div class="card">
+                        <div class="card-content white-text">
+                            <span class="card-title">
+                                <h1 class="recette-indisponible center-align">{{ 'recette.none'|trans }}</h1>
+                            </span>
+                            <div class="divider mt-30 mb-50"></div>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <p class="center-align">{{ 'recette.none.create'|trans({}, 'FOSUserBundle') }}</p>
+                                <div class="center-align mt-25">
+                                    <a class="btn btn-large btn-floating z-depth-3 pulse orange" href="{{ path('recette_new') }}">
+                                        <i class="material-icons icone-resto">restaurant_menu</i>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

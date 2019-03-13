@@ -180,7 +180,7 @@ input.search {
 }
 
 .recette-indisponible {
-    color: #BDBDBD;
+    color: #FFFFFF;
     font-weight: 700;
     font-family: Amatic;
     letter-spacing: 20px;
@@ -190,10 +190,12 @@ input.search {
     font-family: Righteous;
 }
 
+/* Media query mobile */
 @media only screen and (max-width: 600px) {
     .card-title h1 {
         font-size: 30px;
         line-height: 40px;
+        word-wrap: break-word;
     }
 
     .pagination li.active {
@@ -204,6 +206,7 @@ input.search {
     }
 }
 
+/* Media query tablette */
 @media only screen and (min-width: 600px) and (max-width: 993px) {
     .pagination li.active {
         width: 7%;
@@ -213,6 +216,7 @@ input.search {
     }
 }
 
+/* Media query laptop */
 @media only screen and (min-width: 993px) and (max-width: 1200px) {
     .pagination li.active {
         width: 5%;
