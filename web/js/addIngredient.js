@@ -89,4 +89,25 @@ $(document).ready(function() {
 
     }
 
+    function readURL(input, id, idImg) {
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(`#${id}`).html(`<img id="${idImg}" class="responsive-img preview-image" src="" alt="preview image">`)
+                $(`#${idImg}`).attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $('#btnOpen').on('click', function(e) {
+        $('.image-upload').click();
+    });
+
+    $('.image-upload').change(function(e) {
+        readURL(this, 'preview', 'blob');
+    })
+
 });

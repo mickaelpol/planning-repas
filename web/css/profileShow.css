@@ -18,6 +18,54 @@ body {
     border-radius: 5px;
 }
 
+.profile-user-info {
+    display: table;
+    width: 98%;
+    width: calc(100% - 24px);
+    margin: 0 auto;
+}
+
+.profile-info-row {
+    display: table-row;
+}
+
+.profile-info-name,
+.profile-info-value {
+    display: table-cell;
+}
+
+.profile-info-name {
+    text-align: right;
+    padding: 6px 10px 6px 4px;
+    font-weight: 400;
+    color: #667E99;
+    background-color: transparent;
+    width: 110px;
+    vertical-align: middle;
+}
+
+.profile-info-value {
+    padding: 6px 4px 6px 6px;
+    word-break: break-word;
+}
+
+.profile-info-value>span+span:before {
+    display: inline;
+    content: ",";
+    margin-left: 1px;
+    margin-right: 3px;
+    color: #666;
+    border-bottom: 1px solid #FFF;
+}
+
+.profile-info-value>span+span.editable-container:before {
+    display: none;
+}
+.profile-info-row:first-child .profile-info-name,
+.profile-info-row:first-child .profile-info-value {
+    border-top: none;
+}
+
 .btn-edit-profile, .btn-edit-paswword {
     width: 100%;
 }

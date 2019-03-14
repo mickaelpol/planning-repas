@@ -4,8 +4,22 @@
             <div class="card-content white-text">
                 <span class="card-title center-align">{{ 'profile.title'|trans({}, 'FOSUserBundle') }}</span>
                 <div class="divider mt-30 mb-30"></div>
-                <p class="center-align">{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</p>
-                <p class="center-align">{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</p>
+                <div class="profile-user-info">
+                    <div class="col s12 m12 l12 xl6 offset-xl3">
+                        <div class="profile-info-row">
+                            <div class="profile-info-name"><i class="material-icons">person</i> </div>
+                            <div class="profile-info-value">
+                                <span>{{ user.username }}</span>
+                            </div>
+                        </div>
+                        <div class="profile-info-row">
+                            <div class="profile-info-name"><i class="material-icons">email</i> </div>
+                            <div class="profile-info-value">
+                                <span>{{ user.email }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="card-action">
                 <div class="row">
