@@ -50,5 +50,19 @@ $(document).ready(function(){
 
     $('.materialboxed').materialbox();
 
+    $('.tap-target').tapTarget();
 
+    if (window.innerWidth < 769) {
+        $('#menu').click(() => {
+           $('.tap-target').tapTarget('open');
+        });
+    } else {
+        $('#menu').mouseover(() => {
+            $('.tap-target').tapTarget('open');
+        });
+
+        $('.tapmenu').mouseleave(() => {
+            $('.tap-target').tapTarget('close');
+        });
+    }
 });

@@ -213,20 +213,53 @@
         {#</div>#}
         {% for planning in plannings %}
 
-            <div class="fixed-action-btn toolbar direction-top">
-                <a class="btn-floating btn-large deep-orange pulse">
-                    <i class="large material-icons">menu</i>
-                </a>
-                <ul>
-                    <li class="waves-effect waves-light hide-on-med-and-down"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>
-                    <li class="waves-effect waves-light hide-on-med-and-down BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}</a></li>
+            <div class="tapmenu">
+                <div class="fixed-action-btn">
+                    <a id="menu" class="btn-floating btn-large deep-orange pulse">
+                        <i class="fas fa-info"></i>
+                    </a>
+                </div>
 
-                    <li class="waves-effect waves-light hide-on-large-only"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i></a></li>
-                    <li class="waves-effect waves-light hide-on-large-only BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i></a></li>
-                    <li class="waves-effect waves-light hide-on-large-only BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i></a></li>
-                </ul>
+                <!-- Tap Target Structure -->
+                <div class="tap-target" data-target="menu">
+                    <div class="tap-target-content">
+
+                        <a class="snip0040" href="{{ path('mois_edit', { 'id': planning.id }) }}">
+                            <i class="material-icons">edit</i>
+                            <h5>
+                                {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}
+                            </h5>
+                        </a>
+                        <a class="BtnModalActualMonth snip0040" href="{{ path('actual_month') }}" class="amber">
+                            <i class="material-icons">add_shopping_cart</i>
+                            <h5>
+                                {{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}
+                            </h5>
+                        </a>
+                        <a class="BtnModalNextMonth snip0040" href="{{ path('next_month') }}" class="red">
+                            <i class="material-icons">add_shopping_cart</i>
+                            <h5>
+                                {{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}
+                            </h5>
+                        </a>
+                    </div>
+                </div>
             </div>
+
+            {#<div class="fixed-action-btn toolbar direction-top">#}
+                {#<a class="btn-floating btn-large deep-orange pulse">#}
+                    {#<i class="large material-icons">menu</i>#}
+                {#</a>#}
+                {#<ul>#}
+                    {#<li class="waves-effect waves-light hide-on-med-and-down"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i> {{ 'edit'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>#}
+                    {#<li class="waves-effect waves-light hide-on-med-and-down BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list'|trans({}, 'FOSUserBundle') }} {{ planning.nom }}</a></li>#}
+                    {#<li class="waves-effect waves-light hide-on-med-and-down BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i>{{ 'purchase.list.of.next.month'|trans({}, 'FOSUserBundle') }}</a></li>#}
+
+                    {#<li class="waves-effect waves-light hide-on-large-only"><a href="{{ path('mois_edit', { 'id': planning.id }) }}" class="deep-orange"><i class="material-icons">edit</i></a></li>#}
+                    {#<li class="waves-effect waves-light hide-on-large-only BtnModalActualMonth"><a href="{{ path('actual_month') }}" class="amber"><i class="material-icons">add_shopping_cart</i></a></li>#}
+                    {#<li class="waves-effect waves-light hide-on-large-only BtnModalNextMonth"><a href="{{ path('next_month') }}" class="red"><i class="material-icons">add_shopping_cart</i></a></li>#}
+                {#</ul>#}
+            {#</div>#}
 
             <div id="lang" data-lang="{{ app.request.locale }}" class="hide"></div>
 
@@ -251,7 +284,7 @@
                         <a class="right modal-close waves-effect waves-green btn-floating red"><i class="material-icons">close</i></a>
                         <h4 class="center-align" id="title2"></h4>
                     </div>
-                    <p class="left-align" id="data2"></p>
+                    <p class="center-align" id="data2"></p>
                 </div>
                 <div class="modal-footer">
                     <a id="downloadBtnNext" href="#" class="modal-close waves-effect waves-green btn"><i class="material-icons left">file_download</i>{{ 'download'|trans({}, 'FOSUserBundle') }}</a>

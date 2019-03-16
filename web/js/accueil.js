@@ -16,9 +16,9 @@ $(document).ready(function () {
     let titre = '';
 
     // Url ou sera dirigé la requête Ajax
-    const url = btnModal1.children().attr('href');
+    const url = btnModal1.attr('href');
     // Url ou sera dirigé la requête Ajax
-    const url2 = btnModal2.children().attr('href');
+    const url2 = btnModal2.attr('href');
     // Bouton de download
     const dlBtn = $('#downloadBtn');
     const dlBtn2 = $('#downloadBtnNext');
@@ -30,8 +30,10 @@ $(document).ready(function () {
 
 
     // Fonction propre à materialize
+    // $('.fixed-action-btn').floatingActionButton({
+    //     hoverEnabled: true,
+    // });
     $('.fixed-action-btn').floatingActionButton({
-        toolbarEnabled: true,
         hoverEnabled: true,
     });
     $('.tooltipped').tooltip();
@@ -45,6 +47,11 @@ $(document).ready(function () {
         data.empty();
     }
 
+    // Fonction permettant de fermer le tap-target à l'uverture du modal
+    function onModalOpen1() {
+        $('.tap-target').tapTarget('close');
+    }
+
     // Fonction permettant de vider le contenu du modal mois prochain à sa fermeture
     function onModalClose2() {
         titre = '';
@@ -53,8 +60,9 @@ $(document).ready(function () {
     }
 
     // Function de gestion de la requete ajax
-    function reqAjax(modal, fonction, url, idTitre, idPara, tableau) {
+    function reqAjax(modal, fonction, fonctionOpen ,url, idTitre, idPara, tableau) {
         modal.modal('open', {
+            onOpenStart: fonctionOpen,
             onCloseEnd: fonction
         });
         $.ajax({
@@ -163,13 +171,19 @@ $(document).ready(function () {
     // Listenner du bouton pour ouvrir le modal 1
     btnModal1.click(e => {
         e.preventDefault();
-        reqAjax($('#modal1'), onModalClose1(), url, title, data, tabIng);
+        $('.tap-target-wrapper').removeClass('open');
+        setTimeout(() => {
+            reqAjax($('#modal1'), onModalClose1(), onModalOpen1(), url, title, data, tabIng);
+        }, 200);
     });
 
     // Listenner du bouton pour ouvrir le modal 2
     btnModal2.click(e => {
         e.preventDefault();
-        reqAjax($('#modal2'), onModalClose2(), url2, title2, data2, tabIng2);
+        $('.tap-target-wrapper').removeClass('open');
+        setTimeout(() => {
+            reqAjax($('#modal2'), onModalClose2(), onModalOpen1(), url2, title2, data2, tabIng2);
+        }, 200);
     });
 
     // Bouton pour download le pdf du modal 1
@@ -183,5 +197,9 @@ $(document).ready(function () {
         e.preventDefault();
         downloadPDF(titre, tabIng2);
     })
+
+    // $('body').click(function() {
+    //     $('.tap-target').tapTarget('close');
+    // });
 
 })
