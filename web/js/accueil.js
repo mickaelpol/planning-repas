@@ -47,11 +47,6 @@ $(document).ready(function () {
         data.empty();
     }
 
-    // Fonction permettant de fermer le tap-target à l'uverture du modal
-    function onModalOpen1() {
-        $('.tap-target').tapTarget('close');
-    }
-
     // Fonction permettant de vider le contenu du modal mois prochain à sa fermeture
     function onModalClose2() {
         titre = '';
@@ -60,9 +55,8 @@ $(document).ready(function () {
     }
 
     // Function de gestion de la requete ajax
-    function reqAjax(modal, fonction, fonctionOpen ,url, idTitre, idPara, tableau) {
+    function reqAjax(modal, fonction ,url, idTitre, idPara, tableau) {
         modal.modal('open', {
-            onOpenStart: fonctionOpen,
             onCloseEnd: fonction
         });
         $.ajax({
@@ -173,7 +167,7 @@ $(document).ready(function () {
         e.preventDefault();
         $('.tap-target-wrapper').removeClass('open');
         setTimeout(() => {
-            reqAjax($('#modal1'), onModalClose1(), onModalOpen1(), url, title, data, tabIng);
+            reqAjax($('#modal1'), onModalClose1(), url, title, data, tabIng);
         }, 200);
     });
 
@@ -182,7 +176,7 @@ $(document).ready(function () {
         e.preventDefault();
         $('.tap-target-wrapper').removeClass('open');
         setTimeout(() => {
-            reqAjax($('#modal2'), onModalClose2(), onModalOpen1(), url2, title2, data2, tabIng2);
+            reqAjax($('#modal2'), onModalClose2(), url2, title2, data2, tabIng2);
         }, 200);
     });
 
@@ -197,9 +191,5 @@ $(document).ready(function () {
         e.preventDefault();
         downloadPDF(titre, tabIng2);
     })
-
-    // $('body').click(function() {
-    //     $('.tap-target').tapTarget('close');
-    // });
 
 })
