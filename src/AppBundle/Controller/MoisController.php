@@ -63,16 +63,112 @@ class MoisController extends Controller
             $this->addFlash(
                 'success',
                 $translator->trans('planning.added', [
-                    'mois' => $mois->getNom()
+                    'mois' => $mois->getNom(),
                 ])
             );
             return $this->redirectToRoute('homepage');
         }
 
         return $this->render('mois/new.html.twig', array(
-            'mois'      => $mois,
-            'form'      => $form->createView(),
+            'mois' => $mois,
+            'form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @param int $month
+     * @param int $year
+     * @return string
+     */
+    function getFirstDayWeekOfMonth(int $month, int $year): array
+    {
+        $week = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+
+        $firstDayNumber = date("w", mktime(0, 0, 0, $month, 1, $year));
+        $firstDay = $week[$firstDayNumber];
+        $weeks = [];
+
+        switch ($firstDay) {
+            case 'Lundi':
+                $weeks = [
+                    0 => 'Lundi',
+                    1 => 'Mardi',
+                    2 => 'Mercredi',
+                    3 => 'Jeudi',
+                    4 => 'Vendredi',
+                    5 => 'Samedi',
+                    6 => 'Dimanche',
+                ];
+                break;
+            case 'Mardi':
+                $weeks = [
+                    0 => 'Mardi',
+                    1 => 'Mercredi',
+                    2 => 'Jeudi',
+                    3 => 'Vendredi',
+                    4 => 'Samedi',
+                    5 => 'Dimanche',
+                    6 => 'Lundi',
+                ];
+                break;
+            case 'Mercredi':
+                $weeks = [
+                    0 => 'Mercredi',
+                    1 => 'Jeudi',
+                    2 => 'Vendredi',
+                    3 => 'Samedi',
+                    4 => 'Dimanche',
+                    5 => 'Lundi',
+                    6 => 'Mardi',
+                ];
+                break;
+            case 'Jeudi':
+                $weeks = [
+                    0 => 'Jeudi',
+                    1 => 'Vendredi',
+                    2 => 'Samedi',
+                    3 => 'Dimanche',
+                    4 => 'Lundi',
+                    5 => 'Mardi',
+                    6 => 'Mercredi',
+                ];
+                break;
+            case 'Vendredi':
+                $weeks = [
+                    0 => 'Vendredi',
+                    1 => 'Samedi',
+                    2 => 'Dimanche',
+                    3 => 'Lundi',
+                    4 => 'Mardi',
+                    5 => 'Mercredi',
+                    6 => 'Jeudi',
+                ];
+                break;
+            case 'Samedi':
+                $weeks = [
+                    0 => 'Samedi',
+                    1 => 'Dimanche',
+                    2 => 'Lundi',
+                    3 => 'Mardi',
+                    4 => 'Mercredi',
+                    5 => 'Jeudi',
+                    6 => 'Vendredi',
+                ];
+                break;
+            case 'Dimanche':
+                $weeks = [
+                    0 => 'Dimanche',
+                    1 => 'Lundi',
+                    2 => 'Mardi',
+                    3 => 'Mercredi',
+                    4 => 'Jeudi',
+                    5 => 'Vendredi',
+                    6 => 'Samedi',
+                ];
+                break;
+        }
+
+        return $weeks;
     }
 
     /**
@@ -85,10 +181,19 @@ class MoisController extends Controller
      */
     public function showAction(Mois $mois)
     {
+        $year = $mois->getYear();
+        $monthNumber = $mois->getMonthNumber() + 1;
+
+        $firstWeek = $this->getFirstDayWeekOfMonth($monthNumber, $year);
+        $numberDayOfMonth = cal_days_in_month(CAL_GREGORIAN, $monthNumber, $year);
+
+
         $deleteForm = $this->createDeleteForm($mois);
 
         return $this->render('mois/show.html.twig', array(
             'mois'        => $mois,
+            'weeks'       => $firstWeek,
+            'nbr'         => $numberDayOfMonth,
             'delete_form' => $deleteForm->createView(),
         ));
     }
