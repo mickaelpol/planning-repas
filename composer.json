@@ -45,7 +45,6 @@
     },
     "scripts": {
         "compile": [
-            "bin/console doctrine:schema:create",
             "npm install",
             "cd web && rm app_dev.php"
 
