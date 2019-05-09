@@ -27,7 +27,7 @@ security:
             remember_me:
                 secret:   '%secret%'
                 lifetime: 604800 # 1 week in seconds
-                path:     /
+                path:     /home
             logout_on_user_change: true
 
 
