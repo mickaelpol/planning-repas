@@ -73,5 +73,11 @@
             "file": "app/config/parameters.yml"
         },
         "branch-alias": null
-    }
+    },
+    "compile": [
+        "bin/console doctrine:schema:update --force",
+        "mv node_modules web",
+        "cd web && rm app_dev.php"
+
+    ]
 }

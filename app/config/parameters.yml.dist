@@ -3,11 +3,11 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 # This file is auto-generated during the composer install
 parameters:
-    database_host: 127.0.0.1
-    database_port: null
-    database_name: organisation-repas
-    database_user: root
-    database_password: admin
+    database_host:     %env(mysql://bbe505ab648969:f248b52c@eu-cdbr-west-02.cleardb.net/heroku_c8dc7d69d9379a1?reconnect=true)%
+    database_port:     ~
+    database_name:     'organisation-repas'
+    database_user:     %env(bbe505ab648969)%
+    database_password: %env(f248b52c)%
     mailer_auth_mode: login
     mailer_port: 465
     mailer_encryption: ssl
