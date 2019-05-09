@@ -44,13 +44,6 @@
         "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
-        "compile": [
-            "bin/console doctrine:schema:create --force",
-            "bin/console doctrine:schema:update --force",
-            "npm install && mv node_modules web",
-            "cd web && rm app_dev.php"
-
-        ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
@@ -64,6 +57,13 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
+        ],
+        "compile": [
+            "bin/console doctrine:schema:create --force",
+            "bin/console doctrine:schema:update --force",
+            "npm install && mv node_modules web",
+            "cd web && rm app_dev.php"
+
         ]
     },
     "config": {
