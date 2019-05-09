@@ -45,9 +45,9 @@
     },
     "scripts": {
         "compile": [
+            "bin/console doctrine:database:drop --force",
             "bin/console doctrine:schema:create",
             "npm install",
-            "mv node_modules web",
             "cd web && rm app_dev.php"
 
         ],
