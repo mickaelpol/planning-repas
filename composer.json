@@ -43,6 +43,13 @@
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0"
     },
+    "compile": [
+        "bin/console doctrine:schema:create --force",
+        "bin/console doctrine:schema:update --force",
+        "npm install && mv node_modules web",
+        "cd web && rm app_dev.php"
+
+    ],
     "scripts": {
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -57,13 +64,6 @@
         ],
         "post-update-cmd": [
             "@symfony-scripts"
-        ],
-        "compile": [
-            "bin/console doctrine:schema:create --force",
-            "bin/console doctrine:schema:update --force",
-            "npm install && mv node_modules web",
-            "cd web && rm app_dev.php"
-
         ]
     },
     "config": {
