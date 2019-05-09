@@ -3,7 +3,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 # This file is auto-generated during the composer install
 parameters:
-    database_host:     bbe505ab648969:f248b52c@eu-cdbr-west-02.cleardb.net/heroku_c8dc7d69d9379a1
+    database_host:     mysql://bbe505ab648969:77a3d10d4ba8e98@us-cdbr-east.cleardb.com/heroku_c8dc7d69d9379a1?reconnect=true
     database_port:     ~
     database_name:     'heroku_c8dc7d69d9379a1'
     database_user:     bbe505ab648969
