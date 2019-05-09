@@ -46,6 +46,7 @@
     "scripts": {
         "compile": [
             "npm install",
+            "npm audit fix",
             "cd web && rm app_dev.php"
 
         ],
