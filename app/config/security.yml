@@ -22,7 +22,7 @@ security:
                 csrf_token_generator: security.csrf.token_manager
             logout:
                 path:    /logout
-                target:    /
+                target:    /login
             anonymous:    true
             remember_me:
                 secret:   '%secret%'
