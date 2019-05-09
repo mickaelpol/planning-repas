@@ -77,9 +77,7 @@
     "compile": [
         "bin/console doctrine:schema:create --force",
         "bin/console doctrine:schema:update --force",
-        "mv node_modules web",
-        "cd web && npm install",
-        "cd web && node_modules/.bin/gulp scss:prod",
+        "npm install && mv node_modules web",
         "cd web && rm app_dev.php"
 
     ]
