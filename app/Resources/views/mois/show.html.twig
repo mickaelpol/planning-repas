@@ -10,32 +10,605 @@
         <link rel="stylesheet" href="">
     {% endblock %}
 
-    <h1>Mois</h1>
+    {#<style>#}
+        {#/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);*/#}
+        {#*, *::after, *::before }#}{##}{##}
+            {#box-sizing: border-box;#}
+        {#}#}{##}{##}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ mois.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ mois.nom }}</td>
-            </tr>
-        </tbody>
-    </table>
+        {#body }#}{##}{##}
+            {#color: #BDBDBD;#}
+            {#font-family: Muli;#}
+            {#font-weight: 700;#}
+            {#min-height: 100vh;#}
+        {#}#}{##}{##}
 
-    <ul>
-        <li>
-            <a href="{{ path('mois_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('mois_edit', { 'id': mois.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {#main }#}{##}{##}
+            {#background-color: #212121;#}
+            {#box-shadow: 0px 0px 0px 2px #E64A19, 10px 10px 20px 10px rgba(78, 79, 74, 0.5);#}
+            {#flex-basis: 980px;#}
+        {#}#}{##}{##}
+
+        {#.calendar }#}{##}{##}
+            {#table-display: fixed;#}
+            {#border: 2px solid #E64A19;#}
+            {#width: 100%;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__header,#}
+        {#.calendar__day__cell }#}{##}{##}
+            {#border: 2px solid #E64A19;#}
+            {#text-align: center;#}
+            {#width: 100% / 7;#}
+            {#vertical-align: middle;#}
+        {#}#}{##}{##}
+        {#.calendar__day__header:first-child,#}
+        {#.calendar__day__cell:first-child }#}{##}{##}
+            {#border-left: none;#}
+        {#}#}{##}{##}
+        {#.calendar__day__header:last-child,#}
+        {#.calendar__day__cell:last-child }#}{##}{##}
+            {#border-right: 2px solid #E64A19;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__header,#}
+        {#.calendar__day__cell }#}{##}{##}
+            {#padding: .75rem 0 1.5rem;#}
+        {#}#}{##}{##}
+
+        {#.calendar__banner--month }#}{##}{##}
+            {#border: 2px solid #E64A19;#}
+            {#border-bottom: none;#}
+            {#text-align: center;#}
+            {#padding: .75rem;#}
+        {#}#}{##}{##}
+        {#.calendar__banner--month h1 }#}{##}{##}
+            {#background-color: #4E4F4A;#}
+            {#color: #F6E9DC;#}
+            {#display: inline-block;#}
+            {#font-size: 3rem;#}
+            {#font-weight: 700;#}
+            {#letter-spacing: 0.1em;#}
+            {#padding: .5rem 2rem;#}
+            {#text-transform: uppercase;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__header }#}{##}{##}
+            {#font-size: 1rem;#}
+            {#letter-spacing: 0.1em;#}
+            {#text-transform: uppercase;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__cell }#}{##}{##}
+            {#font-size: 2rem;#}
+            {#position: relative;#}
+            {#perspective: 550px;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__cell p }#}{##}{##}
+            {#line-height: 80px;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__cell:hover .card}#}{##}{##}
+            {#-webkit-transform: rotateY( 180deg );#}
+            {#transform: rotateY( 180deg );#}
+        {#}#}{##}{##}
+
+        {#.card }#}{##}{##}
+            {#-webkit-transition: -webkit-transform 0.7s;#}
+            {#transition: transform 0.7s;#}
+            {#-webkit-transform-style: preserve-3d;#}
+            {#transform-style: preserve-3d;#}
+        {#}#}{##}{##}
+
+        {#.front, .back }#}{##}{##}
+            {#-webkit-backface-visibility: hidden;#}
+            {#backface-visibility: hidden;#}
+        {#}#}{##}{##}
+
+        {#.back }#}{##}{##}
+            {#-webkit-transform: rotateY( 180deg );#}
+            {#transform: rotateY( 180deg );#}
+        {#}#}{##}{##}
+
+        {#.card }#}{##}{##}
+            {#width: 150px;#}
+            {#height: 150px;#}
+            {#margin: 10px;#}
+            {#background-color: initial;#}
+            {#box-shadow: none;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__cell a }#}{##}{##}
+            {#text-decoration: none;#}
+            {#color: #BDBDBD;#}
+        {#}#}{##}{##}
+
+        {#.front, .back }#}{##}{##}
+            {#/*box-shadow: 0 1px 6px 0;*/#}
+            {#position: absolute;#}
+            {#width: 100%;#}
+            {#top: 0;#}
+            {#bottom: 0;#}
+        {#}#}{##}{##}
+
+        {#img }#}{##}{##}
+            {#display: block;#}
+            {#max-width: 100%;#}
+            {#height: 100%;#}
+            {#object-fit: cover;#}
+        {#}#}{##}{##}
+
+        {#.calendar__day__cell.dday, .calendar__day__cell.dday p }#}{##}{##}
+            {#color: #E64A19;#}
+        {#}#}{##}{##}
+
+    {#</style>#}
+
+    {#<div class="col l12 s12">#}
+        {#<main>#}
+            {#<table class="calendar">#}
+                {#<caption class="calendar__banner--month">#}
+                    {#<h1>{{ mois.nom }}</h1>#}
+                {#</caption>#}
+                {#<thead>#}
+                {#<tr>#}
+                    {#{% for week in weeks %}#}
+                        {#<th class="calendar__day__header">{{ week }}</th>#}
+                    {#{% endfor %}#}
+                {#</tr>#}
+                {#</thead>#}
+                {#<tbody>#}
+
+                {% set now = "now"|date('m/Y') %}
+                {% if mois.monthNumber < 10 %}
+                    {% set moisNumber = 0 ~ (mois.monthNumber + 1) %}
+                    {% else %}
+                    {% set moisNumber = mois.monthNumber %}
+                {% endif %}
+                {% set planDate = moisNumber ~ "/" ~ mois.year %}
+
+                    {#<tr>
+                        {% for i in mois.plannings %}
+                        <td class="calendar__day__cell {% if now == planDate and loop.index == "now"|date("d") %}dday{% endif %}">
+                            {{ loop.index }}
+                            <a href="{{ path('recette_show', {'id': i.recette.id}) }}">
+                                <div class="card">
+                                    <div class="{% if now == planDate and loop.index == "now"|date("d") %}back{% else %}front{% endif %}">
+                                        <p>
+                                            {{ i.recette.nom }}
+                                        </p>
+                                    </div>
+                                    <div class="{% if now == planDate and loop.index == "now"|date("d") %}front{% else %}back{% endif %}">
+                                        <img src="{{ asset('uploads/images/recettes/' ~ i.recette.imageName ) }}">
+                                    </div>
+                                </div>
+                            </a>
+                        </td>
+                            {% if loop.index % 7 == 0 %}
+                    </tr>
+                            {% endif %}
+                        {% endfor %}#}
+                {#</tbody>#}
+            {#</table>#}
+        {#</main>#}
+    {#</div>#}
+
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #BDBDBD;
+        }
+
+        tbody a {
+            color: #212121;
+            font-family: Muli;
+            font-weight: 900;
+            font-size: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: solid 1px #455A64;
+        }
+
+        th {
+            background-color: #E64A19;
+            color: #212121;
+            font-family: Amatic;
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #757575;
+        }
+
+        .title-planning {
+            text-align: center;
+        }
+
+        .card-container {
+            -webkit-perspective: 500px;
+            perspective: 500px;
+        }
+
+        .card-container:hover .card{
+            -webkit-transform: rotateY( 180deg );
+            transform: rotateY( 180deg );
+        }
+
+        .card {
+            -webkit-transition: -webkit-transform 0.7s;
+            transition: transform 0.7s;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+        img.responsive-img {
+            max-width: 100%;
+            max-height: 100%
+        }
+
+        .front, .back {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+        .back {
+            -webkit-transform: rotateY( 180deg );
+            transform: rotateY( 180deg );
+        }
+
+        .card {
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+            box-shadow: none;
+            border-radius: 0px;
+            background-color: transparent;
+        }
+
+        .front, .back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*box-shadow: 0 1px 6px 0;*/
+            position: absolute;
+            width: 100%;
+            top: 0;
+            bottom: 0;
+        }
+
+        img {
+            display: block;
+        }
+
+        .calendar__day__cell .index {
+        font-size: 1.5em;
+        font-family: Montserrat;
+        font-weight: 700;
+        position: relative;
+        }
+
+        .calendar__day__cell p{
+        font-size: 1em;
+        font-family: Muli;
+        font-weight: 700;
+        position: relative;
+        }
+
+        .calendar__day__cell.dday, .calendar__day__cell.dday p {
+            color: #212121;
+        }
+
+        .calendar__day__cell.dday .index {
+            font-size: 2em;
+            /*border: 2px solid #212121;*/
+            /*border-radius: 50%;*/
+            /*background-color: #E64A19;*/
+        }
+
+        .enfant1 {
+            font-size: 2em;
+            font-weight: 900;
+            font-family: Montserrat;
+            border: 2px solid black;
+            border-radius: 50%;
+            background-color: #E64A19;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        .enfant2 {
+            font-weight: 900;
+            font-size: 2em;
+            color: #212121;
+        }
+
+        .enfant2 img {
+            display: block;
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .test {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+            .card {
+                width: 100%;
+                height: 60px;
+                margin: 0;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+            .card {
+                width: 80px;
+                height: 80px;
+                margin: 0;
+            }
+
+            .front {
+                font-size: 0.8em;
+            }
+
+        }
+
+        @media only screen and (max-width: 768px) {
+             table {
+                background-color: transparent;
+            }
+            .table-responsive table,
+            .table-responsive thead,
+            .table-responsive tbody,
+            .table-responsive tr,
+            .table-responsive th,
+            .table-responsive td {
+                display: block;
+            }
+
+            .table-responsive thead {
+                position:absolute; top:-999px; left:-9999px;
+            }
+
+            .table-responsive td {
+                padding-left: 150px;
+                position: relative;
+                margin-top: -1px;
+                background-color: #FFF;
+            }
+
+            .table-responsive td:nth-child(odd) {
+                background-color: #FF5722;
+            }
+
+            .table-responsive td::before {
+                content: attr(data-label);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 130px;
+                bottom: 0;
+                background-color: #E64A19;
+                color: #212121;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                font-weight: 900;
+                font-family: Amatic;
+                font-size: 25px;
+                border-right: 1px solid black;
+            }
+
+            .table-responsive tr {
+                margin-bottom: 1rem;
+            }
+
+            .card {
+                width: 100%;
+                height: auto;
+                margin: 10px;
+                padding-bottom: 10px;
+                box-shadow: none;
+                border-radius: 0px;
+                background-color: transparent;
+            }
+
+            .calendar__day__cell .index {
+                font-size: 2rem;
+                border: solid 2px #212121;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                background-color: #757575;
+                color: #FFF;
+                font-family: Montserrat;
+            }
+
+            .calendar__day__cell.dday .index {
+                color: #212121;
+                background-color: #FFC107;
+                border: 2px solid #212121;
+            }
+
+            .card-container:hover .card{
+                -webkit-transform: none;
+                transform: none;
+            }
+
+            .index {
+                text-align: left;
+            }
+
+            .back {
+                 -webkit-transform: none;
+                 transform: none;
+            }
+
+            .calendar__day__cell.dday, .calendar__day__cell.dday p {
+                color: #212121;
+            }
+
+            .calendar__day__cell p {
+                font-size: 16px;
+            }
+            
+            .back img, .front img {
+                display: none;
+            }
+        }
+
+    </style>
+
+    <div class="row">
+        <div class="">
+            <table class="table-responsive">
+                <thead>
+                <tr>
+                    {% for week in weeks %}
+                        <th class="center-align">{{ week }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+
+                    {% for i in mois.plannings %}
+                    <td class="calendar__day__cell {% if now == planDate and loop.index == "now"|date("d") %}dday{% endif %}">
+                        {% if now == planDate and loop.index == "now"|date("d") %}
+
+                            <div class="conteneur">
+                                <div class="parent">
+                                    <div class="test">
+                                        <div class="enfant1">
+                                            {{ loop.index }}
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href="{{ path('recette_show', {'id': i.recette.id}) }}">
+                                            <div class="enfant2">
+                                                <div class="cards-container">
+                                                    <div class="card-container">
+                                                        <div class="card">
+                                                            <div class="back">
+                                                                {{ i.recette.nom }}
+                                                            </div>
+                                                            <div class="front">
+                                                                <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ i.recette.imageName ) }}">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                                <div class="index center-align">
+                                    {{ loop.index }}
+                                </div>
+                                <a href="{{ path('recette_show', {'id': i.recette.id}) }}">
+                                    <div class="card-container">
+                                        <div class="center-align card">
+                                            {#{% if now == planDate and loop.index == "now"|date("d") %}back{% else %}front{% endif %}#}
+                                            <div class="front">
+                                                <p>
+                                                    {{ i.recette.nom }}
+                                                </p>
+                                            </div>
+                                            {#{% if now == planDate and loop.index == "now"|date("d") %}front{% else %}back{% endif %}#}
+                                            <div class="back">
+                                                <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ i.recette.imageName ) }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                        {% endif %}
+                    </td>
+                    {% if loop.index % 7 == 0 %}
+                </tr>
+                {% endif %}
+                {% endfor %}
+                {#<tr>#}
+                    {#<td>café</td>#}
+                    {#<td>poivron</td>#}
+                    {#<td>lasagne</td>#}
+                    {#<td>gratin</td>#}
+                    {#<td>pate</td>#}
+                    {#<td>pizza</td>#}
+                    {#<td>hamburger</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td>artichaud</td>#}
+                    {#<td>pistache</td>#}
+                    {#<td>vanille</td>#}
+                    {#<td>fraise</td>#}
+                    {#<td>chocolat</td>#}
+                    {#<td>biscottes</td>#}
+                    {#<td>gateau</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td>fromage</td>#}
+                    {#<td>paté</td>#}
+                    {#<td>pain</td>#}
+                    {#<td>saucisson</td>#}
+                    {#<td>citron</td>#}
+                    {#<td>vin</td>#}
+                    {#<td>whisky</td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td>vodka</td>#}
+                    {#<td>pastis</td>#}
+                    {#<td>ricard</td>#}
+                    {#<td></td>#}
+                    {#<td></td>#}
+                    {#<td></td>#}
+                    {#<td></td>#}
+                {#</tr>#}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            document.querySelectorAll('.table-responsive').forEach((table) => {
+                let labels = Array.from(table.querySelectorAll('th')).map((th) => {
+                    return th.innerText;
+                });
+                table.querySelectorAll('td').forEach((td, i) => {
+                    td.setAttribute('data-label', labels[i % labels.length]);
+                })
+            });
+        });
+    </script>
+
 {% endblock %}
+
+coucou
