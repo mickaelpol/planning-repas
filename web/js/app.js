@@ -19,7 +19,7 @@ $(document).ready(function(){
 
     let locale = $('#language').data('locale');
 
-    Turbolinks.start();
+    // Turbolinks.start();
     // Turbolinks.clearCache();
 
     localStorage.setItem('language', locale);
