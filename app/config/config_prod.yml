@@ -3,7 +3,7 @@ imports:
 
 doctrine:
     dbal:
-        url: mysql://bbe505ab648969:f248b52c@eu-cdbr-west-02.cleardb.net/heroku_c8dc7d69d9379a1?reconnect=true
+        url: mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
 #    orm:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
