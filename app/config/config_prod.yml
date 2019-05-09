@@ -3,7 +3,7 @@ imports:
 
 doctrine:
     dbal:
-        url: "%env(mysql://bbe505ab648969:f248b52c@eu-cdbr-west-02.cleardb.net/heroku_c8dc7d69d9379a1?reconnect=true)%"
+        url: "%env(CLEARDB_DATABASE_URL)%"
 #    orm:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
