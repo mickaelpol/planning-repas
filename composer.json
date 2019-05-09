@@ -45,7 +45,7 @@
     },
     "scripts": {
         "compile": [
-            "bin/console doctrine:schema:create --force"
+            "bin/console doctrine:schema:create"
         ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
