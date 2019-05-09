@@ -45,7 +45,7 @@
     },
     "scripts": {
         "compile": [
-            "bin/console doctrine:schema:create --force",
+            "bin/console doctrine:schema:create",
             "bin/console doctrine:schema:update --force",
             "npm install && mv node_modules web",
             "cd web && rm app_dev.php"
