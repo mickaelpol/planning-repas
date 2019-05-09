@@ -1,7 +1,3 @@
-{% block title %}
-    {{ 'error'|trans({}, 'FOSUserBundle') }}
-{% endblock %}
-
 {% block body %}
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('node_modules/materialize-css/dist/css/materialize.css') }}">
@@ -12,9 +8,7 @@
     <div class="container">
         <h1 class="center-align mt-60">
             Oops !
-            <strong>
-                {{ status_code }}
-            </strong>
+            {{ status_text }}
         </h1>
         <h1 class="center-align mt-60">
             {{ 'exception.message'|trans({}, 'FOSUserBundle') }}
