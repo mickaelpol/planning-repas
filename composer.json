@@ -45,10 +45,7 @@
     },
     "scripts": {
         "compile": [
-            "npm install",
-            "npm audit fix",
-            "cd web && rm app_dev.php"
-
+            "bin/console doctrine:schema:create --force"
         ],
         "symfony-scripts": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
