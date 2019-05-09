@@ -5,7 +5,7 @@
 parameters:
     database_host:     mysql://bbe505ab648969:f248b52c@eu-cdbr-west-02.cleardb.net/heroku_c8dc7d69d9379a1?reconnect=true
     database_port:     ~
-    database_name:     'organisation-repas'
+    database_name:     'heroku_c8dc7d69d9379a1'
     database_user:     bbe505ab648969
     database_password: f248b52c
     mailer_auth_mode: login
