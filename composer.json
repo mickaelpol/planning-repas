@@ -60,7 +60,6 @@
         ],
         "compile":  [
             "cd web && npm install",
-            "chmod 777 var"
         ]
     },
     "config": {
