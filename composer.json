@@ -59,7 +59,7 @@
             "@symfony-scripts"
         ],
         "compile":  [
-            "cd web && npm install",
+            "cd web && npm install"
         ]
     },
     "config": {
