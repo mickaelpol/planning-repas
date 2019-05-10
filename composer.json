@@ -59,7 +59,8 @@
             "@symfony-scripts"
         ],
         "compile":  [
-            "cd web && npm install"
+            "cd web && npm install",
+            "chmod -R 777 var/"
         ]
     },
     "config": {
