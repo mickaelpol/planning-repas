@@ -14,7 +14,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * Planning controller.
  *
  * @Route("recette")
- * @Security("has_role('ROLE_USER')")
  */
 class RecetteController extends Controller
 {

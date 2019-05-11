@@ -3,19 +3,19 @@
     {% set currentPath = path(app.request.attributes.get('_route'),
         app.request.attributes.get('_route_params')) %}
 
-        <div class="{% if currentPath == '/' %}row{% else %}row{% endif %}">
-            <div class="col l2 m2 bouton-menu">
-                <a href="#" data-target="slide-out" class="sidenav-trigger btn black">
-                    <i class="large material-icons" style="color:orange; font-size: 30px;">menu</i>
-                </a>
-            </div>
-            <div class="col xl2 offset-xl5 l2 offset-l5 m4 offset-m2 hide-on-med-and-down mt-5">
-                <a href="{{ path('homepage') }}">
-                    <img class="img-responsive logo" src="{{ asset('img/logo_planning.svg') }}" alt="logo">
-                </a>
-                <div class="logo-shadow"></div>
-            </div>
+    <div class="{% if currentPath == '/' %}row{% else %}row{% endif %}">
+        <div class="col l2 m2 bouton-menu">
+            <a href="#" data-target="slide-out" class="sidenav-trigger btn black">
+                <i class="large material-icons" style="color:orange; font-size: 30px;">menu</i>
+            </a>
         </div>
+        <div class="col xl2 offset-xl5 l2 offset-l5 m4 offset-m2 hide-on-med-and-down mt-5">
+            <a href="{{ path('homepage') }}">
+                <img class="img-responsive logo" src="{{ asset('img/logo_planning.svg') }}" alt="logo">
+            </a>
+            <div class="logo-shadow"></div>
+        </div>
+    </div>
 
     <ul id="slide-out" class="sidenav fixed">
         <li>
