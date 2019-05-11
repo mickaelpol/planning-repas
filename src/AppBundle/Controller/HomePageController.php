@@ -35,7 +35,6 @@ class HomePageController extends Controller
         $month = date('m');
         // Premier jour du mois en cours sous forme de chaine de caractère
         $firstDayOfMonth = strftime('%A', strtotime('' . $year . '-' . $month));
-        $numberDayOfMonth = cal_days_in_month(CAL_GREGORIAN, date("m"), $year);
         $weeks = [];
         $now = date('d');
         $day = date('w');
