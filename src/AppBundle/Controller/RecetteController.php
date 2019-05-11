@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
- * Recette controller.
+ * Planning controller.
  *
  * @Route("recette")
+ * @Security("has_role('ROLE_USER')")
  */
 class RecetteController extends Controller
 {

@@ -14,10 +14,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
  * @package AppBundle\Controller
  * @Security("has_role('ROLE_USER')")
  */
-class DefaultController extends Controller
+class HomePageController extends Controller
 {
     /**
-     * @Route("/home", name="homepage", methods={"GET"})
+     * @Route("/", name="homepage", methods={"GET"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
