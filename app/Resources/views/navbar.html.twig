@@ -40,9 +40,38 @@
         {% endif %}
 
         {% if is_granted("ROLE_ADMIN") %}
-            <li class="{% if currentPath == path('ingredient_new') %}active{% endif %}">
-                <a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> {{ 'add.ingredient'|trans({}, 'messages') }}</a>
+            <li>
+                <div class="divider"></div>
             </li>
+            <li>
+                <a class="subheader">Administration</a>
+            </li>
+            <ul class="collapsible">
+                <li class="{% if currentPath == path('unite_new') %}active{% endif %}">
+                    <span class="collapsible-header"><i class="material-icons right">arrow_drop_down</i>{{ 'ingredient'|trans({}, 'messages') }}</span>
+                    <div class="collapsible-body">
+                        <span>
+                            <ul>
+                                <li class="center"><a href="{{ path('ingredient_new') }}"><i class="small material-icons">restaurant_menu</i> {{ 'add.ingredient'|trans({}, 'messages') }}</a></li>
+                                <li class="center"><a href="{{ path('ingredient_index') }}"><i class="small material-icons">restaurant</i> {{ 'list.ingredient'|trans({}, 'messages') }}</a></li>
+                            </ul>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+            <ul class="collapsible">
+                <li class="{% if currentPath == path('unite_new') %}active{% endif %}">
+                    <div class="collapsible-header"><i class="material-icons right">arrow_drop_down</i>{{ 'unit'|trans({}, 'messages') }}</div>
+                    <div class="collapsible-body">
+                        <span>
+                            <ul>
+                                <li class="center"><a href="{{ path('unite_index') }}"><i class="small material-icons">straighten</i> {{ 'list.unite'|trans({}, 'messages') }}</a></li>
+                                <li class="center"><a href="{{ path('unite_new') }}"><i class="small material-icons">straighten</i> {{ 'add.unite'|trans({}, 'messages') }}</a></li>
+                            </ul>
+                        </span>
+                    </div>
+                </li>
+            </ul>
         {% endif %}
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
             <li>
