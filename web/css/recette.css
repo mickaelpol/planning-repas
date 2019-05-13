@@ -71,6 +71,11 @@ body {
     font-size: 18px;
 }
 
+.dropdown-content {
+    height: 200px !important;
+}
+
+
 .dropdown-content li span {
     color: #212121 !important;
 }
