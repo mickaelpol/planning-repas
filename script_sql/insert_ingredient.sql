@@ -97,7 +97,7 @@ select 'Crevette', 21
 union
 select 'Cassis', 21
 union
-select 'Citron', 21
+select 'Citron', 41
 union
 select 'Céleri', 21
 union
@@ -105,7 +105,7 @@ select 'Citrouille', 21
 union
 select 'Céleri-rave', 21
 union
-select 'Clémentine', 21
+select 'Clémentine', 41
 union
 select 'Cumin', 21
 union
