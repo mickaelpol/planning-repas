@@ -72,10 +72,16 @@ body {
 }
 
 .dropdown-content {
+<<<<<<< HEAD
     height: 200px !important;
 }
 
 
+=======
+    top: 0 !important;
+}
+
+>>>>>>> feature/add_navbar_admin
 .dropdown-content li span {
     color: #212121 !important;
 }
