@@ -46,6 +46,7 @@ $(document).ready(function(){
     $('.sidenav-trigger').on('click', function(e) {
         e.preventDefault();
         $('.sidenav').sidenav();
+        $('.collapsible').collapsible();
     });
 
     $('.materialboxed').materialbox();
