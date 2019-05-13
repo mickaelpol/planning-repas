@@ -3,6 +3,7 @@
 namespace AppBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -13,6 +14,12 @@ class InsertDataCommand extends ContainerAwareCommand
 {
 
     CONST COMMAND = 'insert:data';
+
+    CONST COMMAND_USER = 'fos:user:create';
+
+    CONST START_USER = 'Création d\'un utilisateur administrateur';
+
+    CONST END_USER = 'Fin de la création de l\'utilisateur administrateur';
 
     CONST START = 'Début de l\'insertion des datas dans la table ingrédient';
 
@@ -38,16 +45,16 @@ class InsertDataCommand extends ContainerAwareCommand
             ->setHelp('Insert data in database with path file sql')
             ->setDefinition(
                 new InputDefinition([
-                    new InputOption('path', 'p', InputOption::VALUE_REQUIRED, 'the path of filename', 'relative_path/dump.sql')
+                    new InputOption('path', 'p', InputOption::VALUE_REQUIRED, 'the path of filename', 'relative_path/dump.sql'),
                 ])
             );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
+        // this parts insert data with file pass in arguments
         $output->writeln(
-            self::START
+            '<question>' . self::START . '</question>'
         );
 
         $pathFile = $input->getOption('path');
@@ -58,8 +65,8 @@ class InsertDataCommand extends ContainerAwareCommand
             $response = 'Le fichier reçu n\'est pas un fichier sql';
 
             $output->writeln([
-                sprintf(self::ERROR),
-                $response
+                sprintf('<error>' . self::ERROR . '</error>'),
+                '<error>$response</error>',
             ]);
 
         } else {
@@ -75,15 +82,16 @@ class InsertDataCommand extends ContainerAwareCommand
             $response = 'Le fichier reçu est un fichier sql, le traitement est en cours';
 
             $output->writeln([
-                sprintf(self::END),
-                $response
+                sprintf('<info>' . $response . '</info>'),
+                '<info>' . self::END . '</info>',
             ]);
         }
 
     }
 
 
-    private function get_extension($file) {
+    private function get_extension($file)
+    {
         $extension = explode(".", $file);
         return $extension[1];
     }
