@@ -42,7 +42,7 @@
                                     {% for recette in recettes %}
                                         <div class="col s12 m6 l6 xl6 center-align text-black mb-15">
                                             <li>
-                                                <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette-nom">
+                                                <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette">
                                                     <figure class="snip1585">
                                                         <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="sample106" />
                                                         <figcaption>
