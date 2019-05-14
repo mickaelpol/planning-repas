@@ -17,4 +17,4 @@
 /web/bundles/
 .idea
 /web/node_modules/
-/web/uploads/
+/web/uploads/images/recettes/*
