@@ -22,7 +22,7 @@ h2 {
 }
 
 .green {
-    height: 4em;
+    height: auto;
     border-radius: 15px;
     line-height: 4em;
 }
