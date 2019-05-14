@@ -1,407 +1,407 @@
 INSERT INTO ing_ingredient (ing_nom, unite_oid)
-select 'Abricot', 5
+select 'Abricot', 41
 union
-select 'Agneau', 4
+select 'Agneau', 21
 union
-select 'Artichaut', 3
+select 'Artichaut', 21
 union
-select 'Ail', 5
+select 'Ail', 41
 union
-select 'Amande', 3
+select 'Amande', 21
 union
-select 'Asperge', 3
+select 'Asperge', 21
 union
-select 'Ananas', 3
+select 'Ananas', 21
 union
-select 'Aubergine', 3
+select 'Aubergine', 21
 union
-select 'Avocat', 5
+select 'Avocat', 41
 union
-select 'Arachide', 3
+select 'Arachide', 21
 union
-select 'Avoine', 3
+select 'Avoine', 21
 union
-select 'Betterave', 3
+select 'Betterave', 21
 union
-select 'Boulghour', 3
+select 'Boulghour', 21
 union
-select 'Banane', 5
+select 'Banane', 41
 union
-select 'Beurre', 3
+select 'Beurre', 21
 union
-select 'Brocoli', 3
+select 'Brocoli', 21
 union
-select 'Basilic', 3
+select 'Basilic', 21
 union
-select 'Blé', 3
+select 'Blé', 21
 union
-select 'Brugnon', 5
+select 'Brugnon', 41
 union
-select 'Bergamote', 5
+select 'Bergamote', 41
 union
-select 'Butternut', 3
+select 'Butternut', 21
 union
-select 'Boeuf', 3
+select 'Boeuf', 21
 union
-select 'Cacao', 3
+select 'Cacao', 21
 union
-select 'Champignons', 3
+select 'Champignons', 21
 union
-select 'Concombre', 3
+select 'Concombre', 21
 union
-select 'Cornichon', 3
+select 'Cornichon', 21
 union
-select 'Café', 3
+select 'Café', 21
 union
-select 'Châtaigne', 3
+select 'Châtaigne', 21
 union
-select 'Coquille saint-jacques', 5
+select 'Coquille saint-jacques', 41
 union
-select 'Caille', 3
+select 'Caille', 21
 union
-select 'Chocolat', 3
+select 'Chocolat', 21
 union
-select 'Coriandre', 3
+select 'Coriandre', 21
 union
-select 'Calmar', 3
+select 'Calmar', 21
 union
-select 'Chou', 3
+select 'Chou', 21
 union
-select 'Canard', 3
+select 'Canard', 21
 union
-select 'Courges', 3
+select 'Courges', 21
 union
 select 'Canneberge', 1
 union
-select 'Chou frisé', 3
+select 'Chou frisé', 21
 union
-select 'Courgette', 3
+select 'Courgette', 21
 union
-select 'Cannelle', 3
+select 'Cannelle', 21
 union
-select 'Chou-fleur', 3
+select 'Chou-fleur', 21
 union
-select 'Crabe', 3
+select 'Crabe', 21
 union
-select 'Crême-fraîche', 3
+select 'Crême-fraîche', 21
 union
-select 'Choux de bruxelles', 3
+select 'Choux de bruxelles', 21
 union
-select 'Cardamome', 3
+select 'Cardamome', 21
 union
-select 'Carotte', 3
+select 'Carotte', 21
 union
-select 'Ciboulette', 3
+select 'Ciboulette', 21
 union
-select 'Crevette', 3
+select 'Crevette', 21
 union
-select 'Cassis', 3
+select 'Cassis', 21
 union
-select 'Citron', 3
+select 'Citron', 41
 union
-select 'Céleri', 3
+select 'Céleri', 21
 union
-select 'Citrouille', 3
+select 'Citrouille', 21
 union
-select 'Céleri-rave', 3
+select 'Céleri-rave', 21
 union
-select 'Clémentine', 3
+select 'Clémentine', 41
 union
-select 'Cumin', 3
+select 'Cumin', 21
 union
-select 'Cerfeuil', 3
+select 'Cerfeuil', 21
 union
-select 'Coing', 3
+select 'Coing', 21
 union
-select 'Curcuma', 3
+select 'Curcuma', 21
 union
-select 'Cerise', 3
+select 'Cerise', 21
 union
-select 'Combava', 5
+select 'Combava', 41
 union
-select 'Curry', 3
+select 'Curry', 21
 union
-select 'Datte', 3
+select 'Datte', 21
 union
-select 'Dinde', 3
+select 'Dinde', 21
 union
-select 'Durian', 3
+select 'Durian', 21
 union
-select 'Echalote', 5
+select 'Echalote', 41
 union
-select 'Estragon', 3
+select 'Estragon', 21
 union
-select 'Endive', 3
+select 'Endive', 21
 union
-select 'Epeautre', 3
+select 'Epeautre', 21
 union
-select 'Epinards', 3
+select 'Epinards', 21
 union
-select 'Fenouil', 3
+select 'Fenouil', 21
 union
-select 'Foie gras', 3
+select 'Foie gras', 21
 union
-select 'Fruit de la passion', 3
+select 'Fruit de la passion', 21
 union
-select 'Figue', 3
+select 'Figue', 21
 union
-select 'Fraise', 3
+select 'Fraise', 21
 union
-select 'Figue de barbarie', 3
+select 'Figue de barbarie', 21
 union
-select 'Framboise', 3
+select 'Framboise', 21
 union
-select 'Flageolet', 3
+select 'Flageolet', 21
 union
-select 'Fromage', 3
+select 'Fromage', 21
 union
-select 'Grenade', 3
+select 'Grenade', 21
 union
-select 'Gingembre', 3
+select 'Gingembre', 21
 union
-select 'Griottes', 3
+select 'Griottes', 21
 union
-select 'Gombo', 4
+select 'Gombo', 31
 union
-select 'Groseille', 3
+select 'Groseille', 21
 union
-select 'Gourgane', 3
+select 'Gourgane', 21
 union
-select 'Goyave', 3
+select 'Goyave', 21
 union
-select 'Hareng', 3
+select 'Hareng', 21
 union
-select 'Homard', 3
+select 'Homard', 21
 union
-select 'Haricot vert', 3
+select 'Haricot vert', 21
 union
 select 'Huile de colza', 1
 union
-select 'Haricots coco', 3
+select 'Haricots coco', 21
 union
 select 'Huile de palme', 1
 union
 select 'Huiles végétales', 1
 union
-select 'Haricots secs', 3
+select 'Haricots secs', 21
 union
-select 'Huître', 5
+select 'Huître', 41
 union
-select 'Kaki', 5
+select 'Kaki', 41
 union
-select 'Kiwi', 5
+select 'Kiwi', 41
 union
-select 'Kumquat', 3
+select 'Kumquat', 21
 union
 select 'Lait', 1
 union
-select 'Laitue', 5
+select 'Laitue', 41
 union
-select 'Litchi', 3
+select 'Litchi', 21
 union
-select 'Lapin', 3
+select 'Lapin', 21
 union
-select 'Laurier', 3
+select 'Laurier', 21
 union
-select 'Lentilles', 3
+select 'Lentilles', 21
 union
-select 'Marron', 3
+select 'Marron', 21
 union
-select 'Mâche', 5
+select 'Mâche', 41
 union
-select 'Morue', 3
+select 'Morue', 21
 union
-select 'Maïs', 3
+select 'Maïs', 21
 union
-select 'Melon', 3
+select 'Melon', 21
 union
-select 'Moule', 3
+select 'Moule', 21
 union
-select 'Mandarine', 5
+select 'Mandarine', 41
 union
-select 'Menthe', 3
+select 'Menthe', 21
 union
-select 'Moutarde', 3
+select 'Moutarde', 21
 union
-select 'Mangue', 3
+select 'Mangue', 21
 union
-select 'Mouton', 3
+select 'Mouton', 21
 union
-select 'Manioc', 3
+select 'Manioc', 21
 union
 select 'Miel', 1
 union
-select 'Mûre', 3
+select 'Mûre', 21
 union
-select 'Maquereau', 3
+select 'Maquereau', 21
 union
-select 'Myrtille', 3
+select 'Myrtille', 21
 union
-select 'Mirabelle', 3
+select 'Mirabelle', 21
 union
-select 'Navet', 3
+select 'Navet', 21
 union
-select 'Noix de cajou', 3
+select 'Noix de cajou', 21
 union
-select 'Noix du brésil', 3
+select 'Noix du brésil', 21
 union
-select 'Nectarine', 5
+select 'Nectarine', 41
 union
-select 'Noix de coco', 3
+select 'Noix de coco', 21
 union
-select 'Noix de macadamia', 3
+select 'Noix de macadamia', 21
 union
-select 'Noisette', 3
+select 'Noisette', 21
 union
-select 'Noix de muscade', 3
+select 'Noix de muscade', 21
 union
-select 'Noix', 3
+select 'Noix', 21
 union
-select 'Noix de pécan', 3
+select 'Noix de pécan', 21
 union
-select 'Oeuf', 5
+select 'Oeuf', 41
 union
-select 'Orange', 5
+select 'Orange', 41
 union
-select 'Oseille', 5
+select 'Oseille', 41
 union
-select 'Oie', 3
+select 'Oie', 21
 union
-select 'Orge', 3
+select 'Orge', 21
 union
-select 'Oignon', 5
+select 'Oignon', 41
 union
-select 'Origan', 3
+select 'Origan', 21
 union
-select 'Oignon vert', 5
+select 'Oignon vert', 41
 union
-select 'Olive', 3
+select 'Olive', 21
 union
-select 'Pain', 3
+select 'Pain', 21
 union
-select 'Petit pois', 3
+select 'Petit pois', 21
 union
-select 'Pois chiche', 3
+select 'Pois chiche', 21
 union
-select 'Palourde', 5
+select 'Palourde', 41
 union
-select 'Pétoncle', 3
+select 'Pétoncle', 21
 union
-select 'Poivron', 3
+select 'Poivron', 21
 union
-select 'Pamplemousse', 5
+select 'Pamplemousse', 41
 union
-select 'Pignon', 3
+select 'Pignon', 21
 union
-select 'Pomme', 5
+select 'Pomme', 41
 union
-select 'Papaye', 3
+select 'Papaye', 21
 union
-select 'Piment', 3
+select 'Piment', 21
 union
-select 'Pomme de terre', 3
+select 'Pomme de terre', 21
 union
-select 'Paprika', 3
+select 'Paprika', 21
 union
-select 'Pistache', 3
+select 'Pistache', 21
 union
-select 'Porc', 3
+select 'Porc', 21
 union
-select 'Pasthèque', 3
+select 'Pasthèque', 21
 union
-select 'Pitaya', 5
+select 'Pitaya', 41
 union
-select 'Potimarron', 3
+select 'Potimarron', 21
 union
-select 'Patate douce', 3
+select 'Patate douce', 21
 union
-select 'Poulet', 3
+select 'Poulet', 21
 union
-select 'Poire', 5
+select 'Poire', 41
 union
-select 'Pousse de bambou', 3
+select 'Pousse de bambou', 21
 union
-select 'Pavot', 3
+select 'Pavot', 21
 union
-select 'Poireau', 3
+select 'Poireau', 21
 union
-select 'Prune', 3
+select 'Prune', 21
 union
-select 'Pruneau', 3
+select 'Pruneau', 21
 union
-select 'Pêche', 5
+select 'Pêche', 41
 union
-select 'Pois cassé', 3
+select 'Pois cassé', 21
 union
-select 'Persil', 3
+select 'Persil', 21
 union
-select 'Quinoa', 3
+select 'Quinoa', 21
 union
-select 'Radis', 3
+select 'Radis', 21
 union
-select 'Riz sauvage', 3
+select 'Riz sauvage', 21
 union
-select 'Roquette', 5
+select 'Roquette', 41
 union
-select 'Raisin', 3
+select 'Raisin', 21
 union
-select 'Rutabaga', 5
+select 'Rutabaga', 41
 union
-select 'Rhubarbe', 3
+select 'Rhubarbe', 21
 union
-select 'Navet', 3
+select 'Navet', 21
 union
-select 'Riz', 3
+select 'Riz', 21
 union
-select 'Safran', 3
+select 'Safran', 21
 union
-select 'Saumon', 3
+select 'Saumon', 21
 union
-select 'Salsifis', 3
+select 'Salsifis', 21
 union
-select 'Seigle', 3
+select 'Seigle', 21
 union
 select 'Sirop d erable', 1
 union
-select 'Sardine', 3
+select 'Sardine', 21
 union
 select 'Soda', 1
 union
-select 'Sarrasin', 3
+select 'Sarrasin', 21
 union
-select 'Semoule', 3
+select 'Semoule', 21
 union
-select 'Soja', 3
+select 'Soja', 21
 union
-select 'Sésame', 3
+select 'Sésame', 21
 union
-select 'Sole', 5
+select 'Sole', 41
 union
-select 'Sauge', 3
+select 'Sauge', 21
 union
-select 'Tofu', 3
+select 'Tofu', 21
 union
 select 'Thé', 1
 union
-select 'Tomate', 5
+select 'Tomate', 41
 union
-select 'Tapioca', 3
+select 'Tapioca', 21
 union
-select 'Thon', 3
+select 'Thon', 21
 union
-select 'Topinambour', 3
+select 'Topinambour', 21
 union
-select 'Thym', 3
+select 'Thym', 21
 union
-select 'Tournesol', 3
+select 'Tournesol', 21
 union
-select 'Truite', 3
+select 'Truite', 21
 union
-select 'Vanille', 5
+select 'Vanille', 41
 union
-select 'Veau', 3
+select 'Veau', 21
 union
-select 'Viande de gibier', 3
+select 'Viande de gibier', 21
 union
 select 'Vin', 1
 union
@@ -409,4 +409,4 @@ select 'Vinaigre', 1
 union
 select 'Wasabi', 1
 union
-select 'Yaourt', 5
+select 'Yaourt', 41
