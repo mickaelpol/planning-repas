@@ -68,14 +68,14 @@ class Recette
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      *
      * @var string
      */
     private $imageName;
 
     /**
-     * @ORM\Column(name="rec_datetime", type="datetime")
+     * @ORM\Column(name="rec_datetime", type="datetime", nullable=true)
      *
      * @var \DateTime
      */
