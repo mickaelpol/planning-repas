@@ -28,3 +28,8 @@ ingredient: 'Ingredient'
 list:
   ingredient: 'Liste des ingredients'
   unite: 'Liste des unités'
+reconnected:
+  user: 'Content de vous revoir user'
+
+disconnected:
+  user: 'À bientôt user'
