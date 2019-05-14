@@ -32,11 +32,10 @@
         {# Affichage des message de succès ou d'erreur #}
         <div class="container">
             <div class="row">
-
                 {% if app.request.hasPreviousSession %}
                     {% for type, messages in app.session.flashbag.all() %}
                         {% for message in messages %}
-                            <div class="col l12" data-message="{{ message }}" id="message"></div>
+                            <div data-message="{{ message }}" id="message"></div>
                         {% endfor %}
                     {% endfor %}
                 {% endif %}
