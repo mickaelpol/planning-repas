@@ -17,4 +17,4 @@
 /web/bundles/
 .idea
 /web/node_modules/
-/web/uploads/images/recettes/*
+!web/uploads/images/recette/.gitkeep
