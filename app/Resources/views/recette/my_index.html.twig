@@ -43,7 +43,11 @@
                                             <li>
                                                 <a href="{{ path('recette_show', {'id': recette.id}) }}" class="recette-nom">
                                                     <figure class="snip1585">
-                                                        <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="sample106" />
+                                                        {% if recette.imageName != null %}
+                                                            <img class="responsive-img" src="{{ asset('uploads/images/recettes/' ~ recette.imageName) }}" alt="Image de la recette {{ recette.nom }}" />
+                                                        {% else %}
+                                                            <img class="responsive-img" src="{{ asset('img/img_non_dispo.png') }}" alt="Image non disponible" />
+                                                        {% endif %}
                                                         <figcaption>
                                                             <h3>{{ recette.nom }}</h3>
                                                         </figcaption>
