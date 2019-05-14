@@ -9,11 +9,11 @@ parameters:
     database_user:     b60807c1697097
     database_password: 6605b1fa
     mailer_auth_mode: login
-    mailer_port: 465
+    mailer_port: 587
     mailer_encryption: ssl
     mailer_transport: smtp
-    mailer_host: smtp.sendgrid.net
-    mailer_user: app133058270@heroku.com
-    mailer_password: ouvjbsdo6493
+    mailer_host: smtp.mailgun.org
+    mailer_user: postmaster@sandbox84505cc2b52343acbdc2678e8a8a07c5.mailgun.org
+    mailer_password: d285dafbef6913f5a124b42fed7a4bf4-4a62b8e8-929d87db
     secret: 6d05ba187e0a9e981d95cd7236f203c981d4ca81
 
