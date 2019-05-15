@@ -12,8 +12,8 @@ parameters:
     mailer_port: 465
     mailer_encryption: ssl
     mailer_transport: smtp
-    mailer_host: smtp.sendgrid.net
-    mailer_user: app133058270@heroku.com
-    mailer_password: ouvjbsdo6493
+    mailer_host: smtp.mailgun.org
+    mailer_user: 
+    mailer_password:
     secret: 6d05ba187e0a9e981d95cd7236f203c981d4ca81
 
