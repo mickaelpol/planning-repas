@@ -9,7 +9,7 @@ parameters:
     mailer_encryption: ssl
     mailer_transport: smtp
     mailer_host: smtp.mailgun.org
-    mailer_user:
-    mailer_password:
+    mailer_user: polmickael3@gmail.com
+    mailer_password: test
     secret: 6d05ba187e0a9e981d95cd7236f203c981d4ca81
 
