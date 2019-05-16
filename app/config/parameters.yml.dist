@@ -7,7 +7,7 @@ parameters:
     database_port:     ~
     mailer_auth_mode: login
     mailer_port: 587
-    mailer_encryption: ssl
+    mailer_encryption: ~
     mailer_transport: smtp
     mailer_host: smtp.sendgrid.net
     mailer_user: '%env(SENDGRID_USERNAME)%'
