@@ -59,7 +59,9 @@
             "@symfony-scripts"
         ],
         "compile":  [
-            "bin/console doctrine:schema:update --force",
+            "bin/console insert:data -p script/insert_unite.sql",
+            "bin/console insert:data -p script/insert_ingredient.sql",
+            "bin/console create:admin -u mickael -p admin -m polmickael3@gmail.com -r ROLE_ADMIN",
             "cd web && npm install",
             "cd web && rm app_dev.php"
         ]
