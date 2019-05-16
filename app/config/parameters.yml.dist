@@ -5,6 +5,9 @@
 parameters:
     database_host:     '%env(CLEARDB_DATABASE_URL)%'
     database_port:     ~
+    database_name:     '%env(DB_NAME)%'
+    database_user:     '%env(DB_USER)%'
+    database_password: '%env(DB_PASS)%'
     mailer_auth_mode: login
     mailer_port: 465
     mailer_encryption: ssl
