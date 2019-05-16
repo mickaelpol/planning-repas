@@ -5,8 +5,6 @@
 parameters:
     database_host:     '%env(CLEARDB_DATABASE_URL)%'
     database_port:     ~
-    database_name:     'heroku_1b57a7f63dbd64b'
-    database_user:     b60807c1697097
     mailer_auth_mode: login
     mailer_port: 465
     mailer_encryption: ssl
