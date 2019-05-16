@@ -12,6 +12,5 @@ parameters:
     mailer_host: smtp.sendgrid.net
     mailer_user: '%env(SENDGRID_USERNAME)%'
     mailer_password: '%env(SENDGRID_PASSWORD)%'
-    mailer_api_key: '%env(SENDGRID_API_KEY)%'
     secret: 6d05ba187e0a9e981d95cd7236f203c981d4ca81
 
