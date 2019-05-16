@@ -3,17 +3,13 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 # This file is auto-generated during the composer install
 parameters:
-    database_host:     mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
     database_port:     ~
-    database_name:     'heroku_1b57a7f63dbd64b'
-    database_user:     b60807c1697097
-    database_password: 6605b1fa
     mailer_auth_mode: login
     mailer_port: 465
     mailer_encryption: ssl
     mailer_transport: smtp
     mailer_host: smtp.mailgun.org
-    mailer_user: 
+    mailer_user:
     mailer_password:
     secret: 6d05ba187e0a9e981d95cd7236f203c981d4ca81
 
