@@ -4,11 +4,11 @@ imports:
 doctrine:
     dbal:
         driver: pdo_mysql
-        host: '%CLEARDB_DATABASE_URL%'
+        host: '%env(CLEARDB_DATABASE_URL)%'
         port: '%database_port%'
-        dbname: '%DB_NAME%'
-        user: '%DB_USER%'
-        password: '%DB_PASS%'
+        dbname: '%env(DB_NAME)%'
+        user: '%env(DB_USER)%'
+        password: '%env(DB_PASS)%'
         charset: UTF8
 #    orm:
 #        metadata_cache_driver: apc
