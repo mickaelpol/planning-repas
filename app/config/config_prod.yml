@@ -4,7 +4,7 @@ imports:
 doctrine:
   dbal:
     driver: pdo_mysql
-    host: '%database_host%'
+    url: mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
     charset: UTF8
 #    orm:
 #        metadata_cache_driver: apc
