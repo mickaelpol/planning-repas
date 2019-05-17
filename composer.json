@@ -60,6 +60,7 @@
             "@symfony-scripts"
         ],
         "compile":  [
+            "bin/console doctrine:schema:update --force",
             "cd web && npm install",
             "cd web && rm app_dev.php"
         ]
