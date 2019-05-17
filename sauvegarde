@@ -1,0 +1,8 @@
+    database_host:     mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
+    database_name:     'heroku_1b57a7f63dbd64b'
+    database_user:     b60807c1697097
+    database_password: 6605b1fa
+
+    url: mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
+
+    web: vendor/bin/heroku-php-apache2 web/

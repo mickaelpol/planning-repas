@@ -3,12 +3,7 @@ imports:
 
 doctrine:
     dbal:
-        driver: pdo_mysql
-        host: '%database_host%'
-        port: '%database_port%'
-        user: '%database_user%'
-        password: '%database_password%'
-        dbname: '%database_name%'
+        url: '%database_url%'
         charset: UTF8
 
 framework:
@@ -28,6 +23,10 @@ monolog:
             path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
             channels: ['!event']
+        nested:
+            type:  stream
+            path:  "php://stderr"
+            level: debug
         console:
             type: console
             process_psr_3_messages: false

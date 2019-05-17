@@ -21,6 +21,7 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "ext-intl": "*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "friendsofsymfony/rest-bundle": "^2.5",
@@ -74,7 +75,13 @@
         "symfony-tests-dir": "tests",
         "symfony-assets-install": "relative",
         "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
+            "file": "app/config/parameters.yml",
+            "env-map": {
+                "database_url": "CLEARDB_DATABASE_URL",
+                "secret": "SECRET_TOKEN",
+                "symfony_env": "SYMFONY_ENV",
+                "app": "APP"
+            }
         },
         "branch-alias": null
     }
