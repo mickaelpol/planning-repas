@@ -1,6 +1,11 @@
 imports:
     - { resource: config.yml }
 
+doctrine:
+    dbal:
+        url: '%database_url%'
+        charset: UTF8
+
 framework:
     router:
         resource: '%kernel.project_dir%/app/config/routing_dev.yml'
@@ -18,6 +23,10 @@ monolog:
             path: '%kernel.logs_dir%/%kernel.environment%.log'
             level: debug
             channels: ['!event']
+        nested:
+            type:  stream
+            path:  "php://stderr"
+            level: debug
         console:
             type: console
             process_psr_3_messages: false

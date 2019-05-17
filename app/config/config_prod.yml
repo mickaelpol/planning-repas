@@ -1,24 +1,26 @@
 imports:
-    - { resource: config.yml }
+  - { resource: config.yml }
 
 doctrine:
-    dbal:
-        url: mysql://b60807c1697097:6605b1fa@eu-cdbr-west-02.cleardb.net/heroku_1b57a7f63dbd64b?reconnect=true
+  dbal:
+    driver: pdo_mysql
+    url: '%database_url%'
+    charset: UTF8
 #    orm:
 #        metadata_cache_driver: apc
 #        result_cache_driver: apc
 #        query_cache_driver: apc
 
 monolog:
-    handlers:
-        main:
-            type: fingers_crossed
-            action_level: error
-            handler: nested
-        nested:
-            type: stream
-            path: "php://stderr"
-            level: debug
-        console:
-            type: console
-            process_psr_3_messages: false
+  handlers:
+    main:
+      type: fingers_crossed
+      action_level: error
+      handler: nested
+    nested:
+      type: stream
+      path: "php://stderr"
+      level: debug
+    console:
+      type: console
+      process_psr_3_messages: false
