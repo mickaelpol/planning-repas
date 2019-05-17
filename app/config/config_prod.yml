@@ -4,7 +4,7 @@ imports:
 doctrine:
   dbal:
     driver: pdo_mysql
-    url: '%database_host%'
+    url: '%database_url%'
     charset: UTF8
 #    orm:
 #        metadata_cache_driver: apc

@@ -1,0 +1,10 @@
+{
+  "name": "organisation-repas",
+  "description": "site d'organisation de repas en planning avec liste de course auto généré",
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    }
+  }
+}

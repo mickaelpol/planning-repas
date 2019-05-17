@@ -3,12 +3,7 @@ imports:
 
 doctrine:
     dbal:
-        driver: pdo_mysql
-        host: '%database_host%'
-        port: '%database_port%'
-        user: '%database_user%'
-        password: '%database_password%'
-        dbname: '%database_name%'
+        url: '%database_url%'
         charset: UTF8
 
 framework:
