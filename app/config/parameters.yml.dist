@@ -3,8 +3,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 # This file is auto-generated during the composer install
 parameters:
-    symfony_env: '%env(SYMFONY_ENV)%'
-    app: '%APP%'
+    symfony_env: dev
+    app: planning-repas-dev
     database_url:     '%env(CLEARDB_DATABASE_URL)%'
     database_port:     ~
     mailer_auth_mode: login

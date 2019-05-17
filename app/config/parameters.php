@@ -1,5 +1,4 @@
 <?php
-
 $params = [
     'DATABASE_URL',
     'APP',
