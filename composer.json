@@ -61,6 +61,8 @@
         ],
         "compile":  [
             "bin/console doctrine:schema:update --force",
+            "bin/console insert:data -p script_sql/insert_unit.sql",
+            "bin/console insert:data -p script_sql/insert_ingredient.sql",
             "cd web && npm install",
             "cd web && rm app_dev.php"
         ]
